@@ -7,4 +7,4 @@
 Premier contact avec Git Hub
 
 #Modification Anthony
-Petite modification sans conflits
+Modification avec conflit
