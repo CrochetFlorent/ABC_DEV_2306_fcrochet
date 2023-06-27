@@ -1,7 +1,7 @@
 Variables
     Somme est un réel
     Intérêts est un réel
-    Années est un réel
+    Années est un entier
     Isimples est un réel
     Icomposés est un réel
 
@@ -14,5 +14,5 @@ Début du Programme
     Lire <-- Années
     Isimples <-- Somme*(1+Années*Intérêts)
     Icomposés <-- Somme(1+Intérêts)^Années
-    Ecrire "Intérêts Simple:",Isimple,"Intérêts composés:",Icomposés
+    Ecrire "Intérêts Simple:",Isimples,"Intérêts composés:",Icomposés
 Fin du Programme
