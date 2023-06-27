@@ -3,7 +3,7 @@ Variable
     b est un réel
     c est un réel
 
-Début Programme
+Début du Programme
     Ecrire "Saisir le nombre a"
     Lire <-- a
     Ecrire "saisir le nombre b"
@@ -13,4 +13,4 @@ Début Programme
     a<--b
     b<--c
     Ecrire "Après inversion, a=",a,"et b=",b
-Fin Programme
+Fin du Programme

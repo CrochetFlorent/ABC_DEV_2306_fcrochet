@@ -5,7 +5,7 @@ Variables
     Isimples est un réel
     Icomposés est un réel
 
-Début Programme
+Début du Programme
     Ecrire "Entrez la somme"
     Lire <-- Somme
     Ecrire "Entrez les intérêts
@@ -15,4 +15,4 @@ Début Programme
     Isimples <-- Somme*(1+Années*Intérêts)
     Icomposés <-- Somme(1+Intérêts)^Années
     Ecrire "Intérêts Simple:",Isimple,"Intérêts composés:",Icomposés
-Fin Programme
+Fin du Programme
