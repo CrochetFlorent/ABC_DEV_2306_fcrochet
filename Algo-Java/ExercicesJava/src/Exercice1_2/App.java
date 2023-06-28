@@ -33,7 +33,7 @@ Fin du Programme*/
 		r = scanner.nextInt();
 		
 		aire = 4*Pi*Math.pow(r, 2);
-		volume = (4/3*Pi*Math.pow(r, 3));
+		volume = (4/3d*Pi*Math.pow(r, 3));
 		
 		System.out.println("L'aire est de "+aire+" et le volume est de " +volume);
 		
