@@ -12,7 +12,10 @@ public class App {
 		int nb;
 		int sup;
 		int i;
+		int base1;
+		int base2;
 		boolean win;
+
 		
 		Scanner scanner = new Scanner(System.in);
 		Random random = new Random();
@@ -22,20 +25,28 @@ public class App {
 		
 		i = 0 ;
 		win = false;
+		base1 = 0;
+		base2 = 100;
+		
+		System.out.println("Saisir un nombre entier entre 0 et 100"); 
 		
 		while (win != true) {
 			
-			System.out.println("Saisir un nombre entier entre 0 et 100");	
+				
 			sup = scanner.nextInt();
-			
-		
+
 			if (nb != sup)  {
-			
+				//System.out.println(+nb);
 				if (sup > nb) {
-					System.out.println("Essayez plus petit");}
+					System.out.println("Entrer un nombre compris entre : "+base1+" et "+sup);
+								}
 				else {
-					System.out.println("Essayez plus grand");}
+					System.out.println("Entrer un nombre compris entre : "+base2+" et "+sup);
+					}
+				base1 = sup ;
 				}
+			
+			
 			else {
 					System.out.println("Vous avez trouvé en "+i+" Essais");
 				}

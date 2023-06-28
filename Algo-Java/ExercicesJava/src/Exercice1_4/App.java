@@ -46,7 +46,6 @@ public class App {
 		Ic = (float) (s*Math.pow(1+i, a));
 		
 		System.out.println("Les intérêts simple sont de : "+Is+" et les composés de : "+Ic);
-		
 		scanner.close();
 		
 	}
