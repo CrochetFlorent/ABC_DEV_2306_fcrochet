@@ -40,6 +40,8 @@ public class App {
 		aire = (Pi*Math.pow(r,2)*a)/360;
 		System.out.println("L'aire est de : " +aire);
 		
+		scanner.close();
+		
 	}
 
 

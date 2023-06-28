@@ -43,6 +43,8 @@ public class App {
 	b=c;
 	
 	System.out.println("Après inversion,le nombre a est : "+a+" le nombre b est : "+b);
+	
+	scanner.close();
 	}
 
 }

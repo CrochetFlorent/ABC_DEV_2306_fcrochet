@@ -47,6 +47,8 @@ public class App {
 		
 		System.out.println("Les intérêts simple sont de : "+Is+" et les composés de : "+Ic);
 		
+		scanner.close();
+		
 	}
 
 }

@@ -22,6 +22,7 @@ public class App {
 		
 		i = 0 ;
 		win = false;
+		
 		while (win != true) {
 			
 			System.out.println("Saisir un nombre entier entre 0 et 100");	
@@ -45,11 +46,8 @@ public class App {
 			
 			win = true;
 			
-		
-		if (win = true) {
 			System.out.println(" Vous avez trouvé en "+i+" essais");
-		}
-		
+
 		scanner.close();
 		
 		}
