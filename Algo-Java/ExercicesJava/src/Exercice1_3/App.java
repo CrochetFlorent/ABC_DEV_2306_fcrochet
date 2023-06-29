@@ -28,7 +28,7 @@ public class App {
 		double r;
 		double aire;
 		double a;
-		double Pi = Math.PI;
+		final double Pi = Math.PI;
 		
 		Scanner scanner = new Scanner(System.in);
 		

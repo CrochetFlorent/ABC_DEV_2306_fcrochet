@@ -25,15 +25,18 @@ Fin du Programme*/
 		double r;
 		double aire;
 		double volume;
-		double Pi = Math.PI;
+		final double Pi = Math.PI;
 		
 		Scanner scanner = new Scanner(System.in);
 		
 		System.out.println("Entrer le rayon de la sphère");
-		r = scanner.nextInt();
+		r = scanner.nextDouble();
 		
 		aire = 4*Pi*Math.pow(r, 2);
-		volume = (4/3d*Pi*Math.pow(r, 3));
+		volume = (4d/3)*Pi*Math.pow(r, 3);
+		
+		aire = Math.round(aire*100.0)/100.0;
+		volume = Math.round(volume*100.0)/100.0;
 		
 		System.out.println("L'aire est de "+aire+" et le volume est de " +volume);
 		

@@ -15,13 +15,11 @@ public class App {
 		int base1;
 		int base2;
 		boolean win;
-
-		
+	
 		Scanner scanner = new Scanner(System.in);
 		Random random = new Random();
 		
 		nb = random.nextInt(100)+1;
-		
 		
 		i = 0 ;
 		win = false;
@@ -30,33 +28,30 @@ public class App {
 		
 		System.out.println("Saisir un nombre entier entre 0 et 100"); 
 		
-		while (win != true) {
-			
-				
+		do {
+					
 			sup = scanner.nextInt();
 
 			if (nb != sup)  {
-				//System.out.println(+nb);
+				//System.out.println(+nb);			
+				
 				if (sup > nb) {
-					System.out.println("Entrer un nombre compris entre : "+base1+" et "+sup);
+					System.out.println("Entrer un nombre compris entre : "+sup+" et "+base1);
+					base2 = sup;
 								}
 				else {
 					System.out.println("Entrer un nombre compris entre : "+base2+" et "+sup);
-					}
-				base1 = sup ;
+					base1 = sup;
+					}		
 				}
 			
-			
-			else {
-					System.out.println("Vous avez trouvé en "+i+" Essais");
-				}
-			
-				i = i+1; 
+				if (nb == sup) {
+					win = true;}			
 				
-			}
-			
-			win = true;
-			
+				i = i+1; 
+						
+			}while (win != true);
+				
 			System.out.println(" Vous avez trouvé en "+i+" essais");
 
 		scanner.close();

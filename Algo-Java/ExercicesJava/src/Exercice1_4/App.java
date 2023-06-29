@@ -42,10 +42,11 @@ public class App {
 		System.out.println("Entrer les années:");
 		a = scanner.nextInt();
 		
-		Is = s*(1+a*i); 
-		Ic = (float) (s*Math.pow(1+i, a));
+		Is = s*(1+a*(i/100)); 
+		Ic = (float) (s*Math.pow(1+(i/100), a));
 		
 		System.out.println("Les intérêts simple sont de : "+Is+" et les composés de : "+Ic);
+		
 		scanner.close();
 		
 	}
