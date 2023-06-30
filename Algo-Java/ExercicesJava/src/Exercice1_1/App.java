@@ -20,21 +20,21 @@ Fin du Programme */
 	
 
 	public static void main(String[] args) {
-		int Nb1 ;
-		int Nb2 ;
-		double Moyenne;
+		int nb1 ;
+		int nb2 ;
+		double moyenne;
 		
 		Scanner scanner = new Scanner(System.in);
 		
 		System.out.println("Saisir le premier nombre:");
-		Nb1 = scanner.nextInt();
+		nb1 = scanner.nextInt();
 		System.out.println("Saisir le deuxième nombre:");
-		Nb2 = scanner.nextInt();
+		nb2 = scanner.nextInt();
 		
-		System.out.println("Le premier nombre est " +Nb1+ " et le deuxième " +Nb2);
+		System.out.println("Le premier nombre est " +nb1+ " et le deuxième " +nb2);
 		
-		Moyenne = (Nb1 + Nb2)/2d ;
-		System.out.println("La moyenne des deux nombres est :" +Moyenne);
+		moyenne = (nb1 + nb2)/2d ;
+		System.out.println("La moyenne des deux nombres est :" +moyenne);
 		
 		scanner.close();
 		

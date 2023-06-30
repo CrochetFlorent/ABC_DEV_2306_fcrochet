@@ -28,7 +28,7 @@ public class App {
 		double r;
 		double aire;
 		double a;
-		final double Pi = Math.PI;
+		final double PI = Math.PI;
 		
 		Scanner scanner = new Scanner(System.in);
 		
@@ -36,7 +36,7 @@ public class App {
 		r = scanner.nextDouble();
 		System.out.println("Entrer l'angle");
 		a = scanner.nextDouble();
-		aire = (Pi*Math.pow(r,2)*a)/360;
+		aire = (PI*Math.pow(r,2)*a)/360;
 		System.out.println("L'aire est de : " +aire);
 		
 		scanner.close();

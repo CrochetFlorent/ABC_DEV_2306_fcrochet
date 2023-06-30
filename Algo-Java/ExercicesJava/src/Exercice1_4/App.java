@@ -30,8 +30,8 @@ public class App {
 		float s;
 		float i;
 		int a;
-		float Is;
-		float Ic;
+		float iS;
+		float iC;
 		
 		Scanner scanner = new Scanner(System.in);
 		
@@ -42,10 +42,10 @@ public class App {
 		System.out.println("Entrer les années:");
 		a = scanner.nextInt();
 		
-		Is = s*(1+a*(i/100)); 
-		Ic = (float) (s*Math.pow(1+(i/100), a));
+		iS = s*(1+a*(i/100)); 
+		iC = (float) (s*Math.pow(1+(i/100), a));
 		
-		System.out.println("Les intérêts simple sont de : "+Is+" et les composés de : "+Ic);
+		System.out.println("Les intérêts simple sont de : "+iS+" et les composés de : "+IC);
 		
 		scanner.close();
 		
