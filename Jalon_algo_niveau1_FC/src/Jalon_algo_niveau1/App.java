@@ -1,4 +1,4 @@
-package Jalon1;
+package Jalon_algo_niveau1;
 
 public class App {
 
