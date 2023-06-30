@@ -25,7 +25,7 @@ public class App {
 		Adresse1 = Nom+Département+Prénom+"@arfp.asso.fr";
 		Adresse2 = Prénom+"."+Nom+Département+"@arfp.asso.fr";
 		
-		System.out.println("'Adresse que vous préférez est : "+Adresse1+" ou "+Adresse2+" ?");
+		System.out.println("L'adresse que vous préférez est : "+Adresse1+" ou "+Adresse2+" ?");
 		
 		sc.close();
 	}
