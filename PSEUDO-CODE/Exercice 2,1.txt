@@ -11,13 +11,12 @@ Début si
     alors
         Ecrire " Vous êtes majeur"
     Sinon si
-        a est plus petit que 18
-    alors
-        Ecrire " Vous êtes mineur"
-    Sinon si
         a est plus petit que 0
-    alors 
-        Ecrire " vous n'êtes pas encore né"
+    alors
+        Ecrire "Vous n'êtes pas né"
+    Sinon 
+        Ecrire "Vous êtes mineur"
+    
 Fin si
 
 Fin du Programme

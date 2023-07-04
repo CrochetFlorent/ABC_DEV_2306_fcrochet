@@ -6,6 +6,31 @@ public class App {
 
 	public static void main(String[] args) {
 		
+		/*
+		Variables
+    		a est un entier
+
+		Début du Programme
+    		Ecrire " Saisir votre age"
+    		Lire <-- a
+
+		Début si
+    		si 
+       			a est plus grand ou égale à 18
+    		alors
+        		Ecrire " Vous êtes majeur"
+    		Sinon si
+        		a est plus petit que 0
+    		alors
+        		Ecrire "Vous n'êtes pas né"
+    		Sinon 
+        		Ecrire "Vous êtes mineur"
+    
+			Fin si
+
+		Fin du Programme
+		 */
+		
 		int a;
 		boolean val;
 
@@ -21,13 +46,12 @@ public class App {
 			System.out.println("Vous êtes mineur.");
 			val = true;
 		}
-		if (a>18) {
-			System.out.println("Vous êtes majeurs.");
+		else if (a>=18) {
+			System.out.println("Vous êtes majeur.");
 			val = true;
 		}
-		if (a<0) {
-			System.out.println("Entrez un nouveau nombre");
-			
+		else {
+			System.out.println("Vous êtes comme pas né");	
 		}
 		
 		}while(val == false);

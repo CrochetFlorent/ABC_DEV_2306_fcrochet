@@ -28,48 +28,27 @@ public class App {
 		
 		if (a < b &&  b < c)
 		{
-			System.out.println(a+" < "+b+" < "+c);
-		}
-		if (a < c &&  c < b)
+			System.out.println("a < b < c");
+		}else if (a < c &&  c < b)
 		{
-			System.out.println(a+" < "+c+" < "+b);
+			System.out.println("a < c < b");
 		}
-		if (b < a &&  a < c)
+		else if (b < a &&  a < c)
 		{
-			System.out.println(b+" < "+a+" < "+c);
+			System.out.println("b < a < c");
 		}
-		if (b < c &&  c < a)
+		else if (b < c &&  c < a)
 		{
-			System.out.println(b+" < "+c+" < "+a);
+			System.out.println("b < c < a");
 		}
-		if (c < b &&  b < a)
+		else if (c < b &&  b < a)
 		{
-			System.out.println(c+" < "+b+" < "+a);
+			System.out.println("c < b < a" );
 		}
-		if (c < a &&  a < b)
+		else if (c < a &&  a < b)                        // pas else,car si un terme est égal la un autre, la condition n'est pas respectée
 		{
-			System.out.println(b+" < "+a+" < "+c);
+			System.out.println("b < a < c");
 		}
-		
-		if (a > b)
-		{
-			d = a;
-			a = b;
-			b = d;
-		}
-		if (a > c)
-		{
-			d = a;
-			a = c;
-			c = d;
-		}
-		if ( b > c)
-		{
-			d = b;
-			b = c;
-			c = d;
-		}
-		System.out.println("Dans l'ordre croissant : "+a+" ,"+b+" ,"+c);
 		
 		System.out.println("Voulez vous continuer? 1 pour oui 2 pour non");
 		choix = sc.nextInt();
