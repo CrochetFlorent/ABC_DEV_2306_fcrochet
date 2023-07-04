@@ -15,7 +15,7 @@ public class App {
 		Début du Programme
     Ecrire "Saisir le nombre a"
     Lire <-- a
-    Ecrire "saisir le nombre b"
+    Ecrire "Saisir le nombre b"
     Lire <-- b
     Ecrire "a= ",a,"et b=",b
     c<--a
@@ -42,9 +42,10 @@ public class App {
 	a=b;
 	b=c;
 	
-	System.out.println("Après inversion,le nombre a est : "+a+" le nombre b est : "+b);
+	System.out.println("Après inversion,le nombre a vaut : "+a+" le nombre b vaut : "+b);
 	
 	scanner.close();
+	
 	}
 
 }

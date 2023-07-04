@@ -27,25 +27,25 @@ public class App {
 		Fin du Programme
 		*/
 		
-		float s;
-		float i;
-		int a;
-		float iS;
-		float iC;
+		double Somme;
+		double Interet;
+		int Annees;
+		double iS;
+		double iC;
 		
 		Scanner scanner = new Scanner(System.in);
 		
 		System.out.println("Entrer la somme:");
-		s = scanner.nextFloat();
+		Somme = scanner.nextFloat();
 		System.out.println("Entrer les intérêts:");
-		i = scanner.nextFloat();
-		System.out.println("Entrer les années:");
-		a = scanner.nextInt();
+		Interet = scanner.nextFloat();
+		System.out.println("Entrer le nombre d'années");
+		Annees = scanner.nextInt();
 		
-		iS = s*(1+a*(i/100)); 
-		iC = (float) (s*Math.pow(1+(i/100), a));
+		iS = Somme*(1+Annees*(Interet/100d)); 
+		iC = Somme*Math.pow(1+Interet/100d, Annees);
 		
-		System.out.println("Les intérêts simple sont de : "+iS+" et les composés de : "+iC);
+		System.out.println("Les intérêts simples sont de : "+iS+" et les composés de : "+iC);
 		
 		scanner.close();
 		

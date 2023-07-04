@@ -37,6 +37,7 @@ public class App {
 		System.out.println("Entrer l'angle");
 		a = scanner.nextDouble();
 		aire = (PI*Math.pow(r,2)*a)/360;
+		aire = Math.round(aire*1000.0)/1000.0;
 		System.out.println("L'aire est de : " +aire);
 		
 		scanner.close();
