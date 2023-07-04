@@ -45,12 +45,12 @@ public class App {
 		{
 			System.out.println("c < b < a" );
 		}
-		else if (c < a &&  a < b)                        // pas else,car si un terme est égal la un autre, la condition n'est pas respectée
+		else if (c < a &&  a < b)     // pas else,car si un terme est égale à un autre, la condition n'est pas respectée
 		{
 			System.out.println("b < a < c");
 		}
 		
-		System.out.println("Voulez vous continuer? 1 pour oui 2 pour non");
+		System.out.println("Voulez vous continuer? 1 pour oui et 2 pour non");
 		choix = sc.nextInt();
 		
 		if (choix == 2)

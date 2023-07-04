@@ -31,10 +31,8 @@ Fin du Programme */
 		System.out.println("Saisir le deuxième nombre:");
 		nb2 = scanner.nextInt();
 		
-		System.out.println("Le premier nombre est " +nb1+ " et le deuxième " +nb2);
-		
 		moyenne = (nb1 + nb2)/2d ;
-		System.out.println("La moyenne des deux nombres est :" +moyenne);
+		System.out.println("La moyenne des deux nombres est : " +moyenne);
 		
 		scanner.close();
 		
