@@ -10,6 +10,7 @@ public class App {
 		double a;
 		double b;
 		double c;
+		double d;
 		int choix;
 		boolean end;
 		
@@ -49,6 +50,26 @@ public class App {
 		{
 			System.out.println(b+" < "+a+" < "+c);
 		}
+		
+		if (a > b)
+		{
+			d = a;
+			a = b;
+			b = d;
+		}
+		if (a > c)
+		{
+			d = a;
+			a = c;
+			c = d;
+		}
+		if ( b > c)
+		{
+			d = b;
+			b = c;
+			c = d;
+		}
+		System.out.println("Dans l'ordre croissant : "+a+" ,"+b+" ,"+c);
 		
 		System.out.println("Voulez vous continuer? 1 pour oui 2 pour non");
 		choix = sc.nextInt();
