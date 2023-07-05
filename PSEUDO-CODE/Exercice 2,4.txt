@@ -1,0 +1,22 @@
+Variable
+	Annee est un entier
+Debut du programme
+	Ecrire " Entrez une année"
+	Lire <-- Annee
+	
+	Si 
+		Annee n'est pas divisible par 4
+	Alors
+		Ecrire "L'année n'est pas divisible par 4"
+		 
+	
+	Sinon si 
+		Annee est divisible par 100 et pas par 400
+			
+	Alors
+		Ecrire "L'Année n'est pas bissextile"
+		
+	Sinon 
+		Ecrire " L'année est bissextile"
+	Fin si
+Fin du Programme

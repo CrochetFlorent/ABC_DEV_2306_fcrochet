@@ -1,0 +1,27 @@
+Variables
+	Nombre est un entier
+	i est un entier
+	Premier est un booléen
+
+Debut du Programme
+	
+	Ecrire " Entrer un nombre"
+	Lire <-- Nombre
+	i <-- 1
+
+	Pour i de 1 à nombre faire
+		Si Nombre /i != 1 et Nombre/i  != Nombre faire
+			Premier = faux
+		Sinon 
+			Premier = vrai
+		Fin si
+	Fin pour
+	Si premier == vrai
+		Ecrire " Le nombre est un nombre premier"
+	Sinon
+		Ecrire " Le nombre n'est pas un nombre premier"
+	Fin si
+
+Fin du Programme
+			
+		

@@ -12,7 +12,9 @@ Début du Programme
         Nombre1 est plus petit que Nombre2 
     alors
         Ecrire Nombre1," < ",Nombre2
-    Sinon
+    Sinon si
+	Nombre2 est plus petit que Nombre1
+    Alors		
         Ecrire Nombre2," > ",Nombre1
     Fin si
 Fin du Programme
