@@ -7,13 +7,13 @@ Debut du Programme
 	
 	Ecrire " Entrer un nombre"
 	Lire <-- Nombre
-	i <-- 1
+	i <-- 2
 
-	Pour i de 1 à nombre faire
-		Si Nombre /i != 1 et Nombre/i  != Nombre faire
-			Premier = faux
-		Sinon 
+	Pour i de 2 à Nombre-1 faire
+		Si Nombre n'est pas divisible par i faire
 			Premier = vrai
+		Sinon 
+			Premier = faux
 		Fin si
 	Fin pour
 	Si premier == vrai

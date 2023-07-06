@@ -30,6 +30,7 @@ public class App {
 			Fin si
 		Fin du Programme
 		 */
+		
 		int Annee;
 		
 		Scanner sc = new Scanner(System.in);
@@ -37,7 +38,7 @@ public class App {
 		System.out.println(" Entrer une année");
 		Annee = sc.nextInt();
 		
-		if ( Annee % 4 != 0 || ( Annee % 4 == 0) && (Annee % 100 == 0 && Annee % 400 != 0))
+		if ((Annee%4 != 0) ||( Annee % 4 == 0) && (Annee % 100 == 0 && Annee % 400 != 0))
 		{	
 			System.out.println("L'année n'est pas bissexctile");
 		}

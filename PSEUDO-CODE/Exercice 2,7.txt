@@ -1,0 +1,28 @@
+Varibales
+
+	kilo est une châine de caractère
+	miles est un double
+	kiloError est une chaîne de caractères
+
+
+Debut du Programme
+
+	Faire
+		Ecrire " Entrer une valeur en kilomètre de 0.01 à 1 000 000"
+		Lire <-- kilo ou kiloError
+
+		Si kiloError == "q" faire
+		Fin <-- faux
+		Fin Si
+
+	Tant que kilo < 0.01 et kilo > 1000000
+
+	miles = kilo*0.62
+	Ecrire kilo," vaut ",miles," En miles" 
+
+Fin du Programme
+	
+
+			
+				
+	

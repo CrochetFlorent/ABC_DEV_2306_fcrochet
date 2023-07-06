@@ -7,36 +7,36 @@ public class App {
 	public static void main(String[] args) {
 
 		/*
- 	Variables
-		Nombre est un entier
-		i est un entier
-		Premier est un booléen
-	
-	Debut du Programme
+		 Variables
+			Nombre est un entier
+			i est un entier
+			Premier est un booléen
 		
-		Ecrire " Entrer un nombre"
-		Lire <-- Nombre
-		i <-- 1
-	
-		Pour i de 1 à nombre faire
-			Si Nombre /i != 1 et Nombre/i  != Nombre faire
-				Premier = faux
-			Sinon 
-				Premier = vrai
+		Debut du Programme
+			
+			Ecrire " Entrer un nombre"
+			Lire <-- Nombre
+			i <-- 2
+		
+			Pour i de 2 à Nombre-1 faire
+				Si Nombre n'est pas divisible par i faire
+					Premier = vrai
+				Sinon 
+					Premier = faux
+				Fin si
+			Fin pour
+			Si premier == vrai
+				Ecrire " Le nombre est un nombre premier"
+			Sinon
+				Ecrire " Le nombre n'est pas un nombre premier"
 			Fin si
-		Fin pour
-		Si premier == vrai
-			Ecrire " Le nombre est un nombre premier"
-		Sinon
-			Ecrire " Le nombre n'est pas un nombre premier"
-		Fin si
-	
-	Fin du Programme
+		
+		Fin du Programme
 			
 		 */
 		
 		int Nombre;
-		boolean Premier;
+		boolean Premier = true;
 		
 		
 		// Ce programme ne marche encore pas
@@ -45,26 +45,30 @@ public class App {
 		
 		System.out.println("Entrer un nombre entier");
 		Nombre = sc.nextInt();
-		
-		for (int i=1;i<=Nombre;i++)
+		if ( Nombre == 0 || Nombre == 1)
 		{
-			if (Nombre/i !=1 && Nombre/i !=Nombre && Nombre%i != 0) 
+			Premier = false;
+		}
+		
+			for (int i=2; i<=Nombre-1 && Premier;i++)
 			{
-				Premier = false;
+				System.out.println( Nombre%i);
+				if (Nombre%i == 0) 
+				{
+					Premier = false;
+				}
+				
+			}
+		
+			if (Premier)
+			{
+				System.out.println(Nombre+" est un nombre premier");
 			}
 			else
-			{ 
-				Premier = true;
+			{
+				System.out.println(Nombre+" n'est pas un nombre premier");
 			}
-		}
-		if (Premier = false)
-		{
-			System.out.println("Le nombre n'est pas premier");
-		}
-		else
-		{
-			System.out.println("Le nombre est un nombre premier");
-		}
+		
 
 		sc.close();
 	
