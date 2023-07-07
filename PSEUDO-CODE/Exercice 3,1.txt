@@ -1,0 +1,45 @@
+Variables
+
+	Mystere est un entier
+	Suppose est un entier
+	Trouve	est un booléen
+	Tempo1 et Tempo2 sont des entier
+	i est un entier
+	
+	
+Debut du Programme
+
+	Trouve <-- faux
+	Suppose <-- Random (1-100)
+	Tempo1<--0
+	Tempo2<--100
+	
+	Ecrire "Entrer un nombre entre 0 et 100"
+	Lire <-- Mystere
+	
+	Faire
+		Si Mystere est égale à Suppose alors
+			Trouve <-- vrai
+		Sinon 
+			Si Suppose est plus grand que Mystere alors
+				Tempo2 = Suppose
+				Ecrire " Le nombre est compris entre ",Tempo1," et ",Tempo2
+				Lire <-- Suppose
+			Sinon (si Mystere est plus grand que Suppose alors)
+				Tempo1= Suppose
+				Ecrire "Entrer un nombre compris entre ",Tempo1," et ",Tempo2
+				Lire <-- Suppose
+			Fin si
+		Fin si
+
+	i <-- i+1
+
+	Tant que Trouve est egale à faux
+
+	Ecrire "Vous avez réussi en ",i," Essais
+
+Fin du Programme		
+			
+	
+	
+	
