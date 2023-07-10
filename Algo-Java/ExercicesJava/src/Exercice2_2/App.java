@@ -39,7 +39,8 @@ public class App {
 		System.out.println("Entrez un deuxième nombre entier");
 		b = sc.nextInt();
 		
-		if (a>b){
+		if (a>b)
+		{
 			System.out.println(b+" est plus petit que "+a);	
 		}else if (b>a)
 		{
