@@ -56,8 +56,7 @@ public class App {
 				if (Nombre%i == 0) 
 				{
 					Premier = false;
-				}
-				
+				}			
 			}
 		
 			if (Premier)
