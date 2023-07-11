@@ -32,7 +32,7 @@ public class App {
 		
 		Fin du Programme
 		 */
-		 ;
+	
 		double kilo = 0,miles = 0;
 		String kiloError = "p";
 			
