@@ -1,0 +1,512 @@
+EXERCICE 1
+
+Variables
+	nombre est un entier
+Debut du programme
+	Ecrire "Saisir un nombre"
+	Lire nombre
+Debut Si
+	Si nombre > 0 
+	Alors Ecrire "Ce nombre est positif"
+	Sinon Ecrire "Ce nombre est negatif"
+Fin Si
+Fin du programme
+
+EXERCICE 1.2
+
+Variables
+	nombre est un entier
+Debut du programme
+	Ecrire "Saisir un nombre"
+	Lire nombre
+Debut Si
+	Si nombre < 0
+	Alors Ecrire "Ce nombre est negatif"
+	Sinon Si nombre = 0
+	Alors Ecrire "Ce nombre est nul"
+	Sinon Ecrire "Ce nombre est positif"
+Fin Si
+Fin du programme
+
+EXERCICE 2
+
+Variables
+	nombre1, nombre2 sont des entiers
+Debut du programme
+	Ecrire "Saisir le 1er nombre"
+	Lire nombre1
+	Ecrire "Saisir le 2ème nombre"
+	Lire nombre2
+Debut Si
+	Si (nombre1 > 0 ET nombre2 > 0) OU (nombre1 < 0 ET nombre2 < 0)
+	Alors Ecrire "Le produit des 2 nombres est positif"
+	Sinon Ecrire "Le produit des 2 nombres est negatif"
+Fin Si
+Fin du programme
+
+EXERCICE 2.2
+
+Variables
+	nombre1, nombre2 sont des entiers
+Debut du programme
+	Ecrire "Saisir le 1er nombre"
+	Lire nombre1
+	Ecrire "Saisir le 2ème nombre"
+	Lire nombre2
+Debut Si
+	Si nombre1 = 0 OU nombre2 = 0
+	Alors Ecrire "Le produit des 2 nombres est nul"
+	Sinon Si (nombre1 > 0 ET nombre2 > 0) OU (nombre1 < 0 ET nombre2 < 0)
+	Alors Ecrire "Le produit des 2 nombres est positif"
+	Sinon Ecrire "Le produit des 2 nombres est negatif"
+Fin Si
+Fin du programme
+
+EXERCICE 3
+
+Variables
+	age est un entier
+Debut du programme
+	Ecrire "Saisir l'age de l'enfant : "
+	Lire age
+Debut Si
+	Si age >= 12
+	Alors Ecrire "Categorie Cadet"
+	Sinon Si age >= 10
+	Alors Ecrire "Categorie Minime"
+	Sinon Si age >= 8
+	Alors Ecrire "Categorie Pupille"
+	Sinon Si age >= 6
+	Alors Ecrire "Categorie Poussin"
+Fin Si
+Fin du programme
+
+On peut ecrire cet algorithme de différentes façons, par exemple en commençant par la catégorie la plus jeune.
+
+EXERCICE 4
+
+Variables
+	heures est un entier
+	minutes est un entier
+Debut du programme
+	Ecrire "Saisir les heures : "
+	Lire heures
+	Ecrire " Saisir les minutes : "
+	Lire minutes
+	minutes <-- minutes + 1
+Debut Si
+	Si minutes = 60
+	Alors
+	minutes <-- 0
+	heures <-- heures + 1
+Fin Si
+Debut Si
+	Si heures = 24
+	Alors
+	heures <-- 0
+Fin Si
+Ecrire "Dans une minute il sera ",heures,"heure(s) ",minutes,"minute(s)"
+Fin du programme
+
+EXERCICE 4.2
+
+Variables
+	heures est un entier
+	minutes est un entier
+	secondes est un entier
+Debut du programme
+	Ecrire "Saisir les heures : "
+	Lire heures
+	Ecrire " Saisir les minutes : "
+	Lire minutes
+	Ecrire "Saisir les secondes : "
+	Lire secondes
+	secondes <-- secondes + 1
+Debut Si
+	Si secondes = 60
+	Alors 
+	secondes <-- 0
+	minutes <-- minutes + 1
+Fin Si
+Debut Si
+	Si minutes = 60
+	Alors
+	minutes <-- 0
+	heures <-- heures + 1
+Fin Si
+Debut Si
+	Si heures = 24
+	Alors
+	heures <-- 0
+Fin Si
+Ecrire "Dans une secondes il sera ",heures,"heure(s) ",minutes,"minute(s) et ",secondes,"seconde(s)"
+Fin du programme
+
+EXERCICE 5
+
+Variables
+	nombre est un entier
+	prix est un reel
+Debut du programme
+	Ecrire "Saisir le nombre de photocopie"
+	Lire nombre
+Debut Si
+	Si nombre <= 10
+	Alors
+	prix <-- nombre * 0,1
+	Sinon Si nombre <= 30
+	Alors
+	prix <-- 10 * 0,1 + (nombre - 10) * 0,09
+	Sinon
+	prix <-- 10 * 0,1 + 20 * 0,09 + (nombre - 30) * 0,08
+Fin Si
+Ecrire "Le prix total est : ", prix
+Fin du programme
+
+EXERCICE 6
+
+Variables
+	genre est une chaine de caracteres
+	age est un entier
+	condition1 est un booleen
+	condition2 est un booleen
+Debut du programme
+	Ecrire "Saisir le genre (M/F) : "
+	Lire genre
+	Ecrire "Saisir l'age : "
+	Lire age
+	condition1 <-- genre = "M" ET age > 20
+	condition2 <-- genre = "F" ET (age > 18 ET age < 35)
+Debut Si
+	Si condition1 = vrai OU condition2 = vrai
+	Alors Ecrire "Imposable"
+	Sinon Ecrire "Non Imposable"
+Fin Si
+Fin du programme
+
+EXERCICE 7
+
+Cet exercice, du pur point de vue algorithmique, n'est pas très méchant. 
+En revanche, il représente dignement la catégorie des énoncés piégés.
+En effet, rien de plus facile que d'écrire : si le candidat a plus de 50%, 
+il est élu, sinon s'il a plus de 12,5 %, il est au deuxième tour, 
+sinon il est éliminé. ... mais il ne faut pas oublier que le candidat peut 
+très bien avoir eu 20 % mais être tout de même éliminé, 
+tout simplement parce que l'un des autres a fait plus de 50 % et donc 
+qu'il n'y a pas de deuxième tour !...
+Moralité : ne jamais se jeter sur la programmation avant d'avoir 
+soigneusement mené l'analyse du problème à traiter.
+
+Variables
+	candidat1, candidat2, candidat3, candidat4 sont des reels
+	condition1, condition2, condition3, condition4 sont des booleens
+Debut du programme
+	Ecrire "Saisir le score du candidat 1 :"
+	Lire candidat1
+	Ecrire "Saisir le score du candidat 2 :"
+	Lire candidat2
+	Ecrire "Saisir le score du candidat 3 :"
+	Lire candidat3
+	Ecrire "Saisir le score du candidat 4 :"
+	Lire candidat4
+	condition1 <-- candidat1 > 50
+	condition2 <-- candidat2 > 50 OU candidat3 > 50 ou candidat4 > 50
+	condition3 <-- candidat1 >= candidat2 ET candidat1 >= candidat3 ET candidat1 >= candidat4
+	condition4 <-- candidat1 >= 12,5
+Debut Si
+	Si condition1 = vrai
+	Alors Ecrire "Elu au premier tour"
+	Sinon Si condition2 = vrai OU condition4 = faux
+	Alors Ecrire "Battu, eliminé, sorti !!!"
+	Sinon Si condition3 = vrai
+	Alors Ecrire "Ballotage favorable"
+	Sinon Ecrire "Ballotage defavorable"
+Fin Si
+Fin du programme
+
+EXERCICE 8
+
+Là encore, on illustre l'utilité d'une bonne analyse. 
+Je propose deux corrigés différents. Le premier suit l'énoncé pas à pas. 
+C'est juste, mais c'est vraiment lourd. 
+La deuxième version s'appuie sur une vraie compréhension d'une situation 
+pas si embrouillée qu'elle n'en a l'air.
+Dans les deux cas, un recours aux variables booléennes aère sérieusement 
+l'écriture.
+Donc, premier corrigé, on suit le texte de l'énoncé pas à pas :
+
+Variables
+	age, annePermis, nbAccident, anneAssurance sont des entiers
+	condition1, condition2, condition3 sont des booleens
+	situation est une chaine de caracteres
+Debut du programme
+	Ecrire "Saisir l'age : "
+	Lire age
+	Ecrire "Saisir le nombre d'annees de permis"
+	Lire annePermis
+	Ecrire "Saisir le nombre d'accidents : "
+	Lire nbAccident
+	Ecrire "Saisir le nombre d'annees d'assurance : "
+	Lire anneeAssurance
+	condition1 <-- age >= 25
+	condition2 <-- annePermis >= 2
+	condition3 <-- anneAssurance > 5
+Debut Si
+	Si condition1 = faux ET condition2 = faux
+	Alors
+		Debut Si
+			Si nbAccident = 0
+			Alors situation <-- "Rouge"
+			Sinon situation <-- "Refuser"
+		Fin Si
+	Sinon Si (condition1 = faux ET condition2 = vrai) OU (condition1 = vrai ET condition2 = faux)
+	Alors
+		Debut Si
+			Si nbAccident = 0
+			Alors situation <-- "Orange"
+			Sinon Si nbAccident = 1 
+			Alors situation <-- "Rouge"
+			Sinon situation <-- "Refuser"
+		Fin Si
+	Sinon
+		Debut Si
+			Si nbAccident = 0
+			Alors situation <-- "Vert"
+			Sinon Si nbAccident = 1
+			Alors situation <-- "Orange"
+			Sinon Si nbAccident = 2
+			Alors situation <-- "Rouge"
+			Sinon situation <-- "Refuser"
+		Fin Si
+Fin Si
+Debut Si
+	Si condition3 = vrai
+	Alors 
+		Debut Si
+			Si situation = "Rouge"
+			Alors situation <-- "Orange"
+			Sinon Si situation = "Orange"
+			Alors situation <-- "Vert"
+			Sinon Si situation = "Vert"
+			Alors situation <-- "bleu"
+		Fin Si
+Fin Si
+Ecrire "Votre situation : ",situation
+Fin du programme
+
+Vous trouvez cela compliqué ? Oh, certes oui, ça l'est ! 
+Et d'autant plus qu'en lisant entre les lignes, on pouvait s'apercevoir que 
+ce galimatias de tarifs recouvre en fait une logique très simple : 
+un système à points. Et il suffit de comptabiliser les points pour que 
+tout s'éclaire... 
+Voici la 2ème version du corrigé avec le système à point :
+
+Variables
+	age, annePermis, nbAccident, anneAssurance sont des entiers
+	condition1, condition2, condition3 sont des booleens
+	situation est une chaine de caracteres
+	point est un entier
+Debut du programme
+	Ecrire "Saisir l'age : "
+	Lire age
+	Ecrire "Saisir le nombre d'annees de permis"
+	Lire annePermis
+	Ecrire "Saisir le nombre d'accidents : "
+	Lire nbAccident
+	Ecrire "Saisir le nombre d'annees d'assurance : "
+	Lire anneeAssurance
+	condition1 <-- age >= 25
+	condition2 <-- annePermis >= 2
+	condition3 <-- anneAssurance > 5
+	point <-- 0
+Debut Si
+	Si condition1 = faux
+	Alors point <-- point + 1
+Fin Si
+Debut Si
+	Si condition2 = faux
+	Alors point <-- point + 1
+Fin Si
+Debut Si
+	point <-- point + nbAccident
+	Si point < 3 et condition3 = vrai
+	Alors point <-- point - 1
+Fin Si
+Debut Si
+	Si point = 1
+	Alors situation <-- "Bleu"
+	Sinon Si point = 0
+	Alors situation <-- "Vert"
+	Sinon Si point = 1
+	Alors situation <-- "Orange"
+	Sinon Si point = 2
+	Alors situation <-- "Rouge"
+	Sinon situation <-- "Refuser"
+Fin Si
+Ecrire "Votre situation : ",situation
+Fin du programme
+
+EXERCICE 9
+
+En ce qui concerne le début de cet algorithme, 
+il n’y a aucune difficulté. C’est de la saisie bête et même pas méchante:
+
+Variables 
+	jour, mois, annee, jourMax sont des entiers
+	jourValide, moisValide, estBissextille sont des booleens
+Debut du programme
+	Ecrire "Saisir le numero du jour"
+	Lire jour
+	Ecrire "Saisir le numero du mois"
+	Lire mois
+	Ecrire "Saisir l'annee"
+	Lire annee
+
+C'est évidemment ensuite que les ennuis commencent… 
+La première manière d'aborder la chose consiste à se dire que 
+fondamentalement, la structure logique de ce problème est très simple. 
+Si nous créons deux variables booléennes jourValide et moisValide, 
+représentant respectivement la validité du jour et du mois entrés, 
+la fin de l'algorithme sera d'une simplicité biblique 
+(l’année est valide par définition, si on évacue le débat byzantin 
+concernant l’existence de l’année zéro) :
+
+Debut Si
+	Si jourValide = vrai ET moisValide = vrai
+	Alors Ecrire "La date est valide"
+	Sinon Ecrire "La date n'est pas valide"
+Fin Si
+
+Toute la difficulté consiste à affecter correctement les variables jourValide 
+et moisValide, selon les valeurs des variables jour, mois et annee. 
+Dans l'absolu, jourValide et moisValide pourraient être les objets d'une 
+affectation monstrueuse, avec des conditions atrocement composées. 
+Mais franchement, écrire ces conditions en une seule fois est un travail de 
+bénédictin sans grand intérêt. Pour éviter d'en arriver à une telle 
+extrémité, on peut sérier la difficulté en créant deux variables 
+supplémentaires :
+
+estBissextille : variable booléenne qui indique s'il s'agit d'une année 
+bissextile
+jourMax : variable numérique qui indiquera le dernier jour valable 
+pour le mois entré.
+
+Avec tout cela, on peut y aller et en ressortir vivant.
+On commence par initialiser nos variables booléennes, 
+puis on traite les années, puis les mois, puis les jours.
+
+estBissextille <-- annee%400 = 0 OU (annee%100 != 0 ET annee%4 = 0)
+jourMax <-- 0
+moisValide <-- mois >= 1 ET mois <= 12
+Debut Si
+	Si moisValide
+	Alors
+	Debut Si
+		Si mois = 2 et estBissextille
+		Alors jourMax <-- 29
+		Sinon Si mois = 2
+		Alors jourMax <-- 28
+		Sinon Si mois = 4 
+			OU mois = 6
+			OU mois = 9
+			OU mois = 11
+		Alors jourMax <-- 30
+		Sinon jourMax <-- 31
+	Fin Si
+	jourValide <-- jour >= 1 ET jour <= jourMax
+Fin Si
+
+Cette solution a le mérite de ne pas trop compliquer la structure des tests,
+et notamment de ne pas répéter l'écriture finale à l'écran. 
+Les variables booléennes intermédiaires nous épargnent des conditions 
+composées trop lourdes, mais celles-ci restent néanmoins sérieuses.
+Une approche différente consisterait à limiter les conditions composées, 
+quitte à le payer par une structure beaucoup plus exigeante de tests imbriqués. 
+Là encore, on évite de jouer les extrémistes et l'on s'autorise quelques 
+conditions composées lorsque cela nous simplifie l'existence. 
+On pourrait aussi dire que la solution précédente "part de la fin" du problème 
+(la date est elle valide ou non ?), alors que celle qui suit "part du début" 
+(quelles sont les données entrées au clavier ?) :	
+
+Debut Si
+	Si mois < 1 OU mois > 12
+	Alors Ecrire "Date invalide"
+	Sinon Si mois = 2
+	Alors
+	Debut Si
+		Si annee%400 = 0
+			Alors
+			Debut Si
+				Si jour < 1 OU jour > 29
+				Alors Ecrire "Date invalide"
+				Sinon Ecrire "Date valide"
+			Fin Si
+		Sinon Si annee%100 = 0
+			Alors
+			Debut Si
+				Si jour < 1 OU jour > 28
+				Alors Ecrire "Date invalide"
+				Sinon Ecrire "Date valide"
+			Fin Si
+		Sinon Si annee%4 = 0
+			Alors
+			Debut Si
+				Si jour < 1 OU jour > 29
+				Alors Ecrire "Date invalide"
+				Sinon Ecrire "Date valide"
+			Fin Si
+		Sinon
+			Debut Si
+				Si jour < 1 OU jour > 28
+				Alors Ecrire "Date invalide"
+				Sinon Ecrire "Date valide"
+			Fin Si
+	Fin Si
+Sinon Si mois = 4 OU mois = 6 OU mois = 9 OU mois = 11 
+	Alors
+	Debut Si
+		Si jour < 1 OU jour > 30
+		Alors Ecrire "Date invalide"
+		Sinon Ecrire "Date valide"
+	Fin Si
+Sinon
+	Debut Si
+		Si jour < 1 OU jour > 31
+		Alors Ecrire "Date invalide"
+		Sinon Ecrire "Date valide"
+	Fin Si
+Fin Si
+		
+On voit que dans ce cas, l'alternative finale (Date valide ou invalide) 
+se trouve répétée un grand nombre de fois. Ce n'est en soi ni une bonne, 
+ni une mauvaise chose. C'est simplement une question de choix stylistique.
+Personnellement, j'avoue préférer assez nettement la première solution, 
+qui fait ressortir beaucoup plus clairement la structure logique du problème 
+(il n'y a qu'une seule alternative, autant que cette alternative ne soit 
+écrite qu'une seule fois).
+Il convient enfin de citer une solution très simple et élégante, 
+un peu plus difficile peut-être à imaginer du premier coup, 
+mais qui avec le recul apparaît comme très immédiate. 
+Sur le fond, cela consiste à dire qu'il y a quatre cas pour qu'une date 
+soit valide : celui d'un jour compris entre 1 et 31 dans un mois à 31 jours,
+celui d'un jour compris entre 1 et 30 dans un mois à 30 jours, 
+celui d'un jour compris entre 1 et 29 en février d'une année bissextile, 
+et celui d'un jour de février compris entre 1 et 28. Ainsi :
+
+estBissextille <-- (annee%4 = 0 ET annee%100 != 0) OU annee%400 = 0
+cas1 <-- (mois = 1 OU mois = 3 OU mois = 5 OU mois = 8 OU mois = 10 OU mois = 12) ET (jour >= 1 ET jour <= 31)
+cas2 <-- (mois = 4 OU mois = 6 OU mois = 9 OU mois = 11) ET (jour >= 1 ET jour >= 30)
+cas3 <-- mois = 2 ET estBissextille = vrai ET jour >= 1 ET jour <= 29
+cas4 <-- mois = 2 ET jour >= 1 ET jour <= 28
+Debut Si
+	Si cas1 = vrai OU cas2 = vrai OU cas3 = vrai OU cas4 = vrai
+	Alors Ecrire "Date valide"
+	Sinon Ecrire "Date invalide"
+Fin Si
+Fin du programme
+
+Tout est alors réglé avec quelques variables booléennes et quelques 
+conditions composées, en un minimum de lignes de code.
+La morale de ce long exercice - et non moins long corrigé, 
+c'est qu'un problème de test un peu compliqué admet une pléiade de solutions justes...
+...Mais que certaines sont plus astucieuses que d'autres !
