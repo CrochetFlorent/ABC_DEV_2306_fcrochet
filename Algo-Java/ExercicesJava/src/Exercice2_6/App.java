@@ -45,6 +45,9 @@ public class App {
 		
 		System.out.println("Entrer un nombre entier");
 		Nombre = sc.nextInt();
+		
+		Nombre = Math.abs(Nombre);
+		
 		if ( Nombre == 0 || Nombre == 1)
 		{
 			Premier = false;
@@ -52,7 +55,7 @@ public class App {
 		
 			for (int i=2; i<=Nombre-1 && Premier;i++)
 			{
-				System.out.println( Nombre%i);
+				//System.out.println( Nombre%i);
 				if (Nombre%i == 0) 
 				{
 					Premier = false;
