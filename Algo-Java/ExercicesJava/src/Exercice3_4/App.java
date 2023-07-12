@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class App {
 
-	@SuppressWarnings("removal")
 	public static void main(String[] args) {
 	
 	/*
@@ -39,7 +38,7 @@ public class App {
 	 Fin du programme
 	 */
 
-		String chaine = null;
+		String chaine;
 		char lettre;
 		int presente;
 		int ou;
@@ -57,14 +56,16 @@ public class App {
 				System.out.println("Entrer une chaine de caractères.");
 				chaine = sc.next();
 				
-				System.out.println("Entrer une lettre pour comparer");
-				lettre = sc.next().charAt(0);
-				
-				if ( chaine.equals("") || chaine.equals("."))
+				if ( chaine.isEmpty() || chaine.equals("."))
 				{
 					System.out.println("LA CHAINE EST VIDE");
 				}
-			}while (chaine.equals("") || chaine.equals("."));
+	
+				
+			}while (chaine.isEmpty() || chaine.equals("."));
+			
+			System.out.println("Entrer une lettre pour comparer");
+			lettre = sc.next().charAt(0);
 			
 			for (int i=0; i<chaine.length()-1;i++)
 			{
