@@ -41,14 +41,14 @@ public class App {
 		facture = nombre * 0.1;
 		System.out.println("Le montant s'élève à "+facture);
 	}
-	else if (nombre > 10 && nombre <= 20)
+	else if (nombre <= 30)
 	{
 		facture = 10 * 0.1 + (nombre -10)*0.09;
 		System.out.println("Le montant s'élève à "+facture);
 	}
 	else if (nombre > 20)
 	{
-		facture = 10 * 0.1 + 10*0.09 + (nombre - 20) * 0.08;
+		facture = 10 * 0.1 + 20*0.09 + (nombre - 30) * 0.08;
 		System.out.println("Le montant s'élève à "+facture);
 	}
 	
