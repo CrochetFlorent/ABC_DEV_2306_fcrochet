@@ -1,0 +1,184 @@
+EXERCICE 1
+
+Variables
+	nombre est un entier
+Debut du programme
+nombre<-- 0
+Debut tant que
+	tant que nombre < 1 OU nombre > 3
+	faire
+		Ecrire "Saisir un nombre entre 1 et 3
+		Lire nombre
+Fin tant que
+fin du programme
+
+EXERCICE 2
+
+Variables
+	nombre est un entier
+Debut du programme
+nombre<-- 0
+Debut tant que
+	tant que nombre < 10 OU nombre > 20
+	faire
+		Ecrire "Saisir un nombre entre 10 et 20
+		Lire nombre
+		Debut si
+			si nombre < 10
+			Alors Ecrire "Plus grand !"
+			Sinon Si nombre > 20
+			Alors Ecrire "Plus petit"
+			Sinon Ecrire "Nombre valide"
+		Fin Si
+Fin tant que
+fin du programme
+
+EXERCICE 3
+
+1. Avec une boucle tant que
+
+Variables
+	nombre est un entier
+	i est un entier
+Debut du programme
+	i <-- 1
+	Ecrire "Saisir un nombre"
+	Lire nombre
+Debut tant que
+	Tant que i <= 10
+	Faire
+	nombre <-- nombre + 1
+	Ecrire nombre, " "
+	i <-- i + 1
+Fin tant que
+Fin du programme
+
+2. Avec une boucle pour
+
+Variables 
+	nombre est un entier
+	i est un entier
+Debut du programme
+	i <-- 1
+	Ecrire "Saisir un nombre"
+	Lire nombre
+Debut pour
+	pour i allant de 1 à 10
+	nombre <-- nombre + 1
+	Ecrire nombre," "
+	i suivant
+Fin pour
+Fin du programme
+
+Exercice 4
+
+Variables
+	nombre est un entier
+	somme est un entier
+	i est un entier
+Debut du programme
+	Ecrire "Saisir un nombre"
+	Lire nombre
+	somme <-- 0
+Debut pour
+	Pour i allant de 1 à nombre
+	somme <-- somme + i
+	i suivant
+Fin pour
+	Ecrire "La somme est :",somme
+Fin du programme
+
+Exercice 5
+
+Variables
+	nombre est un entier
+	factorielle est un entier
+	i est un entier
+Debut du programme
+	Ecrire "Saisir un nombre"
+	Lire nombre
+	factorielle <-- 1
+Debut pour
+	Pour i allant de 2 à nombre
+	factorielle <-- factorielle * i
+	i suivant
+Fin pour
+	Ecrire "La factorielle de ",nombre" est :",factorielle
+Fin du programme
+
+Exercice 6
+
+  Variables
+	nombre est un entier
+	plusGrand est un entier
+	i est un entier
+  Debut du programme
+	plusGrand <-- 0
+  Debut pour
+	pour i allant de 1 à 20
+		Ecrire "Saisir un nombre"
+		Lire nombre
+	Debut Si
+		Si i = 1 OU nombre > plusGrand
+		Alors plusGrand <-- nombre
+	Fin Si
+	i suivant
+ Fin pour
+	Ecrire "Le nombre le plus grand est : ",plusGrand
+ Fin du programme
+
+Version avec la position du plus grand nombre : 
+
+Variables
+	nombre est un entier
+	plusGrand est un entier
+	position est un entier
+	i est un entier
+  Debut du programme
+	plusGrand <-- 0
+	position <-- 0
+  Debut pour
+	pour i allant de 1 à 20
+		Ecrire "Saisir un nombre"
+		Lire nombre
+	Debut Si
+		Si i = 1 OU nombre > plusGrand
+		Alors plusGrand <-- nombre
+		      position <-- i
+	Fin Si
+	i suivant
+ Fin pour
+	Ecrire "Le nombre le plus grand est : ",plusGrand
+	Ecrire "Il a ete saisi en position numero : ",position
+ Fin du programme
+
+Exercice 7
+
+Variables
+	nombre est un entier
+	plusGrand est un entier
+	position est un entier
+	i est un entier
+Debut du programme
+	nombre <-- 1
+	i <-- 0
+	plusGrand <-- 0
+	position <-- 0
+Debut tant que
+	tant que nombre != 0
+	faire
+		Ecrire "Saisir un nombre"
+		Lire nombre
+		i <-- i + 1
+		Debut Si
+			Si i = 1 OU nombre > plusGrand
+			Alors 
+				plusGrand <-- nombre
+				position <-- i
+		Fin Si
+Fin tant que
+	Ecrire "Le nombre le plus grand est : ",nombre
+	Ecrire "Il a ete saisi en position numero : ",position
+Fin du programme
+
+
