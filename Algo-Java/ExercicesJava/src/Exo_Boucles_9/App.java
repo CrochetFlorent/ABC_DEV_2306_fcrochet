@@ -43,7 +43,7 @@ public class App {
 		{
 			factN = factN * i;
 		}
-		for (int i = 1; i < n-p;i++)
+		for (int i = 1; i <= n-p;i++)
 		{
 			factNP = factNP * i;
 		}
