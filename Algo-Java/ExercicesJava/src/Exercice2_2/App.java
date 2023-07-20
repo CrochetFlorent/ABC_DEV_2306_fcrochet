@@ -41,10 +41,10 @@ public class App {
 		
 		if (a>b)
 		{
-			System.out.println(b+" est plus petit que "+a);	
+			System.out.println("b= "+b+" est plus petit que a= "+a);	
 		}else if (b>a)
 		{
-			System.out.println(a+" est plus petit que "+b);
+			System.out.println("a= "+a+" est plus petit que b= "+b);
 		}
 		
 		sc.close();

@@ -49,11 +49,11 @@ public class App {
 		Fin du Programme
 	 */
 
-		int prix,sommeDue,sommePayee;
+		int prix,sommeDue,sommePayee,un = 0,cinq = 0,dix = 0;
 		boolean paye= false;
 		
-		Scanner sc = new Scanner(System.in)
-				;
+		Scanner sc = new Scanner(System.in);
+		
 		sommeDue = 0;
 		
 		do
@@ -78,25 +78,29 @@ public class App {
 			{
 				if (sommePayee - sommeDue >= 10)
 				{
-					System.out.println("Vous avez payé 10 euros");
+					dix = dix+1;
 					sommePayee = sommePayee -10;
 				}
 				else if(sommePayee - sommeDue >= 5)
 				{
-					System.out.println("Vous avez payé 5 euros");
+					cinq=cinq+1;
 					sommePayee = sommePayee -5;
+
 				}
 				else if(sommePayee - sommeDue >= 1)
 				{
-					System.out.println("Vous avez payé 1 euros");
+					un = un+1;
 					sommePayee = sommePayee -1;
 				}
 				else
 				{
 					paye = true;
-				}
+				}	
 				
 			}
+			System.out.println("Vous avez payé "+dix+" fois 10 euros");
+			System.out.println("Vous avez payé "+cinq+" fois 5 euros");
+			System.out.println("Vous avez payé "+un+" fois 1 euros");
 		}
 		sc.close();
 	}
