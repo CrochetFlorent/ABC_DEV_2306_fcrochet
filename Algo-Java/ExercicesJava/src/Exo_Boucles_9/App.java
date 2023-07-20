@@ -38,12 +38,13 @@ public class App {
 		System.out.println("Entrer le nombre de chevaux que vous voulez jouer");
 		p = sc.nextInt();
 		
-		//x = n! / (n-p)!  et y = n! /(p! * (n-p)! )
+		//x = n! / (n-p)! et y = n! /(p! * (n-p)! )
+		
 		for (int i=1;i<=n;i++)
 		{
 			factN = factN * i;
 		}
-		for (int i = 1; i <= n-p;i++)
+		for (int i=1; i<=n-p;i++)
 		{
 			factNP = factNP * i;
 		}

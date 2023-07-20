@@ -20,6 +20,7 @@ Fin du Programme */
 	
 
 	public static void main(String[] args) {
+		
 		int nb1 ;
 		int nb2 ;
 		double moyenne;
