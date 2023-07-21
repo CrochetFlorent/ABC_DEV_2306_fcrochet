@@ -38,6 +38,8 @@ public class App {
 		 *		Fin pour
 		 *	Fin du Programme
 		 */
+		
+		
 		int base10,end;
 		ArrayList<Integer> list = new ArrayList<Integer>();
 		

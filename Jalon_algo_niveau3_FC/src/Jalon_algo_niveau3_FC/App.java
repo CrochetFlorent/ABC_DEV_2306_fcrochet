@@ -29,13 +29,11 @@ public class App {
 			if (saisie.equals("o") == true || saisie.equals("O") == true)
 			{
 				fin = false;
-				
 			} 
 			else 
 			{
 				fin = true;
 			}
-			
 		}while (fin == false);
 
 		sc.close();
