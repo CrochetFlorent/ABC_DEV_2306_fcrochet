@@ -37,7 +37,6 @@ public class App {
 		}while (fin == false);
 
 		sc.close();
-		
 	}
 
 }

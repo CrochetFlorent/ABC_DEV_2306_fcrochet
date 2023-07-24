@@ -50,7 +50,6 @@ public class App {
 		presente = 0 ;
 		ou = 0;
 		
-		//do {
 			do
 			{
 				System.out.println("Entrer une chaine de caractères.");
@@ -68,27 +67,18 @@ public class App {
 			lettre = sc.next().charAt(0);
 			
 			for (int i=0; i<chaine.length()-1;i++)
-			{
-				
+			{				
 				comp =chaine.charAt(i);
-				
-				
-				
+							
 				if( comp.equals(lettre))
 				{
 					presente = presente+1;
 					ou = i+1;
 					System.out.println("La lettre est présente à la place numéro "+ou);
-				}
-			//if (i == chaine.length()-1 )
-			//{
-			//	fin = true;
-			//}
-				
+				}				
 			}
 			System.out.println("La lettre est présente"+presente+" fois");
 			
-		//}while (fin == false);
 		sc.close();
 	}
 	

@@ -16,36 +16,28 @@ public class App {
 			Trouve	est un booléen
 			Tempo1 et Tempo2 sont des entier
 			i est un entier
-			
-			
+						
 		Debut du Programme
 		
 			Trouve <-- faux
 			Suppose <-- Random (1-100)
 			Tempo1<--0
-			Tempo2<--100
-			
-			
+			Tempo2<--100			
 			
 			Faire
-				Ecrire "Entrer un nombre entre 0 et 100"
-				Lire <-- Mystere
+				Ecrire " Le nombre est compris entre ",Tempo1," et ",Tempo2
+				Lire <-- Suppose
 				Si Mystere est égale à Suppose alors
 					Trouve <-- vrai
 				Sinon 
 					Si Suppose est plus grand que Mystere alors
 						Tempo2 = mystere
-						Ecrire " Le nombre est compris entre ",Tempo1," et ",Tempo2
-						Lire <-- Suppose
 					Sinon (si Mystere est plus grand que Suppose alors)
 						Tempo1 = Mystere
-						Ecrire "Entrer un nombre compris entre",Tempo1," et ",Tempo2
-						Lire <-- Suppose
 					Fin si
 				Fin si
 		
-				i <-- i+1
-		
+				i <-- i+1		
 			Tant que Trouve est egale à faux
 		
 			Ecrire "Vous avez réussi en ",i," Essais
@@ -70,43 +62,39 @@ public class App {
 		Tempo1 = 0;
 		Tempo2 = 100;
 				
-	
-			
-			System.out.println("Saisir un nombre entier entre 0 et 100");
-			Suppose = scanner.nextInt();
 			do {	
+				
 				System.out.println(+Mystere);
-				Trouve = false;
+				if (Tempo1 == Tempo2)
+				{
+					System.out.println("Entrer :"+Tempo1);
+					Suppose = scanner.nextInt();
+				}
+				else
+				{
+				System.out.println("Entrer un nombre compris entre : "+Tempo1+" et "+Tempo2);
+				Suppose = scanner.nextInt();
+				}
 				
 				if (Suppose == Mystere)
 				{
 					Trouve = true;
-				}
-				
-
-				
+				}				
 				else if (Suppose > Mystere) 
 				{
-					Tempo2 = Suppose;
-					System.out.println("Entrer un nombre compris entre : "+Tempo1+" et "+Tempo2);
-					Suppose = scanner.nextInt();
+					Tempo2 = Suppose-1;
 				}
 				else 
 				{
-					Tempo1 = Suppose;
-					System.out.println("Entrer un nombre compris entre : "+Tempo1+" et "+Tempo2);
-					Suppose = scanner.nextInt();
+					Tempo1 = Suppose+1;
 				}		
-				
-				
-				i = i+1; 
-						
+								
+				i = i+1; 	
 		}while (Trouve == false);
 				
 		System.out.println(" Vous avez trouvé en "+i+" essais");
 
-		scanner.close();
-		
+		scanner.close();	
 		}
 
 }
