@@ -17,10 +17,10 @@ public class App {
 		 	Ecrire "Entrer la somme de dépaart."
 		 	Lire <-- Somme
 		 	
-		 	Faire
+		 	tant que somme > 2 faire
 		 		somme <-- (somme)-1 
 		 		magasin <-- magasin + 1
-		 	Tant que somme est plus grand que 4
+		 	fin tant que
 		 	
 		 	magasin <-- magasin +1
 		 	
@@ -38,16 +38,22 @@ public class App {
 		System.out.println("Entrer la somme de départ.");
 		somme =sc.nextDouble();
 		
-		do
+		if(somme >= 1)
 		{
-			somme= (somme/2)-1;
-			magasin +=1;
-			
-		}while(somme >2);
+			while(somme > 2)
+			{
+				somme= (somme/2)-1;
+				magasin +=1;		
+			}
+	
+				magasin += 1;
+		}
+		else
+		{
+			System.out.println("Barnabé est allé dans aucun magasins");
+		}
 		
-		magasin += 1;
-		
-		System.out.println("Le nombre de magasins ou barnabé est passé est "+magasin);
+		System.out.println("Le nombre de magasins ou barnabé a acheté est "+magasin);
 		
 		sc.close();
 	}
