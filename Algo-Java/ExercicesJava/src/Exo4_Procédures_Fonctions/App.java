@@ -29,6 +29,9 @@ public class App {
 	}
 	public static void main(String[] args) {
 		
+		// Cette version part du principe que les eux joueurs cherchent un nombre différent, la fonction déclarée
+		//plus haut ne traite que le cas de l'ordinateur
+		
 		int Mystere;
 		int Suppose;
 		int i;
