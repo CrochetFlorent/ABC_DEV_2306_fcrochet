@@ -6,12 +6,13 @@ public class App6 {
 	
 	/*Inversion de châine de caractère
 	 	
-	 	Procedure inversion_chaine (VAL chaine)
-	 		chaine2 est une chaine de caractères vide
-	 		Pour i de 0 à taille de la chaine de caractères faire
-	 			chaine2 = caractère à l'indice + chaine2
-	 		Fin pour
-	 		Ecrire "Ecrire",chaine2
+	 	Procedure 
+	 		inversion_chaine (VAL chaine)
+		 		chaine2 est une chaine de caractères vide
+		 		Pour i de 0 à taille de la chaine de caractères faire
+		 			chaine2 = caractère à l'indice + chaine2
+		 		Fin pour
+		 		Ecrire "Ecrire",chaine2
 	 	Fin procédure 				
 	 */
 	

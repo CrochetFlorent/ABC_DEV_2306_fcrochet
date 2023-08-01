@@ -6,9 +6,10 @@ public class App2 {
 	
 	/*Calcul prérimètre et aire d'un triangle
  	
- 	Procédure perimètre_aire(VAL a,VAL b,VAL c,VAR perimetre,VAR aire)
- 		perimetre = a+b+c
- 		aire = ((p/2-a)(p/2-b)(p/2-c))^(1/2)
+ 	Procédure 
+ 		perimètre_aire(VAL a,VAL b,VAL c,VAR perimetre,VAR aire)
+	 		perimetre = a+b+c
+	 		aire = ((p/2-a)(p/2-b)(p/2-c))^(1/2)
 
  	Fin Procédure
  */

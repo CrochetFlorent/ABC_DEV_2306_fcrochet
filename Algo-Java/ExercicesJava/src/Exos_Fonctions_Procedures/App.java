@@ -7,11 +7,13 @@ public class App {
 	
 	/*Inversion d'un nombre
 	 
-	 Procédure inversion_nombre(VAL nombre1,VAL nombre2,VAR temp)
-	 	temp <-- nombre2
-	 	nombre2 <-- nombre1
-	 	nombre1 <-- nombre2
-	 	Ecrire "Les nombres après inversion valent ",nombre1," ",nombre2
+	 Procédure 
+	 	inversion_nombre(entier nombre1, entier nombre2)
+	 			temp est un entier
+			 	temp <-- nombre2
+			 	nombre2 <-- nombre1
+			 	nombre1 <-- nombre2
+			 	Ecrire "Les nombres après inversion valent ",nombre1," ",nombre2
 	 Fin Procédure
 	 */	
 

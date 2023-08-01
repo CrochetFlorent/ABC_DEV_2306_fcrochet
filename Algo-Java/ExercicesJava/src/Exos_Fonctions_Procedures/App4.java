@@ -6,14 +6,14 @@ public class App4 {
 	
 	
 		/*Est Bissextile (annee%400 == 0 || (annee%100 != 0 && annee%4 == 0))
-		
-			Booleen Fonction estBissextile(VAL annee,VAR estBissextile)
-				Si annee est divisible par 400 ou pas par 100 et par 4 alors
-					estBissextile <-- vrai
-				Sinon 
-					est Bissextile <-- faux
-				Fin si
-				Retourne estBissextile
+			Fonction
+				Booleen estBissextile(VAL annee,VAR estBissextile)
+					Si annee est divisible par 400 ou pas par 100 et par 4 alors
+						estBissextile <-- vrai
+					Sinon 
+						est Bissextile <-- faux
+					Fin si
+					Retourne estBissextile
 			Fin Fonction
 		*/
 		

@@ -5,9 +5,10 @@ import java.util.Scanner;
 public class App3 {
 	
 		/*Moyenne
-		 
-	 	Réel Fonction moyenne(VAL a,VAL b, VAR moyenne)
-			moyenne = (a+b)/2
+		
+		Fonction
+	 		Réel moyenne(VAL a,VAL b, VAR moyenne)
+				moyenne = (a+b)/2
 	 	Fin Fonction
 	 */
 
