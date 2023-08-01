@@ -5,93 +5,111 @@ import java.util.Scanner;
 
 public class App {
 
-	public static boolean RNG()
-	{
-		Scanner sc = new Scanner(System.in);
-		Random random = new Random();
-		int nbOrdi,nbAlea;
-		boolean juste;
-		
-		nbAlea = random.nextInt(100)+1;
-		System.out.println(nbAlea);
-		nbOrdi = random.nextInt(100)+1;
-		
-		if (nbOrdi == nbAlea)
-		{
-			juste = true;
-		}
-		else 
-		{
-			juste = false;
-		}
-		
-		return juste;
-	}
-	public static void main(String[] args) {
-		
-		// Cette version part du principe que les eux joueurs cherchent un nombre différent, la fonction déclarée
-		//plus haut ne traite que le cas de l'ordinateur
-		
-		int Mystere;
-		int Suppose;
-		int i;
-		int Tempo1;
-		int Tempo2;
-		boolean trouveOrdi,trouveHumain;
+	//Cette fonction génère un nombre entre deux variables : une minimum et une maximum
 	
-		Scanner scanner = new Scanner(System.in);
+	//Quelques erreurs puisque qulques fois la fourchette n'est pas mise à jour, ou encore 'ordi gagne car mon choix 
+	// au tour de jeu n' pas été pris en compte. De la même manière je crois que la borne de la fourchette
+	
+	public static int randomNb(int a,int b)
+	{
 		Random random = new Random();
+		int nbAlea;		
+		nbAlea = random.nextInt(a,b);	
+		return nbAlea;	
+	}
+	
+	public static void main(String[] args) {
+		// Cette version partira du principe que les deux joueurs cherchent le même nombre
+	
+		String rejouer;
+		Scanner sc = new Scanner(System.in);
 		
-		Mystere = random.nextInt(100)+1;
-		
-		i = 0 ;
-		trouveHumain = false;
-		Tempo1 = 0;
-		Tempo2 = 100;
-		
-		
-			do {	
-				
-				trouveOrdi = RNG();
-				System.out.println(+Mystere);
-				if (Tempo1 == Tempo2)
+		// premier do/while : demande si on veut recommencer le jeu une fois celui-ci fini
+		do
+		{
+			int i = 0,minOrdi=0,maxOrdi=100,minHumain = 0, maxHumain = 100, exSupOrdi = 0;
+			String gagnant = "";
+			int mystere,supHumain,supOrdi = 0;
+			boolean win = false;
+			mystere = randomNb(1,100);
+			//System.out.println("Nombre cherché: "+mystere);
+			supOrdi = randomNb(minOrdi,maxOrdi);
+			
+			//Deuxième do/while : test du gagnant
+			do
+			{
+				//On empeche ici l'ordinateur de générer un nombre egale à l'ancien généré
+				do
 				{
-					System.out.println("Entrer :"+Tempo1);
-					Suppose = scanner.nextInt();
+					supOrdi = randomNb(minOrdi,maxOrdi);
+				}while(exSupOrdi == supOrdi);
+				//On demande à l'humain de essayer/reessayer
+				System.out.println("Entrer une valeur entre "+minHumain+" et "+maxHumain+".");
+				supHumain =sc.nextInt();
+				//On écrit le nombre généré par le joueur ordinateur
+				System.out.println("Nombre supposé par l'ordi "+supOrdi+".");	
+				// On test le nombre que l'humain à rentré et on lui creer une fourchette
+				if (supHumain == mystere)
+				{
+					win = true;
+					gagnant = "humain";	
 				}
-				else
-				{
-				System.out.println("Entrer un nombre compris entre : "+Tempo1+" et "+Tempo2);
-				Suppose = scanner.nextInt();
-				}
-				
-				if (Suppose == Mystere)
-				{
-					trouveHumain = true;
-				}				
-				else if (Suppose > Mystere) 
-				{
-					Tempo2 = Suppose-1;
+				else if (supHumain > mystere) 
+				{	
+					maxHumain = supHumain;			
 				}
 				else 
 				{
-					Tempo1 = Suppose+1;
-				}		
-								
-				i = i+1; 
-				
-		}while (trouveHumain == false || trouveOrdi == false);
+					minHumain = supHumain;	
+				}
+				// On test le nombre généré par le joueur ordinateur et lui lui creer une fourchette
+				if  (supOrdi == mystere )
+				{
+					win = true;
+					gagnant = "l'ordinateur";
+				}
+				else if (supOrdi > mystere)
+				{	
+					maxOrdi = supOrdi;
+					System.out.println("L'ordinateur a supposé "+supOrdi+". Il doit trouver entre "
+							+minOrdi+" et "+maxOrdi+".");
+				}
+				else
+				{
+					minOrdi = supOrdi;
+					// Quelqu'un à gagné?
+					//Si non, le println est : l'Ordinateur DOIT trouver
+					if (win = false)
+					{
+						System.out.println("L'ordinateur a supposé "+supOrdi+". Il doit trouver entre "
+							+minOrdi+" et "+maxOrdi+".");
+					}
+					// Si oui, le println est : L'ordinateur DEVAIT trouver
+					else
+					{
+						System.out.println("L'ordinateur a supposé "+supOrdi+". Il devait trouver entre "
+								+minOrdi+" et "+maxOrdi+".");
+					}
+				}
+				exSupOrdi = supOrdi;
+				i++;	
+			}while (win == false);
+			// On test si les deux joueurs on trouvé en le même nombre de tours et on retourne le nombre de tours
+			if (supHumain == mystere && supOrdi == mystere )
+			{
+				System.out.println("Les deux ont trouvé en "+i+" essais.");
+			}
+			//Sinon on retourne le gagnant et le nombre d'essais
+			else
+			{
+				System.out.println("Le gagnant est "+gagnant+" avec "+i+" essais.");
+			}
+			//On demande si l'utilisateur veut rejouer
+			System.out.println("Voulez vous rejouer? \"o\" pour oui, n'importe qelle autre touche pour non");
+			rejouer = sc.next();
+		}while(rejouer.equals("o"));
 		
-		if (trouveOrdi)
-		{
-			System.out.println(" L'ordinateur à trouvé en "+i+" essais");
-		}
-		else if (trouveHumain)
-		{
-			System.out.println("Vous avez trouvé en "+i+" essais");
-		}
-
-		scanner.close();	
+		sc.close();
 	}
-
 }
+

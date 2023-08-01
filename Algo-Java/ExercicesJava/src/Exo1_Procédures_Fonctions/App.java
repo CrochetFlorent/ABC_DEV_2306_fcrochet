@@ -4,12 +4,9 @@ import java.util.Scanner;
 
 public class App {
 	
-	
-	
-	public static String Pourcentage()
+	public static void Pourcentage()
 	{
 		double inCb,inChq,inVir,nbPaiements;
-		String strPourcentage;
 		
 		Scanner sc = new Scanner(System.in);
 		
@@ -22,19 +19,15 @@ public class App {
 		
 		nbPaiements = inCb + inChq + inVir;
 		
-		strPourcentage = "Le pourcentage de paiements par carte bleue est : "+((inCb / nbPaiements)*100)+
+		System.out.println( "Le pourcentage de paiements par carte bleue est : "+((inCb / nbPaiements)*100)+
 				" ,le pourcentage de paiements par chèques est : "+((inChq / nbPaiements)*100)+
-				" et le pourcentage de paiements par virement est : "+((inVir / nbPaiements)*100);
+				" et le pourcentage de paiements par virement est : "+((inVir / nbPaiements)*100));
 		
-		sc.close();
-		return strPourcentage;
-		
+		sc.close();	
 	}
 	public static void main(String[] args) {
 		
-		String pourcentage = null;
-		pourcentage = Pourcentage();
-		System.out.println(pourcentage);
+		Pourcentage();
 
 	}
 
