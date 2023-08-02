@@ -32,9 +32,9 @@ public class App5 {
 		Fin Fonction
 		 */
 
-		public static boolean verif_date(int jour,int mois,int annee,boolean isOk)
+		public static boolean verif_date(int jour,int mois,int annee)
 		{
-		
+		boolean isOk = false;
 		if (mois <=12 && mois > 0)
 		{
 			if(mois == 2 && annee%400 == 0 || (annee%100 != 0 && annee%4 == 0))
