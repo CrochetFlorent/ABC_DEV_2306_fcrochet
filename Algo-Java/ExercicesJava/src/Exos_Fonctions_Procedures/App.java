@@ -23,7 +23,7 @@ public class App {
 		temp = nombre2;
 		nombre2 = nombre1;
 		nombre1=temp;
-		System.out.println("Les nombre après inversion valent "+nombre1+" "+nombre2);
+		System.out.println("Les nombres après inversion valent "+nombre1+" "+nombre2);
 	}
 		
 
@@ -39,7 +39,7 @@ public class App {
 		System.out.println("Entrer un deuxièmenombre");
 		_nombre2 = sc.nextDouble();
 		
-		System.out.println("Les nombres avant invresion : "+_nombre1+" "+_nombre2);
+		System.out.println("Les nombres avant inversion : "+_nombre1+" "+_nombre2);
 		
 		inversion_nombre(_nombre1,_nombre2);
 			

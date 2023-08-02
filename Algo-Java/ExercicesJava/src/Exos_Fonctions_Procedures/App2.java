@@ -7,7 +7,8 @@ public class App2 {
 	/*Calcul prérimètre et aire d'un triangle
  	
  	Procédure 
- 		perimètre_aire(VAL a,VAL b,VAL c,VAR perimetre,VAR aire)
+ 		perimètre_aire(reel a,reel b,reel c)
+ 			perimetre et aire sont des reels
 	 		perimetre = a+b+c
 	 		aire = ((p/2-a)(p/2-b)(p/2-c))^(1/2)
 

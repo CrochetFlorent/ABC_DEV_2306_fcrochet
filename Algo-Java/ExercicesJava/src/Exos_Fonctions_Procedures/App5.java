@@ -6,7 +6,7 @@ public class App5 {
 
 		/*
 		 * Fonction
-		 * Booleen verif_date(VAL jour,VAL mois,VAL annee,VAR isOk)
+		 * Booleen verif_date(entier jour,entier mois,entier annee,booleen isOk)
 				Si mois <=12 et mois >0 alors
 					Si mois = 2 et annee est divisible par 400 ou pas par 100 et par 4 alors
 						Si jour <= 29 alors
@@ -32,9 +32,9 @@ public class App5 {
 		Fin Fonction
 		 */
 
-		public static boolean verif_date(int jour,int mois,int annee)
+		public static boolean verif_date(int jour,int mois,int annee,boolean isOk)
 		{
-		boolean isOk = false;
+		
 		if (mois <=12 && mois > 0)
 		{
 			if(mois == 2 && annee%400 == 0 || (annee%100 != 0 && annee%4 == 0))
@@ -73,6 +73,7 @@ public class App5 {
 		}
 		return isOk;
 		}
+		
 	public static void main(String[] args) {
 		
 		Scanner sc = new Scanner(System.in);
