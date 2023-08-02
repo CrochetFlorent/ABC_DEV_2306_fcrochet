@@ -78,15 +78,15 @@ public class App5 {
 		Scanner sc = new Scanner(System.in);
 		
 		//Cinquième fonction
-				int jour,mois,anneeBis;
+				int _jour,_mois,_annee;
 				
 				System.out.println("Entrer un jour");
-				jour = sc.nextInt();
+				_jour = sc.nextInt();
 				System.out.println("Entrer un mois");
-				mois = sc.nextInt();
+				_mois = sc.nextInt();
 				System.out.println("Entrer un annee");
-				anneeBis = sc.nextInt();
-				System.out.println("La date est valide, vrai ou faux? "+verif_date(jour,mois,anneeBis));
+				_annee = sc.nextInt();
+				System.out.println("La date est valide, vrai ou faux? "+verif_date(_jour,_mois,_annee));
 				
 				sc.close();
 	}

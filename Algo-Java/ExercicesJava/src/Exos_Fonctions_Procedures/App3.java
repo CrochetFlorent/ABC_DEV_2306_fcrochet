@@ -7,8 +7,10 @@ public class App3 {
 		/*Moyenne
 		
 		Fonction
-	 		Réel moyenne(VAL a,VAL b, VAR moyenne)
-				moyenne = (a+b)/2
+	 		Réel moyenne(entier a,entier b)
+	 			moyenne est un réel
+				moyenne <-- (a+b)/2
+			retourne moyenne
 	 	Fin Fonction
 	 */
 
@@ -24,13 +26,13 @@ public class App3 {
 		Scanner sc = new Scanner(System.in);
 		
 		//Troisième fonction
-		double a1,b1,moyenne;
+		double _a,_b,moyenne;
 		
 		System.out.println("Entrer un nombre");
-		a1 = sc.nextDouble();
+		_a = sc.nextDouble();
 		System.out.println("Entrer un deuxième nombre");
-		b1 = sc.nextDouble();
-		moyenne = moyenne(a1,b1);
+		_b = sc.nextDouble();
+		moyenne = moyenne(_a,_b);
 		System.out.println("La moyenne est de "+moyenne);
 		
 		sc.close();

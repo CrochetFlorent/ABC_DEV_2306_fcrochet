@@ -4,7 +4,31 @@ import java.util.Scanner;
 
 public class App {
 
-	
+	/*	Procédure
+	 			plusGrand
+	 				tailleTab,plusGrand,i sont des entiers
+	 				
+	 				Ecrire "Combien de valeur voulez vous dans votre tableau? Je vous donnerais la plus grande"
+	 				Lire tailleTab
+	 				tab est un tableau d'entier de taille tailleTab
+	 				
+	 				Ecrire "Entrer un nombre"
+	 				lire Tab[o]
+	 				
+	 				Pour i de 1 à taillTab (plus petit que)
+	 					Ecrire "Entrer un nombre"
+	 					Lire tab[i]
+	 					
+	 					Si tab[i] > tab[i-i] alors
+	 						plusGrand <-- tab[i]
+	 					Fin si
+	 				Fin pour
+	 				Ecrire "Le plus grand nombre des nombres rentrés est ",plusGrand
+	 	Fin procédure
+	 						
+	 			
+	 
+	 */
 		
 	public static void plusGrand()
 	{
@@ -24,7 +48,7 @@ public class App {
 			System.out.println("Entrer un nombre");
 			tab[i] = sc.nextInt();
 			
-			if(i > 0 && tab[i]>tab[i-1])
+			if(tab[i]>tab[i-1])
 			{
 				plusGrand = tab[i];
 			}
@@ -38,6 +62,7 @@ public class App {
 	
 	public static void main(String[] args) {
 		
+		//On apelle la procédure
 		plusGrand();
 
 	}

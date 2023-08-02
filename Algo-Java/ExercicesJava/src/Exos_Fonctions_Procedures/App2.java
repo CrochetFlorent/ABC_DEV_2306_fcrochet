@@ -27,15 +27,15 @@ public class App2 {
 		Scanner sc = new Scanner(System.in);
 		
 		//Deuxième fonction
-		double a,b,c;
+		double _a,_b,_c;
 		
 		System.out.println("Entrer un côté");
-		a = sc.nextDouble();
+		_a = sc.nextDouble();
 		System.out.println("Entrer un côté");
-		b = sc.nextDouble();
+		_b = sc.nextDouble();
 		System.out.println("Entrer un côté");
-		c = sc.nextDouble();
-		perimetre_aire(a,b,c);
+		_c = sc.nextDouble();
+		perimetre_aire(_a,_b,_c);
 		
 		sc.close();
 	}

@@ -7,7 +7,7 @@ public class App6 {
 	/*Inversion de châine de caractère
 	 	
 	 	Procedure 
-	 		inversion_chaine (VAL chaine)
+	 		inversion_chaine (String chaine)
 		 		chaine2 est une chaine de caractères vide
 		 		Pour i de 0 à taille de la chaine de caractères faire
 		 			chaine2 = caractère à l'indice + chaine2
@@ -32,11 +32,11 @@ public class App6 {
 		Scanner sc = new Scanner(System.in);
 		
 		//Sixième fonction
-		String chaine;
+		String _chaine;
 		
 		System.out.println("Entrer une chaîne de caractères");
-		chaine = sc.next();
-		inversion_chaine(chaine);
+		_chaine = sc.next();
+		inversion_chaine(_chaine);
 		
 		sc.close();
 	}

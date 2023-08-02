@@ -32,16 +32,16 @@ public class App {
 		Scanner sc = new Scanner(System.in);
 		
 		//Première fonction	
-		double nombre1,nombre2;
+		double _nombre1,_nombre2;
 	
 		System.out.println("Entrer un nombre");
-		nombre1 = sc.nextDouble();
+		_nombre1 = sc.nextDouble();
 		System.out.println("Entrer un deuxièmenombre");
-		nombre2 = sc.nextDouble();
+		_nombre2 = sc.nextDouble();
 		
-		System.out.println("Les nombres avant invresion : "+nombre1+" "+nombre2);
+		System.out.println("Les nombres avant invresion : "+_nombre1+" "+_nombre2);
 		
-		inversion_nombre(nombre1,nombre2);
+		inversion_nombre(_nombre1,_nombre2);
 			
 		sc.close();
 		
