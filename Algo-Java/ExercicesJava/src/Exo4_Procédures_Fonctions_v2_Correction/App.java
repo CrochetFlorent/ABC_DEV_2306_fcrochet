@@ -99,83 +99,78 @@ public class App {
 		int max;
 		int min;
 		int essai;
+		String rejouer;
 		
-		final int nbEssaiMax = 6;
-		
-		
+		final int nbEssaiMax = 6;		
 		
 		Scanner sc = new Scanner(System.in);
-		
-		essai = 0;
-		min = 0;
-		max = 100;
-		nbJoueur= -1;
-		nbOrdi= -1;
-		nombreMystere = nbAleatoire(min,max);
-		
-		System.out.println(nombreMystere);
-		while(nombreMystere != nbJoueur && nombreMystere != nbOrdi && essai < nbEssaiMax)
-		{
+		do {
+			essai = 0;
+			min = 0;
+			max = 100;
+			nbJoueur= -1;
+			nbOrdi= -1;
+			nombreMystere = nbAleatoire(min,max);
 			
-			System.out.println("Saisir un nombre compris entre "+min+" et " +max);
-			nbJoueur = sc.nextInt();
-			nbOrdi = nbAleatoire(min,max);
-			System.out.println(nbOrdi);
-			essai++;
-				if(nbJoueur == nombreMystere) 
-				{
-					System.out.println("Le joueur humain à gagner en "+essai);
-				}
-				else 
-				{
-					if(nbJoueur < nombreMystere)
-					{
-						System.out.println("C'est plus");
-						min = nbJoueur;
-					}
-					else
-					{
-						System.out.println("C'est moins");
-						max = nbJoueur;
-					}
-				}	
-				if(nbOrdi == nombreMystere) 
-				{
-					System.out.println("L'ordi à gagner en "+essai);
-				}
-				else 
-				{
-					if(nbOrdi > nombreMystere)
-					{
-						System.out.println("Le nombre choisit par l'ordi est trop grand");
-						if(max > nbOrdi)
-						{
-							max = nbOrdi;
-						}
-						
-					}
-					else
-					{
-						System.out.println("Le nombre choisit par l'ordi est trop petit");
-						if(min < nbOrdi)
-						{
-							min = nbOrdi;
-						}
-						
-					}
-				}				
-		} 
-		if(essai == nbEssaiMax)
-		{
-			if(nombreMystere != nbJoueur)
+			System.out.println(nombreMystere);
+			while(nombreMystere != nbJoueur && nombreMystere != nbOrdi && essai < nbEssaiMax)
 			{
-				System.out.println("Le joueur humain a perdu");
-			}
-			if(nombreMystere != nbJoueur)
+				
+				System.out.println("Saisir un nombre compris entre "+min+" et " +max);
+				nbJoueur = sc.nextInt();
+				nbOrdi = nbAleatoire(min,max);
+				System.out.println(nbOrdi);
+				essai++;
+				
+					if(nbJoueur == nombreMystere) 
+					{
+						System.out.println("Le joueur humain à gagner en "+essai);
+					}
+					else 
+					{
+						if(nbJoueur < nombreMystere)
+						{
+							System.out.println("C'est plus");
+							min = nbJoueur;
+						}
+						else
+						{
+							System.out.println("C'est moins");
+							max = nbJoueur;
+						}
+					}	
+					if(nbOrdi == nombreMystere) 
+					{
+						System.out.println("L'ordi à gagner en "+essai);
+					}
+					else 
+					{
+						if(nbOrdi > nombreMystere)
+						{
+							System.out.println("Le nombre choisit par l'ordi est trop grand");
+							if(max > nbOrdi)
+							{
+								max = nbOrdi;
+							}
+							
+						}
+						else
+						{
+							System.out.println("Le nombre choisit par l'ordi est trop petit");
+							if(min < nbOrdi)
+							{
+								min = nbOrdi;
+							}
+						}
+					}				
+			} 
+			if (essai == nbEssaiMax )
 			{
-				System.out.println("L'ordi a perdu");
+				System.out.println("Le nombre d'essais maximum à été atteint (6).");
 			}
-		}
+			System.out.println("Voulez vous rejouer ? Oui(O)(o) ou n'importe quelle touche pour arrêter");
+			rejouer = sc.next();
+		}while(rejouer.equals("O") || rejouer.equals("o") );
 		sc.close();
 	}
 
