@@ -97,17 +97,18 @@ public class App {
 		// premier do/while : demande si on veut recommencer le jeu une fois celui-ci fini
 		do
 		{
-			int i = 0,minOrdi=1,maxOrdi=100,minHumain = 1, maxHumain = 100, exSupOrdi = 0;
+			int i = 0,minOrdi=1,maxOrdi=100,minHumain = 1, maxHumain = 100, exSupOrdi = 0,essaisMax = 6;
 			String gagnant = "";
 			int mystere,supHumain,supOrdi = 0;
 			boolean win = false;
 			
+			mystere = randomNb(1,100);
+			//System.out.println("Nombre cherché: "+mystere);
 			
 			//Deuxième do/while : test du gagnant
 			do
 			{	
-				mystere = randomNb(1,100);
-				//System.out.println("Nombre cherché: "+mystere);
+				
 				supOrdi = randomNb(minOrdi,maxOrdi);
 				//On empeche ici l'ordinateur de générer un nombre egale à l'ancien généré
 				do
@@ -150,7 +151,7 @@ public class App {
 					minOrdi = supOrdi;
 					// Quelqu'un à gagné?
 					//Si non, le println est : l'Ordinateur DOIT trouver
-					if (win = false)
+					if (win == false)
 					{
 						System.out.println("L'ordinateur a supposé "+supOrdi+". Il doit trouver entre "
 							+minOrdi+" et "+maxOrdi+".");
@@ -164,14 +165,19 @@ public class App {
 				}
 				exSupOrdi = supOrdi;
 				i++;	
-			}while (win == false);
+			}while (win == false && i != essaisMax);
 			// On test si les deux joueurs on trouvé en le même nombre de tours et on retourne le nombre de tours
 			if (supHumain == mystere && supOrdi == mystere )
 			{
 				System.out.println("Les deux ont trouvé en "+i+" essais.");
 			}
+			// Sinon si il n'y a pas de gagnant c'est que le nombre d'essais max est atteint, on l'écrit
+			else if (supHumain != mystere && supOrdi != mystere && essaisMax == 6)
+			{
+				System.out.println("Pas de gagnant en "+i+" essais.");
+			}
 			//Sinon on retourne le gagnant et le nombre d'essais
-			else
+			else 
 			{
 				System.out.println("Le gagnant est "+gagnant+" avec "+i+" essais.");
 			}
