@@ -33,7 +33,8 @@ public class App {
 			int winOrdi=0,winHumain=0;
 			
 			
-			//Aparement, str prends sa valeur des deux chaine de caractères dans les deux sens
+			//Prise de points non logique, on passe par tous les cas du switch pour qulques str définie mais il ne
+			//faudrait pas
 			do {
 				strOrdi = Pierre_Feuille_Ciseaux();
 				System.out.println("Pierre feuille ou ciseaux?");
@@ -60,13 +61,14 @@ public class App {
 				
 				System.out.println("L'ordi a "+winOrdi+" points.");
 				System.out.println("L'humain a "+winHumain+" points.");
+				
 			}while (winOrdi != 3 && winHumain !=3);
 			
 			if (winOrdi == 3)
 			{
 			System.out.println("Le gagnant est l'ordinateur");
 			}
-			else if(winHumain ==3)
+			else if(winHumain == 3)
 			{
 				System.out.println("Le gagnant est l'humain");
 			}
