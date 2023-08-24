@@ -6,11 +6,10 @@ public class App {
 		
 		Bouteille cristaline = new Bouteille("Cristaline",1.25,1.5,true);
 		
-		cristaline.ouvrirProcedure();
-		boolean test1 = cristaline.fermer();
-		boolean test2 = cristaline.ouvrir();
-		boolean test3 = cristaline.fermer();
-
+		cristaline.remplir();
+		System.out.println("La contenance est de : "+cristaline.getContenanceEnL());
+		cristaline.viderTout();
+		cristaline.setContenanceEnL(0.5);
+		System.out.println("La contenance est de : "+cristaline.getContenanceEnL());	
 	}
-
 }
