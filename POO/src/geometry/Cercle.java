@@ -1,33 +1,40 @@
 package geometry;
 
+import java.util.Scanner;
+
 public class Cercle {
 
 	Point centre;
 	double rayon;
-	
-	double perimetre,surface;
-	
 	
 	public Cercle(Point _centre,double _rayon)
 	{
 		centre = _centre;
 		rayon = _rayon;
 	}
-	public void Surface()
+	
+	public double Surface()
 	{
-		surface = Math.round(Math.pow(rayon*Math.PI, 2)*100)/100;
+		return Math.round(Math.pow(rayon*Math.PI, 2)*100)/100;
 	}
 	
-	public void Perimetre()
+	public double Perimetre()
 	{
-		perimetre = Math.round(Math.PI * 2 * rayon*100)/100;
+		return Math.round(Math.PI * 2 * rayon*100)/100;
 	}
 	
-	public void testAppartenance(Point testPoint)
+	public void testAppartenance()
 	{
-		if(Math.sqrt(Math.pow(testPoint.abscisse-centre.abscisse, 2) + Math.pow(testPoint.ordonnee-centre.ordonnee, 2)) <= rayon)
+		
+		Point testPoint = new Point();
+		
+		double abscTest = testPoint.abscisse - centre.abscisse;
+		double ordoTest = testPoint.ordonnee - centre.ordonnee;
+		double distance = Math.sqrt(abscTest*abscTest + ordoTest*ordoTest);
+		
+		if(distance <= rayon)
 		{
-			System.out.println("Le point d'abscisse : "+testPoint.abscisse+" et d'ordonnee : "+testPoint.ordonnee+" appartient au cercle");
+			System.out.println("Le point d'abscisse : "+testPoint.abscisse+" et d'ordonnee : "+testPoint.ordonnee+" appartient au cercle.");
 		}
 		else
 		{
@@ -37,6 +44,7 @@ public class Cercle {
 	
 	public void Afficher()
 	{
-		System.out.println("La surface du cercle est de : "+surface+", son perimetre "+perimetre);
+		System.out.println("La surface du cercle est de : "+Surface()+", son perimetre "+Perimetre()+".");
+		System.out.println("Pour un cercle d'abscisse : "+centre.abscisse+" et d'ordonnee "+centre.ordonnee+" et de rayon :"+rayon);
 	}
 }
