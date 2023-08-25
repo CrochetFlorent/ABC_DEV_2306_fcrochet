@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Bouteille {
 
 	// attributs
-	private final double capaciteEnL;
+	private final double CAPACITEENL;
 	private double contenanceEnL;
 	private boolean estOuverte;
 	private String nom;
@@ -17,28 +17,32 @@ public class Bouteille {
 	{
 		nom = " ";
 		contenanceEnL = 0.9;
-		capaciteEnL = 1;
+		CAPACITEENL = 1;
 		estOuverte = true;
 	}
 	
 	// constructeur avec parametre
-	public Bouteille(String _nom, double _contenanceEnL, double _capaciteEnL, boolean _estOuverte)
+	public Bouteille(String _nom, double _contenanceEnL, double _CAPACITEENL, boolean _estOuverte)
 	{
 		this.nom = _nom;
 		this.contenanceEnL = _contenanceEnL;
-		this.capaciteEnL = _capaciteEnL;
+		this.CAPACITEENL = _CAPACITEENL;
 		this.estOuverte = _estOuverte;
 	}
 	public double getContenanceEnL()
 	{
 		return contenanceEnL;
 	}
+	public boolean getOuveture()
+	{
+		return estOuverte;
+	}
 	
 	public void setContenanceEnL(double _contenanceEnL)
 	{
 		contenanceEnL = _contenanceEnL;	
 	}
-	
+
 	public boolean ouvrir()
 	{
 		if(!this.estOuverte)
@@ -69,7 +73,7 @@ public class Bouteille {
 	{
 		if (estOuverte)
 		{
-			contenanceEnL = capaciteEnL;
+			contenanceEnL = CAPACITEENL;
 			return true;
 		}
 		else
@@ -94,11 +98,11 @@ public class Bouteille {
 	public double remplir()
 	{
 		double changement;
-		if(estOuverte && contenanceEnL != capaciteEnL)
+		if(estOuverte && contenanceEnL != CAPACITEENL)
 		{
 			System.out.println("Combien voulez vous rajouter de litre?");
 			changement = sc.nextDouble();
-			if(changement + contenanceEnL <= capaciteEnL)
+			if(changement + contenanceEnL <= CAPACITEENL)
 			{
 				contenanceEnL = contenanceEnL + changement;
 			}
@@ -110,7 +114,7 @@ public class Bouteille {
 		{
 			System.out.println("Ouvrez d'abord la bouteille");
 		}
-		else if (contenanceEnL == capaciteEnL)
+		else if (contenanceEnL == CAPACITEENL)
 		{
 			System.out.println("La bouteille est pleine");
 		}

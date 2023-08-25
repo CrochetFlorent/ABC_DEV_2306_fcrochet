@@ -1,7 +1,5 @@
 package geometry;
 
-import java.util.Scanner;
-
 public class Cercle {
 
 	Point centre;

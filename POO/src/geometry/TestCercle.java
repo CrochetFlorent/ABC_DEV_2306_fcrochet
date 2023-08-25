@@ -13,5 +13,4 @@ public class TestCercle {
 		monCercle.testAppartenance();
 
 	}
-
 }
