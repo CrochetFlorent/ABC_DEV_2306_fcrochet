@@ -89,32 +89,32 @@ public class PorteDeGarage {
 		}
 	}
 	
-	public int OuvrirPart()
+	public int OuvrirPart(int _changement)
 	{
-		int changement;
-		if (!estVerouillee || estPartOuverte)
+		//int changement;
+		if (!estOuverte && !estVerouillee || estPartOuverte)
 		{
-			System.out.println("De combien voulez vous ouvrir votre porte?, une valeure trop grande ne changera rien");
-			changement = sc.nextInt();
-			if (ouverture + changement < 100)
+			//System.out.println("De combien voulez vous ouvrir votre porte?, une valeure trop grande ne changera rien");
+			//_changement = sc.nextInt();
+			while (ouverture + _changement < 100)
 			{
-				ouverture = ouverture + changement;
+				ouverture = ouverture + _changement;
 				estPartOuverte = true;
 			}
 		}
 		return ouverture;
 	}
 	
-	public int FermerPart()
+	public int FermerPart(int _changement)
 	{
-		int changement;
-		if (estPartOuverte || !estOuverte && !estVerouillee)
+		//int changement;
+		if (estPartOuverte || estOuverte)
 		{
-			System.out.println("De combien voulez vous fermer votre porte?, une valeure trop grande ne changera rien");
-			changement = sc.nextInt();
-			if (ouverture - changement >= 0)
+			//System.out.println("De combien voulez vous fermer votre porte?, une valeure trop grande ne changera rien");
+			//_changement = sc.nextInt();
+			while (ouverture - _changement >= 0)
 			{
-				ouverture = ouverture - changement;
+				ouverture = ouverture - _changement;
 				estPartOuverte = true;
 			}
 		}

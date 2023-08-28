@@ -23,6 +23,7 @@ public class App {
 			resultat = "\t0\n\t1";
 			nbPrecedent = 0;
 			nbCourant = 1;
+			
 			if (nb != 0)
 			{
 				if (nb > 2)
@@ -30,9 +31,13 @@ public class App {
 					while( position < nb)
 					{
 						nbSuivant = nbPrecedent + nbCourant;
+						//System.out.println(nbSuivant);
 						resultat = resultat+"\n\t"+nbSuivant;
+						//System.out.println(resultat);
 						nbPrecedent = nbCourant;
+						//System.out.println(nbPrecedent);
 						nbCourant = nbSuivant;
+						//System.out.println(nbCourant);
 						position = position +1;
 					}
 				}
@@ -40,12 +45,11 @@ public class App {
 			{
 				nb = 2;
 			}
-			System.out.println("Les"+nb+" premiers nombres de la suite de Fibonacci sont \n\n"+resultat);
-			System.out.print("\n"+nb+" nombres affichés");
+			System.out.println("Les "+nb+" premiers nombres de la suite de Fibonacci sont \n\n"+resultat);
+			System.out.print("\n"+nb+" nombres affichés \n");
 			}
 		}while(nb !=0);
 		
 		sc.close();
 	}
-
 }

@@ -95,16 +95,16 @@ public class Bouteille {
 		}
 	}
 	
-	public double remplir()
+	public double remplir(double _changement)
 	{
-		double changement;
+		//double changement;
 		if(estOuverte && contenanceEnL != CAPACITEENL)
 		{
-			System.out.println("Combien voulez vous rajouter de litre?");
-			changement = sc.nextDouble();
-			if(changement + contenanceEnL <= CAPACITEENL)
+			//System.out.println("Combien voulez vous rajouter de litre?");
+			//_changement = sc.nextDouble();
+			if(_changement + contenanceEnL <= CAPACITEENL)
 			{
-				contenanceEnL = contenanceEnL + changement;
+				contenanceEnL = contenanceEnL + _changement;
 			}
 			else
 			{
@@ -121,16 +121,16 @@ public class Bouteille {
 		return contenanceEnL;
 	}
 	
-	public double vider()
+	public double vider(double _changement)
 	{
-		double changement;
+		//double changement;
 		if(estOuverte && contenanceEnL != 0)
 		{
-			System.out.println("Combien voulez vous rajouter de litre?");
-			changement = sc.nextDouble();
-			if(changement + contenanceEnL > 0)
+			//System.out.println("Combien voulez vous rajouter de litre?");
+			//_changement = sc.nextDouble();
+			if(_changement + contenanceEnL > 0)
 			{
-				contenanceEnL = contenanceEnL - changement;
+				contenanceEnL = contenanceEnL - _changement;
 			}
 
 		}else if (!estOuverte)
