@@ -102,6 +102,7 @@ public class Bouteille {
 		{
 			//System.out.println("Combien voulez vous rajouter de litre?");
 			//_changement = sc.nextDouble();
+			
 			if(_changement + contenanceEnL <= CAPACITEENL)
 			{
 				contenanceEnL = contenanceEnL + _changement;
@@ -128,6 +129,7 @@ public class Bouteille {
 		{
 			//System.out.println("Combien voulez vous rajouter de litre?");
 			//_changement = sc.nextDouble();
+			
 			if(_changement + contenanceEnL > 0)
 			{
 				contenanceEnL = contenanceEnL - _changement;
