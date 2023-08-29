@@ -31,16 +31,16 @@ public class Bouteille {
 	}
 	public double getContenanceEnL()
 	{
-		return contenanceEnL;
+		return this.contenanceEnL;
 	}
 	public boolean getOuveture()
 	{
-		return estOuverte;
+		return this.estOuverte;
 	}
 	
 	public void setContenanceEnL(double _contenanceEnL)
 	{
-		contenanceEnL = _contenanceEnL;	
+		this.contenanceEnL = _contenanceEnL;	
 	}
 
 	public boolean ouvrir()
@@ -71,10 +71,18 @@ public class Bouteille {
 	
 	public boolean remplirTout()
 	{
-		if (estOuverte)
+		if (this.estOuverte)
 		{
-			contenanceEnL = CAPACITEENL;
+			if(this.contenanceEnL < this.CAPACITEENL)
+			{
+
+			this.contenanceEnL= this.CAPACITEENL;
 			return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -84,10 +92,17 @@ public class Bouteille {
 	
 	public boolean viderTout()
 	{
-		if (estOuverte)
+		if (this.estOuverte)
 		{
-			contenanceEnL = 0;
+			if (this.contenanceEnL > 0)
+			{
+			this.contenanceEnL = 0;
 			return true;
+			}
+			else 
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -95,54 +110,65 @@ public class Bouteille {
 		}
 	}
 	
-	public double remplir(double _changement)
+	public boolean remplir(double quantiteEnL)
 	{
 		//double changement;
-		if(estOuverte && contenanceEnL != CAPACITEENL)
+		if(this.estOuverte && this.contenanceEnL != this.CAPACITEENL)
 		{
 			//System.out.println("Combien voulez vous rajouter de litre?");
 			//_changement = sc.nextDouble();
 			
-			if(_changement + contenanceEnL <= CAPACITEENL)
+			if(quantiteEnL + this.contenanceEnL <= this.CAPACITEENL)
 			{
-				contenanceEnL = contenanceEnL + _changement;
+				this.contenanceEnL = this.contenanceEnL + quantiteEnL;
+				return true;
 			}
 			else
 			{
 				System.out.println("ca fera trop.");
+				return false;
 			}
-		}else if (!estOuverte)
+		}else if (!this.estOuverte)
 		{
 			System.out.println("Ouvrez d'abord la bouteille");
+			return false;
 		}
-		else if (contenanceEnL == CAPACITEENL)
+		else if (this.contenanceEnL == this.CAPACITEENL)
 		{
 			System.out.println("La bouteille est pleine");
+			return false;
 		}
-		return contenanceEnL;
+		else
+		{
+			return false;
+		}
+
 	}
 	
-	public double vider(double _changement)
+	public boolean vider(double _changement)
 	{
 		//double changement;
-		if(estOuverte && contenanceEnL != 0)
+		if(this.estOuverte && this.contenanceEnL != 0)
 		{
 			//System.out.println("Combien voulez vous rajouter de litre?");
 			//_changement = sc.nextDouble();
 			
-			if(_changement + contenanceEnL > 0)
-			{
 				contenanceEnL = contenanceEnL - _changement;
-			}
+				return true;
 
-		}else if (!estOuverte)
+		}else if (!this.estOuverte)
 		{
 			System.out.println("Ouvrez d'abord la bouteille");
+			return false;
 		}
-		else if (contenanceEnL == 0)
+		else if (this.contenanceEnL == 0)
 		{
 			System.out.println("La bouteille est vide");
+			return false;
 		}
-		return contenanceEnL;
+		else
+		{
+			return false;
+		}
 	}
 }
