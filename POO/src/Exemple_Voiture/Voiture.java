@@ -7,32 +7,32 @@ public class Voiture {
 	
 	public Voiture()
 	{
-		marque ="";
-		prix = 0;
+		this.marque ="";
+		this.prix = 0;
 	}
 	
 	public String getMarque()
 	{
-		return marque;
+		return this.marque;
 	}
 	
 	public double getPrix()
 	{
-		return prix;
+		return this.prix;
 	}
 	
 	public void setMarque(String _marque)
 	{
-		marque = _marque;
+		this.marque = _marque;
 	}
 	
 	public void setPrix(double _prix)
 	{
-		prix = _prix;
+		this.prix = _prix;
 	}
 	
 	public void Afficher()
 	{
-		System.out.println("La marque de cette voiture est : "+marque+" et son prix est de : "+prix+" euros.");
+		System.out.println("La marque de cette voiture est : "+this.marque+" et son prix est de : "+this.prix+" euros.");
 	}
 }

@@ -2,7 +2,7 @@ package Exemple_Rectangle;
 
 public class Rectangle {
 
-	double longueur,largeur,surface,perimetre;
+	private double longueur,largeur,surface,perimetre;
 	
 	public Rectangle(double _longueur,double _largeur)
 	{
@@ -12,16 +12,16 @@ public class Rectangle {
 	
 	public void Surface()
 	{		
-		surface = longueur * largeur;
+		this.surface = this.longueur * this.largeur;
 	}
 	
 	public void Perimetre()
 	{
-		perimetre = largeur*2 + longueur *2 ;
+		this.perimetre = this.largeur*2 + this.longueur *2 ;
 	}
 	
 	public void Afficher()
 	{
-		System.out.println("La surface du rectangle est de : "+surface+" et son perimetre : "+perimetre);
+		System.out.println("La surface du rectangle est de : "+this.surface+" et son perimetre : "+this.perimetre);
 	}
 }

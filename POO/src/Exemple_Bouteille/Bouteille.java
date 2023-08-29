@@ -153,8 +153,8 @@ public class Bouteille {
 			//System.out.println("Combien voulez vous rajouter de litre?");
 			//_changement = sc.nextDouble();
 			
-				contenanceEnL = contenanceEnL - _changement;
-				return true;
+			contenanceEnL = contenanceEnL - _changement;
+			return true;
 
 		}else if (!this.estOuverte)
 		{
