@@ -1,6 +1,5 @@
 package Exo_Boucles_2;
 
-import java.util.Random;
 import java.util.Scanner;
 
 public class App {

@@ -103,7 +103,7 @@ public class App {
 		{
 			System.out.println("La date saisie n'est pas valide");
 		}
-		
+		sc.close();
 		
 	}
 

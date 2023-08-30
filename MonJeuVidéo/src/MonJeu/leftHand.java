@@ -2,30 +2,31 @@ package MonJeu;
 
 public class leftHand {
 	
-	private int defense;
+	private int armor;
 	private int damage;
+	private int dodge;
 	private String name;
 	private final String genre;
 	
 	public leftHand()
 	{
 		this.damage = 0;
-		this.defense = 0;
+		this.armor = 0;
 		this.genre = "";
 	}
 	public leftHand(int _attack,int _defense,String _genre)
 	{
 		this.damage = _attack;
-		this.defense = _defense;
+		this.armor = _defense;
 		this.genre = _genre;
 	}
 	public int getDamage()
 	{
 		return this.damage;
 	}
-	public int getDefense()
+	public int getArmor()
 	{
-		return this.defense;
+		return this.armor;
 	}
 	public String getName()
 	{
@@ -35,8 +36,12 @@ public class leftHand {
 	{
 		return this.genre;
 	}
+	public int getDodge()
+	{
+		return this.dodge;
+	}
 	public String toString()
 	{
-		return this.getClass().getSimpleName()+" Defense = "+this.getDefense()+" Attaque = "+this.getDamage();
+		return this.getClass().getSimpleName()+" Armure = "+this.getArmor()+" Attaque = "+this.getDamage();
 	}
 }
