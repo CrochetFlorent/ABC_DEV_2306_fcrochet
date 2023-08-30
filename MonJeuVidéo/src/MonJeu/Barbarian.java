@@ -12,7 +12,10 @@ public class Barbarian {
 	private leftHand leftHand;
 	private int dodge;
 	private Armor armor;
-	public int damageReduce;
+	private int damageReduce;
+	private int experience;
+	private int level;
+
 	
 	public Barbarian()
 	{
@@ -23,10 +26,11 @@ public class Barbarian {
 		dodge = 0;
 		armor = null;
 		damageReduce = 0;
+		experience = 0;
 
 	}
 	
-	public Barbarian(String _name,int _health,Weapon _leftHand,Weapon _rightHand,int _dodge,Armor _armor)
+	public Barbarian(String _name,int _health,Weapon _leftHand,Weapon _rightHand,int _dodge,Armor _armor,int _experience)
 	{
 		name = _name;
 		health = _health;
@@ -34,11 +38,12 @@ public class Barbarian {
 		rightHand = _rightHand;
 		dodge = _dodge;
 		armor = _armor;
+		experience = _experience;
 
 	}
 	public String toString()
 	{
-		return this.getClass().getSimpleName()+" Nom: "+this.name+" Vie: "+this.getHealth()+" Main gauche: "+leftHand+" Main droite: "+rightHand;
+		return this.getClass().getSimpleName()+" Nom: "+this.name+" Vie: "+this.getHealth()+" Main gauche: "+leftHand.getName()+" Main droite: "+rightHand.getName();
 	}
 	public leftHand getLeftHand()
 	{
@@ -66,6 +71,37 @@ public class Barbarian {
 	public int getDodge()
 	{
 		return dodge;
+	}
+	public int getExperience()
+	{
+		return experience;
+	}
+	
+	//Gain d'experience
+	public void setExperience(int _experience)
+	{
+		this.experience =_experience;
+	}
+	
+	public int getLevel()
+	{
+		return level;
+	}
+	
+	// Gain de niveau
+	public void setLevel()
+	{
+		int[] tabLevel = new int[5];
+		tabLevel[0] = 200;
+		
+		for (int i =0;i<=4;i++)
+		{
+			if(i>=1)
+			{
+			tabLevel[i] = (int) (tabLevel[i-1] + tabLevel[i-1]/3.3);
+			}
+		}
+		
 	}
 	
 	//Calcul les dégats que fait le barabre en fonctions de ses armes 
@@ -95,7 +131,7 @@ public class Barbarian {
 		return this.armor.getArmor() + this.leftHand.getArmor();
 	}
 	
-	//Fonction de combat
+	//Fonction de combat avec des armes générées aléatoirement et données aux barabres qui combattent par le biais de ramasseArme et ramsseArmure
 	public void fight(Barbarian _ennemi)
 	{	
 		
@@ -105,7 +141,6 @@ public class Barbarian {
 		Random rd = new Random();
 		int rdDodgeThis,rdDodgeEnnemi;
 		int armor = this.leftHand.getArmor() + this.leftHand.getArmor();
-		
 				
 		this.health = 50;
 		_ennemi.setHealth(50);
@@ -115,10 +150,37 @@ public class Barbarian {
 			rdDodgeThis= rd.nextInt(100/this.dodge)+1;
 			rdDodgeEnnemi = rd.nextInt(100/_ennemi.getDodge())+1;
 			
+			if (rdDodgeEnnemi > _ennemi.getDodge())
+			{
+				if (_ennemi.getDamageReduce() <= this.getDamage())
+				{
+					_ennemi.setHealth(_ennemi.getHealth()- this.getDamage() + _ennemi.getDamageReduce() );
+				}
+				else
+				{
+					System.out.print("Trop d'armure");
+				}
+				System.out.print("\n"+this.getName()+" attaque : "+_ennemi.name+" ==> "+this.getDamage()+" degats avec "+_ennemi.getDamageReduce()+" reduits par l'armure avec: ");
+				System.out.print(_ennemi.getArmor()+" d'armure, PV restants : "+_ennemi.health);
+
+			}
+			else
+			{
+				System.out.print("\nEsquive de "+_ennemi.getName());
+			}
+			
 			if (rdDodgeThis > this.dodge)
 			{
-				this.health = this.health - _ennemi.getDamage() + this.damageReduce;
-				System.out.print("\n"+_ennemi.getName()+" attaque : "+this.name+" ==> "+_ennemi.getDamage()+" degats et  "+this.getDamageReduce()+" reduits par l'armure avec: ");
+				if(this.getDamageReduce() <= _ennemi.getDamage())
+				{
+					this.setHealth (this.getHealth() - _ennemi.getDamage() + this.getDamageReduce());
+				}
+				else
+				{
+					System.out.println("Trop d'armure");
+				}
+				
+				System.out.print("\n"+_ennemi.getName()+" attaque : "+this.name+" ==> "+_ennemi.getDamage()+" degats avec "+this.getDamageReduce()+" reduits par l'armure avec: ");
 				System.out.print(this.armor.getArmor()+" d'armure, PV restants : "+this.health);
 			}
 			else 
@@ -126,31 +188,39 @@ public class Barbarian {
 				System.out.print("\nEsquive de "+this.name);
 			}
 			
-			if (rdDodgeEnnemi > _ennemi.getDodge())
-			{
-				_ennemi.setHealth( _ennemi.getHealth() - this.getDamage() +_ennemi.getDamageReduce());
-				System.out.print("\n"+this.getName()+" attaque : "+_ennemi.name+" ==> "+this.getDamage()+" degats et "+_ennemi.getDamageReduce()+" reduits par l'armure avec: ");
-				System.out.print(_ennemi.getArmor()+" d'armure, PV restants : "+_ennemi.health);
-			}
-			else
-			{
-				System.out.print("\nEsquive de "+_ennemi.getName());
-			}
-
-			
 			if (this.health <= 0 && _ennemi.getHealth() >0)
 			{
 				System.out.print("\n"+_ennemi.name+" gagne.\n");
+				
+				//Gain d'experience/niveau
+				_ennemi.setExperience(_ennemi.getExperience()+50);
+				_ennemi.setLevel();
+				System.out.println(_ennemi.level);
+				
 				win = true;
 			}
 			else if(_ennemi.getHealth() <=0 && this.health>0)
 			{
 				System.out.print("\n"+this.name+" gagne.\n");
+				//Gain d'experience/niveau
+				this.setExperience(this.experience+50);
+				this.setLevel();
+				System.out.println(this.level);
+				
 				win = true;
 			}
 			else if(this.getHealth()<=0 && _ennemi.getHealth()<=0)
 			{
 				System.out.print("\nEgalite.");
+				
+				//Gain d'experience/niveau
+				_ennemi.setExperience(_ennemi.getExperience()+50);
+				_ennemi.setLevel();
+				System.out.println(_ennemi.level);
+				this.setExperience(this.experience+50);
+				this.setLevel();
+				System.out.println(this.level);
+				
 				win = true;
 			}
 			
