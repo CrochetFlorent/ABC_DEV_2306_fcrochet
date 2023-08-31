@@ -6,9 +6,9 @@ public class Test {
 			
 
 		//Creation de trois barbares
-		Barbarian hulk = new Barbarian("Hulk", 50, new Weapon("Dagger", 8), new Weapon("Axe", 12),5,new Armor(20,"Heavy","Armure1"),0);
-	    Barbarian olaf = new Barbarian("Olaf", 50, new Weapon("Mace", 5), new Weapon("Pique", 15),5,new Armor(20,"Heavy","Armure1"),0);
-	    Barbarian zorg = new Barbarian("Zorg", 50, new Weapon("Sword", 9), new Weapon("Sword", 9),5,new Armor(20,"Heavy","Armure1"),0);
+		Barbarian hulk = new Barbarian("Hulk",50,null,null,5,null,0,0,1,false);
+	    Barbarian olaf = new Barbarian("Olaf",50,null,null,5,null,0,0,1,false);
+	    Barbarian zorg = new Barbarian("Zorg",50,null,null,5,null,0,0,1,false);
 
 	    // Ils ramassent chacuns deux armes/bouclier et armure
 	    olaf.ramasseArme();
@@ -32,6 +32,7 @@ public class Test {
 		    hulk.fight(olaf);
 		    olaf.fight(zorg);
 		    zorg.fight(hulk);
+	    
 	    }
 	}
 
