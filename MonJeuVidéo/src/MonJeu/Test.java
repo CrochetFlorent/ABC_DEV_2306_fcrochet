@@ -25,10 +25,14 @@ public class Test {
 	    //System.out.println(olaf);
 	    //System.out.println(zorg);
 	    
-	    //Combat 
-	    hulk.fight(olaf);
-	    olaf.fight(zorg);
-	    zorg.fight(hulk);
+	    //Combats 
+	    // Apparement losqu'il y a égalité un des barbare prend deux niveaux 
+	    while (hulk.getLevel()<=3 && olaf.getLevel()<=3 && zorg.getLevel()<=3)
+	    {    	
+		    hulk.fight(olaf);
+		    olaf.fight(zorg);
+		    zorg.fight(hulk);
+	    }
 	}
 
 }
