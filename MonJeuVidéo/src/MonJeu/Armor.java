@@ -2,10 +2,12 @@ package MonJeu;
 
 public class Armor {
 
+	//Attributs
 	int armor;
 	String type;
 	String nom;
 	
+	//Constructeur avec paramètres
 	public Armor(int _armor,String _nom,String _type)
 	{
 		this.armor = _armor;

@@ -2,6 +2,7 @@ package MonJeu;
 
 public class Shield extends leftHand{
 
+	//Attributs
 	private int armor;
 	private final int damage = 0;
 	private final String constShield = "Shield";

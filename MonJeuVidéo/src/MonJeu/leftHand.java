@@ -2,6 +2,7 @@ package MonJeu;
 
 public class leftHand {
 	
+	//Attributs
 	private int armor;
 	private int damage;
 	private int dodge;

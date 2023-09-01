@@ -14,7 +14,7 @@ public abstract class PJ {
 	public PJ()
 	{
 		name = "";
-		health =100;
+		health =50;
 		dodge = 5;
 		damageReduce = 0;
 		leftHand = null;
@@ -22,7 +22,11 @@ public abstract class PJ {
 		armor = null;
 		agressive = false;
 	}
-	
+	//getter points de vie
+	public int getHeatlh()
+	{
+		return this.health;
+	}
 	public abstract int fight();
 
 
