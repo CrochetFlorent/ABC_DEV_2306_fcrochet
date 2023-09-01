@@ -2,6 +2,7 @@ package MonJeu;
 
 public class Weapon extends leftHand{
 
+	//Attributs
 	private String name;
 	private int damage;
 	private final int number;

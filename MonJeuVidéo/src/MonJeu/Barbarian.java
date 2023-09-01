@@ -104,6 +104,7 @@ public class Barbarian extends PJ{
 		int[] tabLevel = new int[5];
 		tabLevel[0] = 200;
 		
+		//On creer un tableau de référence pour les niveaux. Chaque case contient l'expérience nécéssaire pour passer au suivant
 		for (int i =0;i<=4;i++)
 		{
 			if(i>=1)
@@ -112,6 +113,8 @@ public class Barbarian extends PJ{
 			}
 		}
 		
+		//On parcours le tableau et on situe l'expérience actuelle du combattant de manière à lui attribut son nouveau niveau en cas de changement et on augemnte la vie
+		//en cas de prise de niveau
 		for (int j=0;j<4;j++)
 		{
 			if( this.experience >= tabLevel[j] )
@@ -128,10 +131,12 @@ public class Barbarian extends PJ{
 	public int getDamage()
 	{
 		int damage;
-		if (this.leftHand == this.rightHand)
+		//Si main droite = main gauche
+		if (this.leftHand.getGenre() == this.rightHand.getGenre())
 		{
 			damage = this.leftHand.getDamage() + this.rightHand.getDamage() + 2 ;
 		}
+		//Sinon 
 		else 
 		{
 			damage = this.leftHand.getDamage() + this.rightHand.getDamage();
@@ -178,6 +183,7 @@ public class Barbarian extends PJ{
 				//Test si le barabre a trop d'armure avec sa reduction de dégats
 				if (_ennemi.getDamageReduce() <= this.getDamage())
 				{
+					//Reduction de la vie du nombre de degats moins la reduction de dégats
 					tempHealth2 = tempHealth2- this.getDamage() + _ennemi.getDamageReduce();	
 					tempCombat2 += 1;
 				}
@@ -194,6 +200,7 @@ public class Barbarian extends PJ{
 			{
 				if(this.getDamageReduce() <= _ennemi.getDamage())
 				{
+					//Reduction de la vie du nombre de degats moins la reduction de dégats
 					tempHealth1 = tempHealth1 - _ennemi.getDamage() + this.getDamageReduce();
 					tempCombat1 += 1;
 				}
@@ -249,6 +256,8 @@ public class Barbarian extends PJ{
 		}while (fin == false);
 		
 		//Resultats
+		
+		//Si les barabres ont trop d'armure : a savoir si la reduction de dégats est plus grand que les degats ingligé par leur adversaire
 		if (_ennemi.getDamageReduce() >= this.getDamage())
 		{
 			System.out.print("\n"+_ennemi.getName()+" a trop d'armure");
@@ -261,7 +270,8 @@ public class Barbarian extends PJ{
 		{ 
 			System.out.println("\nLes deux ont trop d'armure par rapport aux dégats de leurs armes.");
 		}
-
+		
+		//Statistiques du combat : degats infligés, nombre de coups, esquives, amrure,point vie etc...
 		System.out.print("\n"+this.getName()+" a infligé a: "+_ennemi.name+" ==> "+(this.getDamage()-_ennemi.getDamageReduce())*tempCombat2+" degats en "+tempCombat2+" coups avec "+_ennemi.getDamageReduce()+" reduits par l'armure avec: ");
 		System.out.print(_ennemi.getArmor()+" d'armure,avec "+tempEsquive2+" esquives et PV restants : "+tempHealth2);
 		System.out.print("\n"+_ennemi.getName()+" attaque : "+this.name+" ==> "+(_ennemi.getDamage()-this.getDamageReduce())*tempCombat1+" degats en "+tempCombat1+" coups avec "+this.getDamageReduce()+" reduits par l'armure avec: ");
@@ -278,18 +288,19 @@ public class Barbarian extends PJ{
 		List<Weapon> armesList = new ArrayList<>();
 		List<Shield> shieldList = new ArrayList<>();
 		
+		//Creation de 20 armes aléatoires
 		for (int i=0;i<20;i++)
 		{
 		armesList.add(new Weapon("arme"+i,rd.nextInt(20)+1, i+1));
 		}
-		
+		//Creation de 20 boucliers aléatoires
 		for (int i=0;i<20+1;i++)
 		{
 		shieldList.add(new Shield(rd.nextInt(25)+1,rd.nextInt(5)+1,i+1));
 		}
 		
 		rdChoix = rd.nextInt(2)+1;
-		
+		//Attribution soit d'un bouclier soit du armes ddes listes précédentes pour la main gauche
 		if (rdChoix == 1)
 		{
 			this.leftHand = armesList.get(rd.nextInt(20));
