@@ -1,5 +1,7 @@
 package MonJeu;
 
+import java.util.Random;
+
 public class Rodeur extends PJ{
 	//Attributs
 		private String name;
@@ -12,6 +14,8 @@ public class Rodeur extends PJ{
 		private int experience;
 		private int level = 1;
 		private boolean agressive;
+		private Point position;
+		private Cercle portee;
 
 		// Constructeur sans parametres
 		public Rodeur()
@@ -91,7 +95,15 @@ public class Rodeur extends PJ{
 		public int getLevel()
 		{
 			return this.level;
-		}	
+		}
+		public boolean testPortee(PJ _personnage)
+		{
+			if (this.portee.getRayon() >=2)
+			{
+				
+			}
+			return false;
+		}
 		// Gain de niveau
 		public void setLevel()
 		{
@@ -118,7 +130,7 @@ public class Rodeur extends PJ{
 			}
 			
 		}
-		//Calcul les dégats que fait le barbare en fonctions de ses armes 
+		//Calcul les dégats que fait le rodeur en fonctions de ses armes 
 		public int getDamage()
 		{
 			int damage;
@@ -134,7 +146,7 @@ public class Rodeur extends PJ{
 			}
 			return damage;
 		}	
-		//Calcul de reduction des degats avec l'armure du barbare
+		//Calcul de reduction des degats avec l'armure du rodeur
 		public int getDamageReduce()
 		{
 			return (this.armor.armor + this.leftHand.getArmor())/5;
@@ -144,11 +156,12 @@ public class Rodeur extends PJ{
 		{
 			this.damageReduce = _damageReduce;
 		}
-		//Calcul de l'armure du barabre
+		//Calcul de l'armure du rodeur
 		public int getArmor()
 		{
 			return this.armor.getArmor() + this.leftHand.getArmor();
 		}
+		
 		@Override
 		public int fight() {
 			// TODO Auto-generated method stub

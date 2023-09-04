@@ -6,9 +6,9 @@ public class Test {
 			
 
 		//Creation de trois barbares
-		Barbarian hulk = new Barbarian("Hulk",50,null,null,5,null,0,0,1,false);
-	    Barbarian olaf = new Barbarian("Olaf",50,null,null,5,null,0,0,1,false);
-	    Barbarian zorg = new Barbarian("Zorg",50,null,null,5,null,0,0,1,false);
+		Barbarian hulk = new Barbarian("Hulk",50,null,null,5,null,0,false,null);
+	    Barbarian olaf = new Barbarian("Olaf",50,null,null,5,null,0,false,null);
+	    Barbarian zorg = new Barbarian("Zorg",50,null,null,5,null,0,false,null);
 
 	    // Ils ramassent chacuns deux armes/bouclier et armure
 	    olaf.ramasseArme();
@@ -29,9 +29,9 @@ public class Test {
 	    // Apparement losqu'il y a égalité un des barbare prend deux niveaux 
 	    while (hulk.getLevel()<=3 && olaf.getLevel()<=3 && zorg.getLevel()<=3)
 	    {    	
-		    hulk.fight(olaf);
+		    hulk.fight(zorg);
 		    olaf.fight(zorg);
-		    zorg.fight(hulk);
+		    zorg.fight(zorg);
 	    
 	    }
 	}
