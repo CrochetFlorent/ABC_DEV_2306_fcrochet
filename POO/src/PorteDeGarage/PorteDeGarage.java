@@ -97,7 +97,7 @@ public class PorteDeGarage {
 			//System.out.println("De combien voulez vous ouvrir votre porte?, une valeure trop grande ne changera rien");
 			//_changement = sc.nextInt();
 			
-			while (ouverture + _changement < 100)
+			if(ouverture + _changement < 100)
 			{
 				ouverture = ouverture + _changement;
 				estPartOuverte = true;
@@ -114,7 +114,7 @@ public class PorteDeGarage {
 			//System.out.println("De combien voulez vous fermer votre porte?, une valeure trop grande ne changera rien");
 			//_changement = sc.nextInt();
 			
-			while (ouverture - _changement >= 0)
+			if (ouverture - _changement >= 0)
 			{
 				ouverture = ouverture - _changement;
 				estPartOuverte = true;
