@@ -25,9 +25,9 @@ public class Point {
 	{
 		this.abcisse = _abcisse;
 	}
-	public void setOrdonne(int _ordonnee)
+	public void setOrdonnee(int _ordonnee)
 	{
-		this.abcisse = _ordonnee;
+		this.ordonnee = _ordonnee;
 	}
 
 

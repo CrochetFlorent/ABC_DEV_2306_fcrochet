@@ -2,15 +2,19 @@ package Robot;
 enum Bouton{
 	ALLUMER,ETEINDRE,AVANCER,RECULER,TOURNEADROITE,TOURNEAGAUCHE,ARRETER
 }
+enum Direction{
+	GAUCHE,DROITE,HAUT,BAS
+}
 
 public class Robot {
 
 	private boolean estAllume;
 	private boolean estEnMarche;
+	private boolean estEnRecul;
 	private Point position;
-	private double direction;
-	private int vitesse;
+	private Direction direction;
 	private Quadrillage quadrillage;
+	private int vitesseAvancer,vitesseReculer;
 	
 	/**
 	 * Constructeur sans paramètres
@@ -19,9 +23,10 @@ public class Robot {
 	{
 		estAllume = false;
 		position = new Point(0,0);
-		direction = 2*Math.PI;
-		vitesse = 0;
-		quadrillage = new Quadrillage(10,10,10,10);
+		direction = Direction.HAUT;
+		vitesseAvancer = 0;
+		vitesseReculer = 0;
+		quadrillage = new Quadrillage(10,-10,10,-10);
 	}
 	/** Constructeur avec paramètres
 	 * 
@@ -32,13 +37,15 @@ public class Robot {
 	 * @param _vitesse
 	 * @param _quadrillage
 	 */
-	public Robot(boolean _estAllume,boolean _estEnMarche,Point _position,double _direction,int _vitesse,Quadrillage _quadrillage)
+	public Robot(boolean _estAllume,boolean _estEnMarche,boolean _estEnRecul,Point _position,Direction _direction,int _vitesseAvancer,int _vitesseReculer,Quadrillage _quadrillage)
 	{
 		estAllume = _estAllume;
 		estEnMarche = _estEnMarche;
+		estEnRecul = _estEnRecul;
 		position = _position;
 		direction = _direction;
-		vitesse = _vitesse;
+		vitesseAvancer = _vitesseAvancer;
+		vitesseReculer = _vitesseReculer;
 		quadrillage = _quadrillage;
 	}
 	/**
@@ -65,6 +72,9 @@ public class Robot {
 	{
 		if (estAllume == true)
 		{
+			vitesseReculer= 0;
+			vitesseAvancer = 0;
+			estEnMarche = false;
 			estAllume = false;
 			return true;
 		}
@@ -74,18 +84,38 @@ public class Robot {
 		}
 	}
 	/**
-	 * Cette méthode diminue la vitesse du robot s'il est en marche jusqu'a avoir une vitesse de 0 (a chaque appuie sur le bouton "arrêter"==> ARRETER dans action()).
+	 * Cette méthode diminue la vitesse du robot s'il est en marche jusqu'a avoir une vitesse de 0 (a chaque appuie sur le bouton "arrêter"==> ARRETER dans action()) 
+	 * ou l'arrête si la vitesse est nulle.
+	 * Elle gère la vitesse de recule comme la vitesse d'avancée.
 	 */
 	private boolean arreter()
 	{
 		if (estAllume && estEnMarche)
 		{
-			if (vitesse <=2 && vitesse != 0)
+			if (vitesseAvancer <=2 && vitesseAvancer != 0)
 			{
-				vitesse -= 1;
+				vitesseAvancer -= 1;
+				if (vitesseAvancer ==0)
+				{
+					estEnMarche = false;
+				}
 				return true;
 			}
-			else if (vitesse ==0)
+			else if (vitesseAvancer ==0)
+			{
+				estEnMarche = false;
+				return true;
+			}
+			else if(vitesseReculer <=2 && vitesseReculer != 0)
+			{
+				vitesseReculer -= 1;
+				if (vitesseReculer ==0)
+				{
+					estEnMarche = false;
+				}
+				return true;
+			}
+			else if (vitesseReculer == 0)
 			{
 				estEnMarche = false;
 				return true;
@@ -107,47 +137,46 @@ public class Robot {
 	 */
 	private boolean avancer()
 	{
-		boolean testButee = this.position.getAbcisse() != this.quadrillage.getAbcisseMax() &&
-							this.position.getAbcisse() != this.quadrillage.getAbcisseMin()  &&
-							this.position.getOrdonnee() != this.quadrillage.getOrdonneeMax() &&
-							this.position.getOrdonnee() != this.quadrillage.getOrdonneeMin();
+		boolean testButee = this.position.abcisse == this.quadrillage.getAbcisseMax() ||
+							this.position.abcisse == this.quadrillage.getAbcisseMin()  ||
+							this.position.ordonnee == this.quadrillage.getOrdonneeMax() ||
+							this.position.ordonnee == this.quadrillage.getOrdonneeMin();
 		if (estAllume)
 		{
-			
-				if(!testButee)
+				vitesseReculer = 0;
+				if(testButee)
 				{
-					this.vitesse = 0;
+					this.vitesseAvancer = 0;
 					this.estEnMarche = false;
 					return false;
 				}
-				while(testButee)
+				else if(!testButee)
 				{
-					
-					if(this.vitesse <=1)
+					if(this.vitesseAvancer <=1)
 					{
-						this.vitesse += 1;
+						this.vitesseAvancer += 1;
 					}
 		
 					this.estEnMarche = true;
 					
-					if(direction == Math.PI*2) 
+					if(direction == this.direction.HAUT) 
 					{
-					this.position.setAbcisse(this.position.getAbcisse() + vitesse);
+					this.position.setOrdonnee(this.position.ordonnee + vitesseAvancer);
 					return true;
 					}
-					else if(direction == Math.PI/2) 
+					else if(direction == this.direction.DROITE) 
 					{
-					this.position.setOrdonne(this.position.getOrdonnee()+vitesse);
+					this.position.setAbcisse(this.position.abcisse+vitesseAvancer);
 					return true;
 					}
-					else if(direction == Math.PI) 
+					else if(direction == this.direction.BAS) 
 					{
-						this.position.setOrdonne(this.position.getAbcisse()+vitesse);
+						this.position.setOrdonnee(this.position.ordonnee-vitesseAvancer);
 						return true;
 					}
-					else if (direction == 3*Math.PI/2)
+					else if (direction == this.direction.GAUCHE)
 					{
-						this.position.setOrdonne(this.position.getOrdonnee()+vitesse);
+						this.position.setAbcisse(this.position.abcisse-vitesseAvancer);
 						return true;
 					}
 					else
@@ -155,12 +184,15 @@ public class Robot {
 						return false;
 					}		
 				}
+				else
+				{
+					return false;
+				}
 		}
 		else
 		{
 			return false;
 		}
-		return false;
 	}
 	/**
 	 * Cette méthode fait reculer le robot s'il est allumé et lui fait prendre de la vitesse (à chaque appuie sur le bouton "reculer"==> RECULER dans action()).
@@ -168,41 +200,57 @@ public class Robot {
 	 */
 	private boolean reculer()
 	{	
-		boolean testButee = this.position.getAbcisse() != this.quadrillage.getAbcisseMax() &&
-				this.position.getAbcisse() != this.quadrillage.getAbcisseMin()  &&
-				this.position.getOrdonnee() != this.quadrillage.getOrdonneeMax() &&
-				this.position.getOrdonnee() != this.quadrillage.getOrdonneeMin();
+		boolean testButee = this.position.getAbcisse() == this.quadrillage.getAbcisseMax() ||
+				this.position.getAbcisse() == this.quadrillage.getAbcisseMin()  ||
+				this.position.getOrdonnee() == this.quadrillage.getOrdonneeMax() ||
+				this.position.getOrdonnee() == this.quadrillage.getOrdonneeMin();
 		
-		if (estAllume && !estEnMarche)
+		boolean testRecul = this.position.getAbcisse() >= this.quadrillage.getAbcisseMax()-this.vitesseReculer ||
+				this.position.getAbcisse() >= -this.quadrillage.getAbcisseMin() -this.vitesseReculer ||
+				this.position.getOrdonnee() >= this.quadrillage.getOrdonneeMax()-this.vitesseReculer ||
+				this.position.getOrdonnee() >= -this.quadrillage.getOrdonneeMin() -this.vitesseReculer;
+		
+		
+		if (estAllume && estEnMarche)
 		{
-			if(testButee)
+			
+			vitesseAvancer = 0;
+			if(testButee && !testRecul)
 			{
-				if(vitesse <=1)
+				this.vitesseAvancer = 0;
+				this.estEnMarche = false;
+				return false;
+			}
+			else if(!testButee && testRecul)
+			{
+				
+				if(vitesseReculer <=1 )
 				{
-					vitesse += vitesse;
+					vitesseReculer += vitesseReculer;
+					estEnRecul = true;
 				}
 				
 				this.estEnMarche = true;
 				
-				if(direction ==Math.PI*2) 
+				if(direction ==this.direction.HAUT) 
 				{
-				this.position.setAbcisse(this.position.getAbcisse() -vitesse);
+				this.position.setOrdonnee(this.position.ordonnee -vitesseReculer);
 				return true;
 				}
-				else if(direction == Math.PI/2) 
+				else if(direction == this.direction.DROITE) 
 				{
-				this.position.setOrdonne(this.position.getOrdonnee()-vitesse);
+				this.position.setAbcisse(this.position.abcisse-vitesseReculer);
 				return true;
 				}
 				
-				else if (direction == Math.PI)
+				else if (direction == this.direction.BAS)
 				{
-					this.position.setOrdonne(this.position.getAbcisse()-vitesse);
+					this.position.setOrdonnee(this.position.ordonnee+vitesseReculer);
 					return true;
 				}
-				else if(direction == 3*Math.PI/2) 
+				else if(direction == this.direction.GAUCHE) 
 				{
-					this.position.setOrdonne(this.position.getOrdonnee()-vitesse);
+					this.position.setAbcisse(this.position.abcisse+vitesseReculer);
 					return true;
 				}
 				else
@@ -222,30 +270,31 @@ public class Robot {
 	}
 	/**
 	 * Cette fonction fait tourner le robot a droite (à chaque appuie sur le bouton "tourner à droite  ==> TOURNEADROITE dans action()). 
+	 * IL faudrait définir une vitesse max a laquelle le robot peut tourner, sans quoi il risque d'avoir trop d'inertie dans son virage et tomber.
 	 * @return
 	 */
 	private boolean tourneADroite()
 	{
 		if (estAllume)
 		{
-			if(direction == Math.PI )
+			if(direction == this.direction.HAUT )
 			{
-					direction = (Math.PI/2);
+					this.direction = this.direction.DROITE;
 					return true;
 			}
-			else if(direction == Math.PI/2)
+			else if(direction == this.direction.DROITE)
 			{
-					direction = (Math.PI*2);
+					this.direction = this.direction.BAS;
 					return true;
 			}
-			else if (direction == Math.PI*2)
+			else if (direction == this.direction.BAS)
 			{
-					direction = (3*Math.PI/2);
+					this.direction = this.direction.GAUCHE;
 					return true;
 			}
-			else if (direction == 3*Math.PI/2)
+			else if (direction == this.direction.GAUCHE)
 			{
-					direction = Math.PI;
+					this.direction = this.direction.HAUT;
 					return true;
 			}
 			else
@@ -260,30 +309,31 @@ public class Robot {
 	}
 	/**
 	 * Cette fonction fait tourner à gauche le robot (à chaque appuie sur le bouton "tourner à gauche" ==> TOURNEAGAUCHE dans action()).
+	 * IL faudrait définir une vitesse max a laquelle le robot peut tourner, sans quoi il risque d'avoir trop d'inertie dans son virage et tomber.
 	 * @return
 	 */
 	private boolean tourneAGauche()
 	{
 		if (estAllume)
 		{
-			if(direction == Math.PI )
+			if(direction == this.direction.HAUT )
 			{
-					direction = (3*Math.PI/2);
+					direction = this.direction.GAUCHE;
 					return true;
 			}
-			else if(direction == Math.PI/2)
+			else if(direction == this.direction.GAUCHE)
 			{
-					direction = (Math.PI);
+					direction = this.direction.BAS;
 					return true;
 			}
-			else if (direction == Math.PI*2)
+			else if (direction == this.direction.BAS)
 			{
-					direction = (Math.PI/2);
+					direction = this.direction.DROITE;
 					return true;
 			}
-			else if (direction == 3*Math.PI/2)
+			else if (direction == this.direction.DROITE)
 			{
-					direction = Math.PI*2;
+					direction = this.direction.HAUT;
 					return true;
 			}
 			else
