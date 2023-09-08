@@ -1,6 +1,6 @@
 package Robot;
 enum Bouton{
-	ALLUMER,ETEINDRE,AVANCER,RECULER,TOURNEADROITE,TOURNEAGAUCHE,ARRETER
+	ALLUMER,ETEINDRE,AVANCER,TOURNEADROITE,TOURNEAGAUCHE,ARRETER
 }
 enum Direction{
 	GAUCHE,DROITE,HAUT,BAS
@@ -9,24 +9,23 @@ enum Direction{
 public class Robot {
 
 	private boolean estAllume;
-	private boolean estEnMarche;
-	private boolean estEnRecul;
+	private boolean seDeplace;
 	private Point position;
 	private Direction direction;
 	private Quadrillage quadrillage;
-	private int vitesseAvancer,vitesseReculer;
-	
+	private int vitesse;
+
 	/**
 	 * Constructeur sans paramètres
 	 */
 	public Robot()
 	{
 		estAllume = false;
+		seDeplace = false;
 		position = new Point(0,0);
 		direction = Direction.HAUT;
-		vitesseAvancer = 0;
-		vitesseReculer = 0;
-		quadrillage = new Quadrillage(10,-10,10,-10);
+		vitesse = 0;
+		quadrillage = new Quadrillage(5,-5,5,-5);
 	}
 	/** Constructeur avec paramètres
 	 * 
@@ -37,15 +36,14 @@ public class Robot {
 	 * @param _vitesse
 	 * @param _quadrillage
 	 */
-	public Robot(boolean _estAllume,boolean _estEnMarche,boolean _estEnRecul,Point _position,Direction _direction,int _vitesseAvancer,int _vitesseReculer,Quadrillage _quadrillage)
+	public Robot(boolean _estAllume,boolean _estEnMarche,Point _position,Direction _direction,int _vitesse,Quadrillage _quadrillage)
 	{
 		estAllume = _estAllume;
-		estEnMarche = _estEnMarche;
-		estEnRecul = _estEnRecul;
+		seDeplace = _estEnMarche;
+
 		position = _position;
 		direction = _direction;
-		vitesseAvancer = _vitesseAvancer;
-		vitesseReculer = _vitesseReculer;
+		vitesse = _vitesse;
 		quadrillage = _quadrillage;
 	}
 	/**
@@ -54,13 +52,11 @@ public class Robot {
 	 */
 	private boolean allumer()
 	{
-		if (estAllume == false)
-		{
+		if (!estAllume){
 			estAllume =true;
 			return true;
 		}
-		else
-		{
+		else{
 			return false;
 		}
 	}
@@ -70,16 +66,13 @@ public class Robot {
 	 */
 	private boolean eteindre()
 	{
-		if (estAllume == true)
-		{
-			vitesseReculer= 0;
-			vitesseAvancer = 0;
-			estEnMarche = false;
+		if (estAllume){
+			vitesse = 0;
+			seDeplace = false;
 			estAllume = false;
 			return true;
 		}
-		else
-		{
+		else{
 			return false;
 		}
 	}
@@ -90,43 +83,23 @@ public class Robot {
 	 */
 	private boolean arreter()
 	{
-		if (estAllume && estEnMarche)
-		{
-			if (vitesseAvancer <=2 && vitesseAvancer != 0)
-			{
-				vitesseAvancer -= 1;
-				if (vitesseAvancer ==0)
-				{
-					estEnMarche = false;
+		if (estAllume && seDeplace){
+			if (vitesse <=2 && vitesse != 0){
+				vitesse -= 1;
+				if (vitesse ==0){
+					seDeplace = false;
 				}
 				return true;
 			}
-			else if (vitesseAvancer ==0)
-			{
-				estEnMarche = false;
+			else if (vitesse ==0){
+				seDeplace = false;
 				return true;
 			}
-			else if(vitesseReculer <=2 && vitesseReculer != 0)
-			{
-				vitesseReculer -= 1;
-				if (vitesseReculer ==0)
-				{
-					estEnMarche = false;
-				}
-				return true;
-			}
-			else if (vitesseReculer == 0)
-			{
-				estEnMarche = false;
-				return true;
-			}
-			else
-			{
+			else{
 				return false;
 			}
 		}
-		else
-		{
+		else{
 			return false;
 		}
 	}
@@ -136,135 +109,57 @@ public class Robot {
 	 * @return
 	 */
 	private boolean avancer()
-	{
-		boolean testButee = this.position.abcisse == this.quadrillage.getAbcisseMax() ||
-							this.position.abcisse == this.quadrillage.getAbcisseMin()  ||
-							this.position.ordonnee == this.quadrillage.getOrdonneeMax() ||
-							this.position.ordonnee == this.quadrillage.getOrdonneeMin();
+	{	
+		if(this.vitesse <=1){
+			this.vitesse += 1;
+		}
 		if (estAllume)
 		{
-				vitesseReculer = 0;
-				if(testButee)
-				{
-					this.vitesseAvancer = 0;
-					this.estEnMarche = false;
+				if(!this.estPositionValide(this.position)){
+					this.vitesse = 0;
+					this.seDeplace = false;
 					return false;
-				}
-				else if(!testButee)
+				}else
 				{
-					if(this.vitesseAvancer <=1)
-					{
-						this.vitesseAvancer += 1;
-					}
-		
-					this.estEnMarche = true;
 					
-					if(direction == this.direction.HAUT) 
-					{
-					this.position.setOrdonnee(this.position.ordonnee + vitesseAvancer);
-					return true;
+					this.seDeplace = true;
+					if(direction == this.direction.HAUT) {
+							if(this.estPositionValide(new Point(this.position.abcisse,this.position.ordonnee+vitesse))){
+								this.position.ordonnee += vitesse;
+								return true;
+							}else {
+								this.position.ordonnee += vitesse-1;
+								return true;
+							}
+					}else if(direction == this.direction.DROITE) {
+						if(this.estPositionValide(new Point(this.position.abcisse+vitesse,this.position.ordonnee))){
+							this.position.abcisse += vitesse;
+							return true;
+						}else {
+							this.position.ordonnee += vitesse-1;
+							return true;
+						}
+					}else if(direction == this.direction.BAS) {
+						if(this.estPositionValide(new Point(this.position.abcisse,this.position.ordonnee-vitesse))){
+							this.position.ordonnee -= vitesse;
+							return true;
+						}else {
+							this.position.ordonnee += vitesse-1;
+							return true;
+						}
+					}else if (direction == this.direction.GAUCHE){
+						if(this.estPositionValide(new Point(this.position.abcisse+vitesse,this.position.ordonnee))){
+							this.position.abcisse -= vitesse;
+							return true;
+						}else {
+							this.position.ordonnee += vitesse-1;
+							return true;
+						}
 					}
-					else if(direction == this.direction.DROITE) 
-					{
-					this.position.setAbcisse(this.position.abcisse+vitesseAvancer);
-					return true;
-					}
-					else if(direction == this.direction.BAS) 
-					{
-						this.position.setOrdonnee(this.position.ordonnee-vitesseAvancer);
-						return true;
-					}
-					else if (direction == this.direction.GAUCHE)
-					{
-						this.position.setAbcisse(this.position.abcisse-vitesseAvancer);
-						return true;
-					}
-					else
-					{
-						return false;
-					}		
-				}
-				else
-				{
-					return false;
-				}
-		}
-		else
-		{
-			return false;
-		}
-	}
-	/**
-	 * Cette méthode fait reculer le robot s'il est allumé et lui fait prendre de la vitesse (à chaque appuie sur le bouton "reculer"==> RECULER dans action()).
-	 * @return
-	 */
-	private boolean reculer()
-	{	
-		boolean testButee = this.position.getAbcisse() == this.quadrillage.getAbcisseMax() ||
-				this.position.getAbcisse() == this.quadrillage.getAbcisseMin()  ||
-				this.position.getOrdonnee() == this.quadrillage.getOrdonneeMax() ||
-				this.position.getOrdonnee() == this.quadrillage.getOrdonneeMin();
-		
-		boolean testRecul = this.position.getAbcisse() >= this.quadrillage.getAbcisseMax()-this.vitesseReculer ||
-				this.position.getAbcisse() >= -this.quadrillage.getAbcisseMin() -this.vitesseReculer ||
-				this.position.getOrdonnee() >= this.quadrillage.getOrdonneeMax()-this.vitesseReculer ||
-				this.position.getOrdonnee() >= -this.quadrillage.getOrdonneeMin() -this.vitesseReculer;
-		
-		
-		if (estAllume && estEnMarche)
-		{
-			
-			vitesseAvancer = 0;
-			if(testButee && !testRecul)
-			{
-				this.vitesseAvancer = 0;
-				this.estEnMarche = false;
-				return false;
-			}
-			else if(!testButee && testRecul)
-			{
-				
-				if(vitesseReculer <=1 )
-				{
-					vitesseReculer += vitesseReculer;
-					estEnRecul = true;
-				}
-				
-				this.estEnMarche = true;
-				
-				if(direction ==this.direction.HAUT) 
-				{
-				this.position.setOrdonnee(this.position.ordonnee -vitesseReculer);
-				return true;
-				}
-				else if(direction == this.direction.DROITE) 
-				{
-				this.position.setAbcisse(this.position.abcisse-vitesseReculer);
-				return true;
-				}
-				
-				else if (direction == this.direction.BAS)
-				{
-					this.position.setOrdonnee(this.position.ordonnee+vitesseReculer);
 					return true;
 				}
-				else if(direction == this.direction.GAUCHE) 
-				{
-					this.position.setAbcisse(this.position.abcisse+vitesseReculer);
-					return true;
-				}
-				else
-				{
-					return false;
-				}
-			}else 
-			{
-				estEnMarche = false;
-				return false;
-			}
-		}
-		else
-		{
+
+		}else{
 			return false;
 		}
 	}
@@ -277,33 +172,27 @@ public class Robot {
 	{
 		if (estAllume)
 		{
-			if(direction == this.direction.HAUT )
-			{
+			if(direction == this.direction.HAUT ){
 					this.direction = this.direction.DROITE;
 					return true;
 			}
-			else if(direction == this.direction.DROITE)
-			{
+			else if(direction == this.direction.DROITE){
 					this.direction = this.direction.BAS;
 					return true;
 			}
-			else if (direction == this.direction.BAS)
-			{
+			else if (direction == this.direction.BAS){
 					this.direction = this.direction.GAUCHE;
 					return true;
 			}
-			else if (direction == this.direction.GAUCHE)
-			{
+			else if (direction == this.direction.GAUCHE){
 					this.direction = this.direction.HAUT;
 					return true;
 			}
-			else
-			{
-					return false;
+			else{
+				return false;
 			}
 		}
-		else
-		{
+		else{
 			return false;
 		}
 	}
@@ -316,33 +205,42 @@ public class Robot {
 	{
 		if (estAllume)
 		{
-			if(direction == this.direction.HAUT )
-			{
+			if(direction == this.direction.HAUT ){
 					direction = this.direction.GAUCHE;
 					return true;
 			}
-			else if(direction == this.direction.GAUCHE)
-			{
+			else if(direction == this.direction.GAUCHE){
 					direction = this.direction.BAS;
 					return true;
 			}
-			else if (direction == this.direction.BAS)
-			{
+			else if (direction == this.direction.BAS){
 					direction = this.direction.DROITE;
 					return true;
 			}
-			else if (direction == this.direction.DROITE)
-			{
+			else if (direction == this.direction.DROITE){
 					direction = this.direction.HAUT;
 					return true;
 			}
-			else
-			{
+			else{
 					return false;
 			}
 		}
-		else
-		{
+		else{
+			return false;
+		}
+	}
+	/**
+	 * Retourne true si la position du robot est valide, false sinon
+	 * @param _positionTest
+	 * @return
+	 */
+	private boolean estPositionValide(Point _positionTest) {
+		if (_positionTest.getAbcisse() <= quadrillage.getAbcisseMax()
+				&& _positionTest.getOrdonnee() <= quadrillage.getOrdonneeMax()
+				&& _positionTest.getAbcisse() >= quadrillage.getAbcisseMin()
+				&& _positionTest.getOrdonnee() >= quadrillage.getOrdonneeMin()) {
+			return true;
+		} else {
 			return false;
 		}
 	}
@@ -353,8 +251,7 @@ public class Robot {
 	 */
 	public boolean action(Bouton appuiBouton)
 	{
-		switch(appuiBouton)
-		{
+		switch(appuiBouton){
 		case ALLUMER:
 			this.allumer();
 			return true;
@@ -363,9 +260,6 @@ public class Robot {
 			return true;
 		case AVANCER:
 			this.avancer();
-			return true;
-		case RECULER:
-			this.reculer();
 			return true;
 		case TOURNEADROITE:
 			this.tourneADroite();
