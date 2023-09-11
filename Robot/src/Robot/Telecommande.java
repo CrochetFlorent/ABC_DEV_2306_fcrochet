@@ -2,16 +2,19 @@ package Robot;
 
 import java.util.Scanner;
 
+
 public class Telecommande {
 
-	Robot robot1 = new Robot();
+
 	
 	public void ControleRobot() {
 		
 		String choix = "";
-		
 		Scanner sc = new Scanner(System.in);
-
+		
+		Robot robot1 = new Robot();
+		
+	
 		boolean testAppui = true;
 		do {
 			System.out.println("Veuillez allumer le robot, appuyez sur a");

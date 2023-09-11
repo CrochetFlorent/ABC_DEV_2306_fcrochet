@@ -47,6 +47,14 @@ public class Robot {
 		quadrillage = _quadrillage;
 	}
 	/**
+	 * Getter vitesse
+	 * @return
+	 */
+	public int getVitesse()
+	{
+		return this.vitesse;
+	}
+	/**
 	 * Cette méthode allume le robot (en appuyant sur le bouton "allumer"==> ALLUMER dans action()).
 	 * @return
 	 */
@@ -54,6 +62,7 @@ public class Robot {
 	{
 		if (!estAllume){
 			estAllume =true;
+			System.out.println("Le robot s'est allume.");
 			return true;
 		}
 		else{
@@ -70,6 +79,7 @@ public class Robot {
 			vitesse = 0;
 			seDeplace = false;
 			estAllume = false;
+			System.out.println("Le robot s'est eteint.");
 			return true;
 		}
 		else{
@@ -86,13 +96,16 @@ public class Robot {
 		if (estAllume && seDeplace){
 			if (vitesse <=2 && vitesse != 0){
 				vitesse -= 1;
+				System.out.println("Le robot à diminué sa vitesse.");
 				if (vitesse ==0){
 					seDeplace = false;
+					System.out.println("Le robot s'est arrete.");
 				}
 				return true;
 			}
 			else if (vitesse ==0){
 				seDeplace = false;
+				System.out.println("Le robot s'est arrete.");
 				return true;
 			}
 			else{
@@ -126,33 +139,41 @@ public class Robot {
 					if(direction == this.direction.HAUT) {
 							if(this.estPositionValide(new Point(this.position.abcisse,this.position.ordonnee+vitesse))){
 								this.position.ordonnee += vitesse;
+								System.out.println("Le robot a avancé de "+this.getVitesse()+" .");
 								return true;
 							}else {
 								this.position.ordonnee += vitesse-1;
+								System.out.println("Le robot a avancé de "+this.getVitesse()+" .");
 								return true;
 							}
 					}else if(direction == this.direction.DROITE) {
 						if(this.estPositionValide(new Point(this.position.abcisse+vitesse,this.position.ordonnee))){
 							this.position.abcisse += vitesse;
+							System.out.println("Le robot a avancé de "+this.getVitesse()+" .");
 							return true;
 						}else {
 							this.position.ordonnee += vitesse-1;
+							System.out.println("Le robot a avancé de "+this.getVitesse()+" .");
 							return true;
 						}
 					}else if(direction == this.direction.BAS) {
 						if(this.estPositionValide(new Point(this.position.abcisse,this.position.ordonnee-vitesse))){
 							this.position.ordonnee -= vitesse;
+							System.out.println("Le robot a avancé de "+this.getVitesse()+" .");
 							return true;
 						}else {
 							this.position.ordonnee += vitesse-1;
+							System.out.println("Le robot a avancé de "+this.getVitesse()+" .");
 							return true;
 						}
 					}else if (direction == this.direction.GAUCHE){
 						if(this.estPositionValide(new Point(this.position.abcisse+vitesse,this.position.ordonnee))){
 							this.position.abcisse -= vitesse;
+							System.out.println("Le robot a avancé de "+this.getVitesse()+" .");
 							return true;
 						}else {
 							this.position.ordonnee += vitesse-1;
+							System.out.println("Le robot a avancé de "+this.getVitesse()+" .");
 							return true;
 						}
 					}
@@ -174,18 +195,22 @@ public class Robot {
 		{
 			if(direction == this.direction.HAUT ){
 					this.direction = this.direction.DROITE;
+					System.out.println("Le robot a troune a droite.");
 					return true;
 			}
 			else if(direction == this.direction.DROITE){
 					this.direction = this.direction.BAS;
+					System.out.println("Le robot a troune a droite.");
 					return true;
 			}
 			else if (direction == this.direction.BAS){
 					this.direction = this.direction.GAUCHE;
+					System.out.println("Le robot a troune a droite.");
 					return true;
 			}
 			else if (direction == this.direction.GAUCHE){
 					this.direction = this.direction.HAUT;
+					System.out.println("Le robot a troune a droite.");
 					return true;
 			}
 			else{
@@ -207,18 +232,22 @@ public class Robot {
 		{
 			if(direction == this.direction.HAUT ){
 					direction = this.direction.GAUCHE;
+					System.out.println("Le robot a tourne a gauche.");
 					return true;
 			}
 			else if(direction == this.direction.GAUCHE){
 					direction = this.direction.BAS;
+					System.out.println("Le robot a tourne a gauche.");
 					return true;
 			}
 			else if (direction == this.direction.BAS){
 					direction = this.direction.DROITE;
+					System.out.println("Le robot a tourne a gauche.");
 					return true;
 			}
 			else if (direction == this.direction.DROITE){
 					direction = this.direction.HAUT;
+					System.out.println("Le robot a tourne a gauche.");
 					return true;
 			}
 			else{
