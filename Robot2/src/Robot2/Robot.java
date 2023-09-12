@@ -50,8 +50,8 @@ public class Robot {
 	{
 		if(this.estOn)
 		{
-			this.pos.setX(this.pos.getX() + this.vitesse*Math.cos(this.angle));
-			this.pos.setY(this.pos.getY() + this.vitesse*Math.sin(this.angle));
+			this.pos.setX(this.pos.getX() + this.vitesse*Math.cos(this.angle*Math.PI/180));
+			this.pos.setY(this.pos.getY() + this.vitesse*Math.sin(this.angle*Math.PI/180));
 			return true;
 		}
 		else
