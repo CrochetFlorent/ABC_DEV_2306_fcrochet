@@ -38,7 +38,7 @@ public class Telecommande {
 				robot1.action(Bouton.ETEINDRE);
 			}else if(choix.equals("e"))
 			{
-				robot1.action(Bouton.AVANCER);
+				robot1.action(Bouton.AVANCERVITE);
 			}
 			else if (choix.equals("r"))
 			{
@@ -50,7 +50,7 @@ public class Telecommande {
 			}
 			else if (choix.equals("y"))
 			{
-				robot1.action(Bouton.ARRETER);
+				robot1.action(Bouton.AVANCERDOUCEMENT);
 			}
 			else
 			{
