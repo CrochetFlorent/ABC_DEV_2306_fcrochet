@@ -8,16 +8,18 @@ public class InterfaceGraphique {
 	
 	public void OuvrirInterfaceGraphique()
 	{
+		
 	JFrame fen = new JFrame("Contrôle du robot");
 	JPanel pan = new JPanel();
 	JButton butAllumer = new JButton("Allumer");
 	JButton butEteindre = new JButton("Eteindre");
-	JButton butAvancer = new JButton("Avancer");
+	JButton butAvancer = new JButton("Avancer vite");
+	JButton butArreter = new JButton("Avancer Doucement");
 	JButton butTournerD = new JButton("Tourner à droite");
 	JButton butTournerG = new JButton("Tourner à gauche");
-	JButton butArreter = new JButton("Arrêter");
+
 	
-	fen.setSize(400, 120);
+	fen.setSize(400, 150);
 	fen.setContentPane(pan);
 	fen.getContentPane().add(butAllumer);
 	fen.getContentPane().add(butEteindre);
@@ -40,7 +42,12 @@ public class InterfaceGraphique {
 	});
 	butAvancer.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-			robot1.action(Bouton.AVANCER);
+			robot1.action(Bouton.AVANCERVITE);
+		}
+	});
+	butArreter.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			robot1.action(Bouton.AVANCERDOUCEMENT);
 		}
 	});
 	butTournerD.addActionListener(new ActionListener() {
@@ -53,11 +60,7 @@ public class InterfaceGraphique {
 			robot1.action(Bouton.TOURNEAGAUCHE);
 		}
 	});
-	butArreter.addActionListener(new ActionListener() {
-		public void actionPerformed(ActionEvent e) {
-			robot1.action(Bouton.ARRETER);
-		}
-	});
+
 	fen.setVisible(true);
 	}
 }

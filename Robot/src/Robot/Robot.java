@@ -1,6 +1,6 @@
 package Robot;
 enum Bouton{
-	ALLUMER,ETEINDRE,AVANCER,TOURNEADROITE,TOURNEAGAUCHE,ARRETER
+	ALLUMER,ETEINDRE,AVANCERVITE,AVANCERDOUCEMENT,TOURNEADROITE,TOURNEAGAUCHE
 }
 enum Direction{
 	GAUCHE,DROITE,HAUT,BAS
@@ -87,102 +87,172 @@ public class Robot {
 		}
 	}
 	/**
-	 * Cette méthode diminue la vitesse du robot s'il est en marche jusqu'a avoir une vitesse de 0 (a chaque appuie sur le bouton "arrêter"==> ARRETER dans action()) 
-	 * ou l'arrête si la vitesse est nulle.
-	 * Elle gère la vitesse de recule comme la vitesse d'avancée.
+	 * Cette méthode fait avancer le robot s'il est allumé et lui fait prendre de la vitesse (à chaque appuie sur le bouton "avancer"==> AVANCER dans action()).
+	 * S'il bute au bornes du quadrillage, il s'arrête.
+	 * @return
 	 */
-	private boolean arreter()
-	{
-		if (estAllume && seDeplace){
-			if (vitesse <=2 && vitesse != 0){
-				vitesse -= 1;
-				System.out.println("Le robot à diminué sa vitesse.");
-				if (vitesse ==0){
-					seDeplace = false;
-					System.out.println("Le robot s'est arrete.");
+	private boolean avancerDoucement()
+	{	
+		this.vitesse = 1;
+		if (estAllume)
+		{
+				if(!this.estPositionValide(this.position))
+				{
+					this.seDeplace = false;
+					System.out.println("Le robot à  atteint ses limites de déplacement.");
+					return false;
+				}
+				else
+				{
+					this.seDeplace = true;
+					if(direction == this.direction.HAUT) 
+					{
+						if(this.estPositionValide(new Point(this.position.abcisse,this.position.ordonnee+this.vitesse)))
+						{
+							this.position.ordonnee += vitesse;
+							System.out.println("Le robot a avancé de "+this.getVitesse()+".");
+								return true;
+						}
+						else
+						{
+							System.out.println("Le robot à  atteint ses limites de déplacement vers le haut.");
+							return false;
+						}
+					}
+				
+				else if(direction == this.direction.DROITE) 
+				{
+						if(this.estPositionValide(new Point(this.position.abcisse+this.vitesse,this.position.ordonnee)))
+						{
+							this.position.abcisse += vitesse;
+							System.out.println("Le robot a avancé de "+(this.getVitesse())+" .");
+							return true;
+						}
+						else
+						{
+							System.out.println("Le robot à  atteint ses limites de déplacement vers la droite.");
+							return false;
+						}
+				}
+				else if(direction == this.direction.BAS) 
+				{
+						if(this.estPositionValide(new Point(this.position.abcisse,this.position.ordonnee-this.vitesse)))
+						{
+							this.position.ordonnee -= vitesse;
+							System.out.println("Le robot a avancé de "+this.getVitesse()+" .");
+							return true;
+						}
+						else
+						{
+							System.out.println("Le robot à  atteint ses limites de déplacement vers le bas.");
+							return false;
+						}
+				}
+				else if (direction == this.direction.GAUCHE)
+				{
+						if(this.estPositionValide(new Point(this.position.abcisse-vitesse,this.position.ordonnee)))
+						{
+							this.position.abcisse -= vitesse;
+							System.out.println("Le robot a avancé de "+this.getVitesse()+" .");
+							return true;
+						}else
+						{
+							System.out.println("Le robot à  atteint ses limites de déplacement vers la gauche.");
+							return false;
+						}
 				}
 				return true;
-			}
-			else if (vitesse ==0){
-				seDeplace = false;
-				System.out.println("Le robot s'est arrete.");
-				return true;
-			}
-			else{
-				return false;
-			}
+				}
 		}
-		else{
+		else
+		{
 			return false;
 		}
+				
 	}
 	/**
 	 * Cette méthode fait avancer le robot s'il est allumé et lui fait prendre de la vitesse (à chaque appuie sur le bouton "avancer"==> AVANCER dans action()).
 	 * S'il bute au bornes du quadrillage, il s'arrête.
 	 * @return
 	 */
-	private boolean avancer()
+	private boolean avancerVite()
 	{	
-		if(this.vitesse <=1){
-			this.vitesse += 1;
-		}
+		this.vitesse = 2;
 		if (estAllume)
 		{
-				if(!this.estPositionValide(this.position)){
-					this.vitesse = 0;
-					this.seDeplace = false;
-					return false;
-				}else
+				if(!this.estPositionValide(this.position))
 				{
-					
+					this.seDeplace = false;
+					System.out.println("Le robot à  atteint ses limites de déplacement.");
+					return false;
+				}
+				else
+				{
 					this.seDeplace = true;
-					if(direction == this.direction.HAUT) {
-							if(this.estPositionValide(new Point(this.position.abcisse,this.position.ordonnee+vitesse))){
-								this.position.ordonnee += vitesse;
-								System.out.println("Le robot a avancé de "+this.getVitesse()+" .");
+					if(direction == this.direction.HAUT) 
+					{
+						if(this.estPositionValide(new Point(this.position.abcisse,this.position.ordonnee+this.vitesse)))
+						{
+							this.position.ordonnee += vitesse;
+							System.out.println("Le robot a avancé de "+this.getVitesse()+".");
 								return true;
-							}else {
-								this.position.ordonnee += vitesse-1;
-								System.out.println("Le robot a avancé de "+this.getVitesse()+" .");
-								return true;
-							}
-					}else if(direction == this.direction.DROITE) {
-						if(this.estPositionValide(new Point(this.position.abcisse+vitesse,this.position.ordonnee))){
+						}
+						else
+						{
+							System.out.println("Le robot peut encore avancer de : "+(this.quadrillage.getOrdonneeMax()-position.ordonnee)+" et sa vitesse est rapide(2).");
+							return false;
+						}
+					}
+				
+				else if(direction == this.direction.DROITE) 
+				{
+						if(this.estPositionValide(new Point(this.position.abcisse+this.vitesse,this.position.ordonnee)))
+						{
 							this.position.abcisse += vitesse;
-							System.out.println("Le robot a avancé de "+this.getVitesse()+" .");
-							return true;
-						}else {
-							this.position.ordonnee += vitesse-1;
-							System.out.println("Le robot a avancé de "+this.getVitesse()+" .");
+							System.out.println("Le robot a avancé de "+(this.getVitesse())+" .");
 							return true;
 						}
-					}else if(direction == this.direction.BAS) {
-						if(this.estPositionValide(new Point(this.position.abcisse,this.position.ordonnee-vitesse))){
+						else
+						{
+							System.out.println("Le robot peut encore avancer de : "+(this.quadrillage.getAbcisseMax()-position.abcisse)+" et sa vitesse est rapide(2)");
+							return false;
+						}
+				}
+				else if(direction == this.direction.BAS) 
+				{
+						if(this.estPositionValide(new Point(this.position.abcisse,this.position.ordonnee-this.vitesse)))
+						{
 							this.position.ordonnee -= vitesse;
 							System.out.println("Le robot a avancé de "+this.getVitesse()+" .");
 							return true;
-						}else {
-							this.position.ordonnee += vitesse-1;
-							System.out.println("Le robot a avancé de "+this.getVitesse()+" .");
-							return true;
 						}
-					}else if (direction == this.direction.GAUCHE){
-						if(this.estPositionValide(new Point(this.position.abcisse+vitesse,this.position.ordonnee))){
+						else
+						{
+							System.out.println("Le robot peut encore avancer de : "+(-(this.quadrillage.getOrdonneeMin()-position.ordonnee))+" et sa vitesse est rapide(2)");
+							return false;
+						}
+				}
+				else if (direction == this.direction.GAUCHE)
+				{
+						if(this.estPositionValide(new Point(this.position.abcisse-vitesse,this.position.ordonnee)))
+						{
 							this.position.abcisse -= vitesse;
 							System.out.println("Le robot a avancé de "+this.getVitesse()+" .");
 							return true;
-						}else {
-							this.position.ordonnee += vitesse-1;
-							System.out.println("Le robot a avancé de "+this.getVitesse()+" .");
-							return true;
 						}
-					}
-					return true;
+						{
+							System.out.println("Le robot peut encore avancer de : "+(-(this.quadrillage.getAbcisseMin()-position.abcisse))+" et sa vitesse est rapide(2)");
+							return false;
+						}
 				}
-
-		}else{
+				return true;
+				}
+		}
+		else
+		{
 			return false;
 		}
+				
 	}
 	/**
 	 * Cette fonction fait tourner le robot a droite (à chaque appuie sur le bouton "tourner à droite  ==> TOURNEADROITE dans action()). 
@@ -287,8 +357,8 @@ public class Robot {
 		case ETEINDRE:
 			this.eteindre();
 			return true;
-		case AVANCER:
-			this.avancer();
+		case AVANCERVITE:
+			this.avancerVite();
 			return true;
 		case TOURNEADROITE:
 			this.tourneADroite();
@@ -296,8 +366,8 @@ public class Robot {
 		case TOURNEAGAUCHE:
 			this.tourneAGauche();
 			return true;
-		case ARRETER:
-			this.arreter();
+		case AVANCERDOUCEMENT:
+			this.avancerDoucement();
 			return true;
 		default:
 			return false;
