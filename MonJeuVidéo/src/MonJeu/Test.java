@@ -6,9 +6,9 @@ public class Test {
 			
 
 		//Creation de trois barbares
-		Barbarian hulk = new Barbarian("Hulk",50,null,null,5,null,0,0,1,false);
-	    Barbarian olaf = new Barbarian("Olaf",50,null,null,5,null,0,0,1,false);
-	    Barbarian zorg = new Barbarian("Zorg",50,null,null,5,null,0,0,1,false);
+		Barbarian hulk = new PJ("Hulk",50,null,null,5,null,0,0,1,false);
+	    Barbarian olaf = new PJ("Olaf",50,null,null,5,null,0,0,1,false);
+	    Barbarian zorg = new PJ("Zorg",50,null,null,5,null,0,0,1,false);
 
 	    // Ils ramassent chacuns deux armes/bouclier et armure
 	    olaf.ramasseArme();
