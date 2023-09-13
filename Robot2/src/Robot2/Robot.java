@@ -29,6 +29,10 @@ public class Robot {
 	{
 		return this.vitesse;
 	}
+	public boolean getOn()
+	{
+		return this.estOn;
+	}
 	//Setters
 	public void  setOn()
 	{
@@ -46,12 +50,17 @@ public class Robot {
 	{
 		this.vitesse = _vitesse;
 	}
+	/**Méthode pour se déplacer
+	 * 
+	 * @param _angle
+	 * @return
+	 */
 	public boolean marcher(int _angle)
 	{
 		if(this.estOn)
 		{
-			this.pos.setX(this.pos.getX() + this.vitesse*Math.cos(this.angle*Math.PI/180));
-			this.pos.setY(this.pos.getY() + this.vitesse*Math.sin(this.angle*Math.PI/180));
+			this.pos.setX(Math.round(this.pos.getX()*100.00)/100.00 + this.vitesse*Math.round(Math.cos(this.angle*Math.PI/180)*100.00)/100.00);
+			this.pos.setY(Math.round(this.pos.getY()*100.00)/100.00 + this.vitesse*Math.round(Math.sin(this.angle*Math.PI/180)*100.00)/100.00);
 			return true;
 		}
 		else
