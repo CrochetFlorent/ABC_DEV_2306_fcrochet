@@ -1,5 +1,7 @@
 package Robot2;
 
+import java.awt.event.KeyEvent;
+
 public class Robot {
 
 	private Point pos;
@@ -63,6 +65,7 @@ public class Robot {
 			}
 		}
 	}
+
 	/**Méthode pour se déplacer
 	 * 
 	 * @param _angle

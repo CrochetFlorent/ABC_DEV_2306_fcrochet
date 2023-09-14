@@ -38,7 +38,6 @@ public class Interface extends JFrame {
 			}
 		});
 	}
-
 	/**
 	 * Create the frame.
 	 */
@@ -139,7 +138,7 @@ public class Interface extends JFrame {
 				textField_1.setText(""+robot1.getPosY());
 			}
 		});
-		btnNewButton_4.setBounds(23, 208, 151, 42);
+		btnNewButton_4.setBounds(23, 208, 176, 42);
 		contentPane.add(btnNewButton_4);
 		
 		JButton btnNewButton_5 = new JButton("On / Off");
@@ -165,7 +164,7 @@ public class Interface extends JFrame {
 				textField_1.setText(""+robot1.getPosY());
 			}
 		});
-		btnNewButton_6.setBounds(249, 208, 151, 42);
+		btnNewButton_6.setBounds(224, 208, 176, 42);
 		contentPane.add(btnNewButton_6);
 		
 		JLabel lblNewLabel_1 = new JLabel("Abcisse");
