@@ -39,21 +39,28 @@ public class Robot {
 	public void  setOn()
 	{
 		this.estOn = true;
+
 	}
 	public void setOff()
 	{
-		this.estOn = false;
+			this.estOn = false;
 	}
 	public void setAngle(int _angle)
 	{
-		this.angle = _angle;
+		if(this.getOn())
+		{
+			this.angle = _angle;
+		}
 	}
 	public void setVitesse(int _vitesse)
 	{
-		this.vitesse = _vitesse;
-		if (vitesse<0)
+		if(this.getOn())
 		{
-			this.vitesse = 0 ;
+			this.vitesse = _vitesse;
+			if (vitesse<0)
+			{
+				this.vitesse = 0 ;
+			}
 		}
 	}
 	/**Méthode pour se déplacer
@@ -61,38 +68,32 @@ public class Robot {
 	 * @param _angle
 	 * @return
 	 */
-	public boolean marcherAvant(int _angle)
+	public boolean marcher(int _sens)
 	{
 		double posX = Math.round(this.pos.getX()*100.00)/100.00;
 		double posY = Math.round(this.pos.getY()*100.00)/100.00;
-		double angleCos = Math.round(Math.cos(this.angle*Math.PI/180)*100.00)/100.00;
-		double angleSin = Math.round(Math.sin(this.angle*Math.PI/180)*100.00)/100.00;
+		double moveCos = Math.round(Math.cos(this.angle*Math.PI/180)*100.00)/100.00;
+		double moveSin = Math.round(Math.sin(this.angle*Math.PI/180)*100.00)/100.00;
 		if(this.estOn)
 		{
-			this.pos.setX(posX + Math.round(this.vitesse*angleCos*100.00)/100.00);
-			this.pos.setY(posY + Math.round(this.vitesse*angleSin*100.00)/100.00);
-			return true;
+			if (_sens>0)
+			{
+				this.pos.setX(posX + Math.round(this.vitesse*moveCos*100.00)/100.00);
+				this.pos.setY(posY + Math.round(this.vitesse*moveSin*100.00)/100.00);
+				return true;
+			}
+			else if (_sens<0)
+			{
+				this.pos.setX(posX- Math.round(this.vitesse*moveCos*100.00)/100.00);
+				this.pos.setY(posX- Math.round(this.vitesse*moveSin*100.00)/100.00);
+				return true;
+			}
 		}
 		else
 		{
 			return false;
 		}
+		return true;
 	}	
-	public boolean marcherArriere(int _angle)
-	{
-		double posX = Math.round(this.pos.getX()*100.00)/100.00;
-		double posY = Math.round(this.pos.getY()*100.00)/100.00;
-		double moveCos = Math.round(Math.cos((this.angle+Math.PI)*Math.PI/180)*100.00)/100.00;
-		double moveSin = Math.round(Math.sin((this.angle+Math.PI)*Math.PI/180)*100.00)/100.00;
-		if(this.estOn)
-		{
-			this.pos.setX(posX+ moveCos);
-			this.pos.setY(posY+ moveSin);
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}	
+		
 }
