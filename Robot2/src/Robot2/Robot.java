@@ -73,16 +73,16 @@ public class Robot {
 	 */
 	public boolean marcher(int _sens)
 	{
-		double posX = Math.round(this.pos.getX()*100.00)/100.00;
-		double posY = Math.round(this.pos.getY()*100.00)/100.00;
-		double moveCos = Math.round(Math.cos(this.angle*Math.PI/180)*100.00)/100.00;
-		double moveSin = Math.round(Math.sin(this.angle*Math.PI/180)*100.00)/100.00;
+		double posX = this.pos.getX();
+		double posY = this.pos.getY();
+		double moveCos = Math.cos(this.angle*Math.PI/180);
+		double moveSin = Math.sin(this.angle*Math.PI/180);
 		if(this.estOn)
 		{
 			if (_sens>0)
 			{
-				this.pos.setX(posX + Math.round(this.vitesse*moveCos*100.00)/100.00);
-				this.pos.setY(posY + Math.round(this.vitesse*moveSin*100.00)/100.00);
+				this.pos.setX(Math.round((posX + this.vitesse*moveCos)*100.00)/100.00);
+				this.pos.setY(Math.round((posY + this.vitesse*moveSin)*100.00)/100.00);
 				return true;
 			}
 			else if (_sens<0)

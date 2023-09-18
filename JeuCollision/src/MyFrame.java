@@ -1,4 +1,5 @@
 import java.awt.*;
+
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -57,6 +58,7 @@ public class MyFrame extends JFrame{
 			player.KeyPressed(e);
 			checkCollision();
 			repaint();
+			
 		}
 	}
 }
