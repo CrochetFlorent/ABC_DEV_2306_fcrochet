@@ -33,17 +33,17 @@ public class Box extends Rectangle{
 	{
 		if(e.getKeyCode() == KeyEvent.VK_UP)
 		{
-			this.y = y+5;
+			this.y = y+20;
 		}else if (e.getKeyCode() == KeyEvent.VK_DOWN)
 		{
-			this.y = y-5;
+			this.y = y-20;
 		}else if (e.getKeyCode() == KeyEvent.VK_RIGHT)
 		{
-			this.x = x+5;
+			this.x = x+20;
 		}
 		else if (e.getKeyCode() == KeyEvent.VK_LEFT)
 		{
-			this.x = x-5;
+			this.x = x-20;
 		}
 	}
 	/** Affichage du rectangle
