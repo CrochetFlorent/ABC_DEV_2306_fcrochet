@@ -1,15 +1,17 @@
 package src;
+import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Scanner;
 import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import java.io.*;
-import java.util.Scanner;
 
-public class Trier_Valeurs_JSON {
 
-	public static void main(String[] args) throws IOException, org.json.simple.parser.ParseException {
+public class Yahourt {
+
+	public static void main(String[] args) throws IOException, ParseException {
 		
 		URL url = new URL("https://api.devoldere.net/polls/yoghurts/");
 		
