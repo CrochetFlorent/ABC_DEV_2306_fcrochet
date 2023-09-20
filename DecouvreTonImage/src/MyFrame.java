@@ -10,7 +10,7 @@ public class MyFrame extends JFrame{
 	Graphics graphics;
 	Box player;
 	Box goal;
-	boolean win;
+	boolean touch;
 	boolean begin = false;;
 	
 	public MyFrame()
@@ -18,7 +18,7 @@ public class MyFrame extends JFrame{
 		Random rand = new Random();
 		player = new Box(100,300,40,40,Color.blue,0);
 		goal = new Box(rand.nextInt(460-30),rand.nextInt(460-30),40,40,Color.cyan,0);
-		win = false;
+		touch = false;
 
 		this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
 		this.setSize(500, 500);
@@ -41,7 +41,7 @@ public class MyFrame extends JFrame{
 			g.setColor(Color.red);
 			g.drawString("Déplacez-vous avec les flèches du clavier",130,100);
 		}
-		if(win)	
+		if(touch)	
 		{
 			g.setColor(Color.red);
 			g.setFont(new Font("Mv Boli",Font.PLAIN,35));
@@ -53,7 +53,7 @@ public class MyFrame extends JFrame{
 	{
 		if(player.intersects(goal))
 		{
-			win = true;
+			touch = true;
 			goal.color = Color.green;
 			repaint();
 		}

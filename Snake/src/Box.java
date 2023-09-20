@@ -1,13 +1,13 @@
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Rectangle;
+import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 public class Box extends Rectangle{
 
 	int x,y;
 	int width, height;
 	Color color;
+	ArrayList<Box> snake = new ArrayList();
 	
 	/**
 	 * Constructeur avec paramètres
@@ -54,5 +54,33 @@ public class Box extends Rectangle{
 	{
 		g.setColor(this.color);
 		g.fillRect(this.x, this.y, this.width, this.height);
+	}
+	/**
+	 * Bouger
+	 */
+	public void bouger()
+	{
+		
+		for (int i=0;i <= this.snake.size();i++)
+		{
+			if(i>0)
+			{
+			this.snake.get(i-1).x = this.snake.get(i).x;
+			this.snake.get(i-1).y = this.snake.get(i).y;
+			}
+		}
+	}
+	/** Manger
+	 * 
+	 * @param _box
+	 * @return
+	 */
+	public int manger(Box _box)
+	{
+		if (this.intersects(_box))
+		{
+			this.add(_box);
+		}
+		return width;
 	}
 }
