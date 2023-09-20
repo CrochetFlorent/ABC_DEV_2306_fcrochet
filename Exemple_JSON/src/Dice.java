@@ -61,30 +61,18 @@ public class Dice {
 				boolean test = Integer.parseInt(part1)>3 || Integer.parseInt(part1)<1 || Integer.parseInt(part2)<1 || Integer.parseInt(part2)>6
 						|| Integer.parseInt(part3)<1 ||Integer.parseInt(part3)>6;
 					//Attribution des points en fonction du score et du numéro de joueur, selon les cas(case1,case2,case3) déclarés plus haut	
-						if (case2){ if(Integer.parseInt(part1)==1){
-										pts1 = pts1 +1; }
-									else if(Integer.parseInt(part1)==2){
-										pts2 = pts2 +1; }
-									else if(Integer.parseInt(part1)==3){
-									pts3 = pts3 +1;}}
-					else if (case3){if(Integer.parseInt(part1)==1){
-										pts1 = pts1 +3; }
-									else if(Integer.parseInt(part1)==2){
-										pts2 = pts2 +3; }
-									else if(Integer.parseInt(part1)==3){
-										pts3 = pts3 +3; }}
-					else if (case1){if(Integer.parseInt(part1)==1){
-										pts1 = pts1 -2; 
-										if(pts1 < 0){
-											pts1 = 0;}}
-									else if(Integer.parseInt(part1)==2){
-										pts2 = pts2 -2;
-										if(pts2 < 0){
-											pts2 = 0;}}
-									else if(Integer.parseInt(part1)==3){
-										pts3 = pts3 -2; 
-										if(pts3 < 0){
-											pts3 = 0;}}}
+						 if (case2){if(Integer.parseInt(part1)==1){pts1 = pts1 +1; }
+									else if(Integer.parseInt(part1)==2){pts2 = pts2 +1; }
+									else if(Integer.parseInt(part1)==3){pts3 = pts3 +1;}}
+					else if (case3){if(Integer.parseInt(part1)==1){pts1 = pts1 +3; }
+									else if(Integer.parseInt(part1)==2){pts2 = pts2 +3; }
+									else if(Integer.parseInt(part1)==3){pts3 = pts3 +3; }}
+					else if (case1){if(Integer.parseInt(part1)==1){pts1 = pts1 -2; 
+										if(pts1 < 0){pts1 = 0;}}
+									else if(Integer.parseInt(part1)==2){pts2 = pts2 -2;
+										if(pts2 < 0){pts2 = 0;}}
+									else if(Integer.parseInt(part1)==3){pts3 = pts3 -2; 
+										if(pts3 < 0){pts3 = 0;}}}
 				//Si piratage on met le booleen à true
 				if(test){pirate = true;}}
 		//On renvoie "to investigate" si piraté et les points des joueurs sinon
