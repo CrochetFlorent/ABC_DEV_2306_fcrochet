@@ -51,7 +51,6 @@ public class MyFrame extends JFrame{
 			touch = true;
 			repaint();
 		}
-
 	public class AL extends KeyAdapter {
 		public void KeyPressed(KeyEvent e){
 			snake.KeyPressed(e);

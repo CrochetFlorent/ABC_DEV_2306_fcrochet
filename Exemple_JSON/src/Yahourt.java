@@ -12,7 +12,7 @@ public class Yahourt {
 	public static void main(String[] args) throws IOException, ParseException {
 		
 		URL url = new URL("https://api.devoldere.net/polls/yoghurts/");//Création d'une url de type url
-		//Try/catch permet de tester s'il y a une erreur de manière à ce que le programme ne plante pas
+//Try/catch permet de tester s'il y a une erreur de manière à ce que le programme ne plante pas
 		try {//Connexion au JSON(puisque c'est une page web)
 			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 			connection.setRequestMethod("GET");
@@ -20,19 +20,17 @@ public class Yahourt {
 		    connection.setReadTimeout(20000);
 		    connection.setDoInput(true);
 		    connection.setRequestProperty ("Accept", "application/json");}
-		catch (Error e){
-			System.out.println("Problème de connexion");}
-	    //Scan de l'array
+		catch (Error e){System.out.println("Problème de connexion");}
+//Scan de l'array
 	    String poll = "";
 	    Scanner sc = new Scanner(url.openStream());
-	    while(sc.hasNext()) {
-	    	poll += sc.nextLine();}
+	    while(sc.hasNext()) {poll += sc.nextLine();}
 	    sc.close();
-	    //Création du tableau JSON qui récupère les données
+//Création du tableau JSON qui récupère les données
 	    JSONParser parser = new JSONParser();
 	    JSONObject obj = (JSONObject) parser.parse(poll);
 	    JSONArray values = (JSONArray) obj.get("results");
-	    //Affichage des données du json et lancement du tri
+//Affichage des données du json et lancement du tri
 	    System.out.println(values);
 	    prefered(values);}
 
@@ -72,6 +70,5 @@ public class Yahourt {
 											else if (_array.get(h).toString().equals(tabColor[1])){
 												tab2[h] = h;}}
 //Si le tableau représentant une couleur a un indice supérieur à celui de l'autre alors l'autre(arrivée avant dans le json array) en placée en première
-		if (tab1[0] > tab2[1] && tabNb[0] == tabNb[1]){
-			tabColor[0]=tabColor[1];}
+		if (tab1[0] > tab2[1] && tabNb[0] == tabNb[1]){tabColor[0]=tabColor[1];}
 		System.out.println(tabColor[0]+" "+tabColor[1]);}}
