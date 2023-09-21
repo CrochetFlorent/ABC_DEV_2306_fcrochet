@@ -53,7 +53,7 @@ public class Dice {
 		//Booleens qui testent les valeurs des lancés
 				boolean case1 = Integer.parseInt(part2) == Integer.parseInt(part3) ;//parseInt prend les valeures entière d'une string
 				boolean case2 = Integer.parseInt(part2)+Integer.parseInt(part3) <=6 && Integer.parseInt(part1)+Integer.parseInt(part2) <= 10;
-				boolean case3 = Integer.parseInt(part3)+Integer.parseInt(part3) < 10;
+				boolean case3 = Integer.parseInt(part2)+Integer.parseInt(part3) < 10;
 		//Booleen testant si il y a eu piratage : si un numéro de joeurs dépasse trois ou si un dé vaut moins que 1 ou plus que 6
 				boolean test = Integer.parseInt(part1)>3 || Integer.parseInt(part1)<1 || Integer.parseInt(part2)<1 || Integer.parseInt(part2)>6
 						|| Integer.parseInt(part3)<1 ||Integer.parseInt(part3)>6;
