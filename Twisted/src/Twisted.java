@@ -42,7 +42,6 @@ public class Twisted {
 	public String getWinners(String[][] tournament)
 	{
 		String strGagnants = null;
-		int[] tabPts = new int[20];
 		boolean pirate = false;
 
 		for (int i=0;i<tournament.length;i++)
@@ -62,22 +61,49 @@ public class Twisted {
 				boolean test = Integer.parseInt(part1)>20 || Integer.parseInt(part1)<1 || Integer.parseInt(part2)<1 || Integer.parseInt(part2)>6
 						|| Integer.parseInt(part3)<1 ||Integer.parseInt(part3)>6 ||Integer.parseInt(part4)<1 ||Integer.parseInt(part4)>6;
 						//Attribution des points en fonction du score et du numéro de joueur, selon les cas(case1,case2,case3) déclarés plus haut
-						if(case3) {for (int h=0;h<tabPts.length;h++){	
-											if(Integer.parseInt(part1)==h){tabPts[h] = tabPts[h] +2;}}}
-					else if (case2){for (int h=0;h<tabPts.length;h++){	
-											if(Integer.parseInt(part1)==h){tabPts[h] = tabPts[h] +1;}}}
-					else if (case4){for (int h=0;h<tabPts.length;h++){	
-											if(Integer.parseInt(part1)==h){tabPts[h] = tabPts[h] +3;}}}
-					else if (case1){}
+						if(case3) {for (int h=0;h<score.length;h++){	
+											if(Integer.parseInt(part1)==h+1){score[h] = score[h] +2;}}}
+					else if (case2){for (int h=0;h<score.length;h++){	
+											if(Integer.parseInt(part1)==h+1){score[h] = score[h] +1;}}}
+					else if (case4){for (int h=0;h<score.length;h++){	
+											if(Integer.parseInt(part1)==h+1){score[h] = score[h] +3;}}}
 				if (test)
 				{
-					pirate =true;
+					pirate = true;
 				}
 			}
 		}
-		strGagnants = tabPts[0]+"/"+tabPts[1]+"/"+tabPts[2]+"/"+tabPts[3]+"/"+tabPts[4]+"/"+tabPts[5]+"/"+tabPts[6]+"/"
-				+tabPts[7]+"/"+tabPts[8]+"/"+tabPts[9]+"/"+tabPts[10]+"/"+tabPts[11]+"/"+tabPts[12]+"/"+tabPts[13]+"/"
-				+tabPts[14]+"/"+tabPts[15]+"/"+tabPts[16]+"/"+tabPts[17]+"/"+tabPts[18]+"/"+tabPts[19];
+		//Triage du tableau des scores
+		int[] trigagnants = new int[20];
+		for(int i=0;i<score.length;i++){trigagnants[i]=score[i];}
+		for (int i=1;i<trigagnants.length;i++)
+		{
+			for(int j=1;j<trigagnants.length;j++)
+			{
+				int tmp;
+				if(trigagnants[j]>trigagnants[j-1]){
+					tmp=trigagnants[j-1];
+					trigagnants[j-1]=trigagnants[j];
+					trigagnants[j]=tmp;
+				}
+			}
+		}
+//		for (int i=1;i<trigagnants.length;i++)
+//		{
+//			System.out.print("\t"+trigagnants[i]);
+//		}
+		//Detection d'égalité
+		int[] gagnants = new int[20];
+		for (int i=1;i<trigagnants.length;i++)
+		{
+			if(trigagnants[i] == trigagnants[0])
+			{
+				gagnants[i] = trigagnants[i];
+				System.out.print("\t"+gagnants[i]);
+			}
+			
+		}
+		strGagnants = 
 //		if (pirate = true)
 //		{
 //			strGagnants = "To investigate";
