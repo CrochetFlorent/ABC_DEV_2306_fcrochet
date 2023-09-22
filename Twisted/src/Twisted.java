@@ -41,22 +41,25 @@ public class Twisted {
 	
 	public String getWinners(String[][] tournament)
 	{
-		String strGagnants = null;
+		String strGagnants = "";
 		boolean pirate = false;
-
+		int[][] triGagnants = new int[20][2];
 		for (int i=0;i<tournament.length;i++)
 		{
 			for (int j=0;j<tournament.length;j++)
 			{
+				//Découpage des chaine de caractères contenant les numéro de joueurs et leurs lancés
 				String values = tournament[i][j].toString();
 				String[] parts = values.split(" ");
 				String part1=parts[0],part2=parts[1],part3=parts[2],part4=parts[3];
+			
 				
 				//Booleens qui testent les valeurs des lancés
 				boolean case1 = Integer.parseInt(part2) == Integer.parseInt(part3)||Integer.parseInt(part2) == Integer.parseInt(part4)||Integer.parseInt(part4) == Integer.parseInt(part3);//parseInt prend les valeures entière d'une string
 				boolean case4 = Integer.parseInt(part2)+Integer.parseInt(part3)+Integer.parseInt(part4) == 3 || Integer.parseInt(part2)+Integer.parseInt(part3)+Integer.parseInt(part4) == 18;
 				boolean case3 = Integer.parseInt(part2)+Integer.parseInt(part3)+Integer.parseInt(part4) >= 12;
 				boolean case2 = Integer.parseInt(part2)+Integer.parseInt(part3)+Integer.parseInt(part4) <=6 ;
+				
 				//Booleen testant si il y a eu piratage : si un numéro de joeurs dépasse trois ou si un dé vaut moins que 1 ou plus que 6
 				boolean test = Integer.parseInt(part1)>20 || Integer.parseInt(part1)<1 || Integer.parseInt(part2)<1 || Integer.parseInt(part2)>6
 						|| Integer.parseInt(part3)<1 ||Integer.parseInt(part3)>6 ||Integer.parseInt(part4)<1 ||Integer.parseInt(part4)>6;
@@ -71,39 +74,40 @@ public class Twisted {
 				{
 					pirate = true;
 				}
-			}
-		}
+				//Remplissage d'un tableau avec les numéro des joueurs et un contenant les score
+				triGagnants[j][0]=Integer.parseInt(part1);
+				triGagnants[j][1]=score[j];}}
+		
 		//Triage du tableau des scores
-		int[] trigagnants = new int[20];
-		for(int i=0;i<score.length;i++){trigagnants[i]=score[i];}
-		for (int i=1;i<trigagnants.length;i++)
+		for (int i=1;i<triGagnants.length;i++)
 		{
-			for(int j=1;j<trigagnants.length;j++)
+			for(int j=1;j<triGagnants.length;j++)
 			{
 				int tmp;
-				if(trigagnants[j]>trigagnants[j-1]){
-					tmp=trigagnants[j-1];
-					trigagnants[j-1]=trigagnants[j];
-					trigagnants[j]=tmp;
-				}
-			}
-		}
-//		for (int i=1;i<trigagnants.length;i++)
-//		{
-//			System.out.print("\t"+trigagnants[i]);
-//		}
-		//Detection d'égalité
-		int[] gagnants = new int[20];
-		for (int i=1;i<trigagnants.length;i++)
+				if(triGagnants[j][1]>triGagnants[j-1][1]){
+					tmp=triGagnants[j-1][0];
+					triGagnants[j-1][0]=triGagnants[j][0];
+					triGagnants[j][0]=tmp;
+					tmp=triGagnants[j-1][1];
+					triGagnants[j-1][1]=triGagnants[j][1];
+					triGagnants[j][1]=tmp;}
+				}}
+		//Detection d'égalite
+		int tmp = 0;
+		for(int i=0;i<20;i++)
 		{
-			if(trigagnants[i] == trigagnants[0])
+			System.out.println(triGagnants[i][0]+" "+triGagnants[i][1]);
+			if(triGagnants[i][1]==triGagnants[0][1])
 			{
-				gagnants[i] = trigagnants[i];
-				System.out.print("\t"+gagnants[i]);
+				tmp +=1;
 			}
-			
 		}
-		strGagnants = 
+		//Création de la chaine de caratcère comportant les gagnants
+		for (int i=0;i<tmp;i++)
+		{	
+			if(strGagnants.equals("")) {strGagnants = strGagnants+"Pts:"+triGagnants[i][1]+" Num:"+triGagnants[i][0];}
+			else{strGagnants = strGagnants+" Pts:"+triGagnants[i][1]+" Num:"+triGagnants[i][0];}
+		}
 //		if (pirate = true)
 //		{
 //			strGagnants = "To investigate";
