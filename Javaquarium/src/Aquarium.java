@@ -6,9 +6,9 @@ import java.util.concurrent.TimeUnit;
 
 public class Aquarium{
 
-	private ArrayList<Poisson> poissons = new ArrayList<Poisson>();
-	private ArrayList<Algue> algues = new ArrayList<Algue>();
-	private int tours = 1;
+	private ArrayList<Poisson> poissons = new ArrayList<Poisson>();//liste contenant les poissons
+	private ArrayList<Algue> algues = new ArrayList<Algue>();//liste contenant les algues
+	private int tours = 1;//nombre de tours
 		
 	//Constructeur par défaut
 	public Aquarium()
@@ -24,105 +24,146 @@ public class Aquarium{
 		this.algues.add(new Algue());
 	}
 	
+	//Getter(servent dans la classe poisson pour definir une taile max avant reproduction)
+	public int getPoissons()
+	{
+		return poissons.size();
+	}
+	
+	public int getAlgues()
+	{
+		return algues.size();
+	}
 	//Faire passer le temps par un timer
 	public void passerLeTemps() throws InterruptedException
 	{
-		
+		int nbAlguesMorts = 0;
+		int nbPoissonsMorts = 0;
 		System.out.println("Il y a "+poissons.size()+" poissons et "+algues.size()+" algues dans l'aquarium");
 		
-			while(tours<=50)
+			while(tours<=30 || poissons.size()>0 )//Tant que l'on à pas fait 50 tours ou qu'il y a encore des 
+													//poissons dans l'aquarium
 			{	
 				TimeUnit.SECONDS.sleep(2);
 				Random rd = new Random();
-				int nbAlguesMorts = 0;
-				int nbPoissonsMorts = 0;
-				ArrayList<Integer> remove = new ArrayList<Integer>();
-				
-				//Decompte des tours
-				for(int i=0;i<algues.size();i++){algues.get(i).setAge(algues.get(i).getAge()+1);}
-				for(int i=0;i<poissons.size();i++){poissons.get(i).setAge(poissons.get(i).getAge()+1);}
-				
-				//Traitement de la vieillesse
-				for(int i=0;i<algues.size();i++){if(algues.get(i).getAge()==20){algues.remove(i);nbAlguesMorts += 1;}}
-				for(int i=0;i<poissons.size();i++){if(poissons.get(i).getAge()==20){poissons.remove(i);nbPoissonsMorts += 1;}}
-				
+				nbAlguesMorts =0;
+				nbPoissonsMorts =0;
+				ArrayList<Poisson> remove = new ArrayList<Poisson>();//Liste qui va contenir les poissons à enlever
+																	//chaque tour si morts
+				ArrayList<Algue> remove2 = new ArrayList<Algue>();//Liste qui va contenir les algues à enlever
+																	//chaque tour si morts
+		
 				//La faim des poissons
-				for (int i=0;i<poissons.size();i++){poissons.get(i).faim();}
+				for (int i=0;i<poissons.size();i++)
+				{
+					poissons.get(i).faim();
+					if(!poissons.get(i).getVie()) {remove.add(poissons.get(i));}}
 				
 				//Reproduction des algues
-				for(int i=0;i<algues.size();i++)
+				for(int i=0;i<algues.size();i++)//Pour tous les algues
 				{
-					if(algues.size()<20) 
+					if(algues.size()<20) //Si on à moins de 20 algues
 					{
-						Algue newAlgue = algues.get(i).reproduction();
+						Algue newAlgue = algues.get(i).reproduction(this);
 						if(newAlgue!=null) {algues.add(newAlgue);}
 					}
 				}
 				//Remise à false de l'attribut sEstRepdroduit des poissons s'étant reproduits au tour précédent
-				for (int i=0;i<poissons.size();i++)
+				for (int i=0;i<poissons.size();i++)//Pour tous les poissons
 				{
 					poissons.get(i).setReproduction(false);
 				}
 				//Reproduction des poissons
 				for(int i=0;i<poissons.size();i++)
 				{
-					int rdRepro = rd.nextInt(poissons.size());
-					while(rdRepro==i && poissons.size()!=0) {rdRepro = rd.nextInt(poissons.size());}
-					if(poissons.size()<20 || !poissons.get(i).getReproduction()) 
+					int rdRepro = rd.nextInt(poissons.size());//On choisit un poisson au hazard
+					//Et on le fait essayer de se reproduire avec un autre poisson.
+					//Tant que le poissons choisit est lui même et qu'il y a des poissons dans l'aquarium
+					//on rechoisit un autre poisson
+					while(rdRepro==i && poissons.size()!=0 && poissons.size()!=1) {rdRepro = rd.nextInt(poissons.size());}
+					if(poissons.size()<20 || !poissons.get(i).getReproduction()) //Si on à moin de 20 poissons
+					// et qu'il ne se sont pas encore reproduit ce tour-ci
 					{
-					Poisson newPoisson =poissons.get(i).reproduction(poissons.get(rdRepro));
+					Poisson newPoisson =poissons.get(i).reproduction(poissons.get(rdRepro),this);
 					if(newPoisson != null) {poissons.add(newPoisson);}
+					//Ils se reproduisent
 					}
 				}
 				
 				//On fait manger nos poissons
 				for (int i=0;i<poissons.size();i++)
 				{
-					if(algues.size()>0) 
+					int rd1 = 0;
+					if(algues.size()>0) //Si : le nombre d'algues est sumérieur à zéro
 					{
-						int rd1=rd.nextInt(algues.size());
-						if(poissons.get(i).getType()) 
+//						if(algues.size()>0)
+//						{
+							rd1=rd.nextInt(algues.size()); //On choisit un algue au hazard
+//						}else
+//							rd1=0;
+					
+						if(poissons.get(i).getType().equals("Herbivore")) // Si le poissons est herbivore
 						{
-							poissons.get(i).manger(algues.get(rd1));
-							if(!algues.get(rd1).getVie()){nbAlguesMorts += 1;algues.remove(rd1);}
+							poissons.get(i).manger(algues.get(rd1));//On mange l'algue choisit
+							if(!algues.get(rd1).getVie()){nbAlguesMorts += 1;remove2.add(algues.get(rd1));}//on incrémente 
+							//le nombre d'algues morts et on enleve l'algue de l'arraylist
 						}
-					}
-					if(poissons.size()>0) 
+					}}
+					int i = 0;
+					if(poissons.size()>0) //Si: le nombre de poissons est supérieur à zéro
 					{
-						int rd2=rd.nextInt(poissons.size());
-						if  (!poissons.get(i).getType())
+						int rd2=rd.nextInt(poissons.size());//On choisit un poisson au hazard
+						if  (!poissons.get(i).getType().equals("Carnivore"))//S'il est carnivore
 						{
-							while(rd2==i && poissons.size()!=0) {rd2=rd.nextInt(poissons.size());}			
-							poissons.get(i).manger(poissons.get(rd2));
-							if(!poissons.get(rd2).getVie()){nbPoissonsMorts += 1;remove.add(rd2);}
+							//Tant que le poissons choisit au hazard est pas lui même on relance le random
+							while(rd2==i && poissons.size()!=0) {rd2=rd.nextInt(poissons.size());}
+							poissons.get(i).manger(poissons.get(rd2));//Le poissons choisit attaque un autre poisson
+							if(!poissons.get(rd2).getVie()){nbPoissonsMorts += 1;//on incrémente le nombre de poissons morts
+							if(!poissons.get(rd2).getVie()) {remove.add(poissons.get(rd2));} //et on ajoute à une list de poissons à enlever
+							//a chaque tour le poisson attaqué s'il est mort
 						}
 					}
 				}
-				//Suppresion des poissons morts de l'arraylist
-				for (int i=0;i<remove.size();i++)
+					
+				//Decompte des tours,on incrémente l'age des algues et poissons
+				for(int i1=0;i1<algues.size();i1++){algues.get(i1).setAge(algues.get(i1).getAge()+1);}
+				for(int i1=0;i1<poissons.size();i1++){poissons.get(i1).setAge(poissons.get(i1).getAge()+1);}
+					
+				//Traitement de la vieillesse, si  l'algue ou le poissons à passé 20 tours on le range dans les poissons
+				//ou algues à remove de leur array list s'ils sont en vie(car sinon c'est qu'il ont été mangés)
+				for(int i1=0;i1<algues.size();i1++){if(algues.get(i1).getAge()==20 && poissons.get(i).getVie()){remove2.add(algues.get(i1));nbAlguesMorts += 1;}}
+				for(int i1=0;i1<poissons.size();i1++){if(poissons.get(i1).getAge()==20 && poissons.get(i).getVie()){remove.add(poissons.get(i1));nbPoissonsMorts += 1;}}
+				
+				//Suppresion des poissons morts et les algues morts de leur arraylist
+				for (int i1=0;i1<remove.size();i1++)
 				{
-					poissons.remove(i);
+					poissons.remove(i1);
 				}
+				for (int i1=0;i1<remove.size();i1++)
+				{
+					algues.remove(i1);
+				}
+				
 				
 				//Affichage du récapitulatif d'un tour
 				System.out.println("\nTour: "+tours+",il y a: "+poissons.size()+" poissons en vie et "+nbPoissonsMorts+" poissons morts et "+algues.size()+" algues en vie et "+nbAlguesMorts+" algues morts.");
-				System.out.println(" Le(s) poisson(s) en vie s'apelle(nt): ");
-				for (int i=0;i<poissons.size();i++)
+				System.out.println("Le(s) poisson(s) en vie s'apelle(nt): ");
+				for (int i1=0;i1<poissons.size();i1++)
 				{
-					if(i == poissons.size()-1)
+					if(i1 == poissons.size()-1)
 					{
-						System.out.print(poissons.get(i).getNom().toString()+poissons.get(i).getGeneration()+"("+poissons.get(i).getType()+").\n");
+						System.out.print(poissons.get(i1).getNom().toString()+poissons.get(i1).getGeneration()+"("+poissons.get(i1).getType()+" "+poissons.get(i1).getRace()+").\n");
 					}
 					else
 					{
-						System.out.print(poissons.get(i).getNom().toString()+poissons.get(i).getGeneration()+"("+poissons.get(i).getType()+"), ");
+						System.out.print(poissons.get(i1).getNom().toString()+poissons.get(i1).getGeneration()+"("+poissons.get(i1).getType()+" "+poissons.get(i1).getRace()+"), ");
 					}
 				}
 				
 				//Prise d'un tour
 				tours +=1;
 			}
-	}
-}
+	}}
+
 
 

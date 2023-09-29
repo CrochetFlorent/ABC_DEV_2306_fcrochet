@@ -3,9 +3,9 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Algue {
 
-	private boolean estVivant;
-	private int pv;
-	private int age;
+	private boolean estVivant; //booleen pour definir si un algue est vivant ou non
+	private int pv;//nombre de points de vie
+	private int age;//age
 	
 	//Constructeur par défaut
 	public Algue()
@@ -47,13 +47,12 @@ public class Algue {
 	public void grandir(){this.pv = this.pv+1;}
 	
 	//L'algue se reproduit
-	public Algue reproduction()
+	public Algue reproduction(Aquarium _milieu)
 	{
-		int random=ThreadLocalRandom.current().nextInt(5);
-		if(random==3) 
+		if(_milieu.getAlgues()<20)//Si le nombre d'algues n'est pas égal à 20
 		{
-			this.pv=this.pv/2;
-			Algue newAlgue = new Algue(true,5,0); 
+			this.pv=this.pv/2;//L'algue qui se reproduit à ses pv divisés par deux
+			Algue newAlgue = new Algue(true,5,0);//On créer un nouvel algue 
 			return newAlgue;
 		}
 		else{return null;}
