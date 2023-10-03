@@ -45,9 +45,9 @@ public class Aquarium{
 		return algues.size();
 	}
 	//Faire passer le temps par un timer
-	public void passerLeTemps(Interface _interface) throws InterruptedException, IOException
+	public void passerLeTemps() throws InterruptedException, IOException 
 	{
-		FileWriter resultats = new FileWriter("C:/Users/fcrochet/Documents/Git/ABCDEV_2306_fcrochet/Javaquarium/aquarium.txt",false);
+		FileWriter resultats = new FileWriter("C:\\Users\\fcrochet\\OneDrive - CENTRE DE READAPTATION\\Documents\\Git\\ABCDEV_2306_fcrochet\\Javaquarium\\Javaquarium.txt",false);
 		String results;
 		int nbAlguesMorts = 0;
 		int nbPoissonsMorts = 0;
@@ -55,11 +55,6 @@ public class Aquarium{
 		int alguesEnPlus = 0;
 		System.out.println("Il y a "+poissons.size()+" poissons et "+algues.size()+" algues dans l'aquarium");
 		
-			while(tours<=30 || poissons.size()>0 )//Tant que l'on à pas fait 50 tours ou qu'il y a encore des 
-													//poissons dans l'aquarium
-			{	
-				TimeUnit.SECONDS.sleep(2);
-				_interface.gestionTableau();
 				Random rd = new Random();
 				nbAlguesMorts =0;
 				nbPoissonsMorts =0;
@@ -205,7 +200,7 @@ public class Aquarium{
 				
 	
 			}
-	}}
+	}
 
 
 

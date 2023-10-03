@@ -2,25 +2,41 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+
 import java.awt.BorderLayout;
+import java.awt.Container;
+
 import javax.swing.JLabel;
 import java.awt.GridLayout;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 import javax.swing.JTable;
 
 
 public class Interface extends JFrame{
 
+	static Aquarium monAquarium; 
+	static String[][] data = new String[30][7];
+	static String strAge;
+	static String strGeneration;
+
+	
 	public static void main(String[] args) {
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					Interface frame = new Interface();
-					frame.setVisible(true);
-					frame.setResizable (false);
+
+					while(monAquarium.getArrayPoisson().size()>0 )
+					{
+						TimeUnit.SECONDS.sleep(2);
+						monAquarium.passerLeTemps();
+					}
+					monAquarium.passerLeTemps();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -28,27 +44,24 @@ public class Interface extends JFrame{
 		});
 
 	}
+	@SuppressWarnings("static-access")
 	public Interface() throws InterruptedException, IOException
-	{
-		setTitle("Aquarium");
-
-		
-		
+	{	
+		JFrame fen = new JFrame("Aquarium");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 690, 487);
-		
-		
-			
-			
-			
-		
-			    };
-	public void gestionTableau()
+		fen.setSize(600, 600);
+		fen.setVisible(true);
+		fen.setResizable (true);
+
+		String title[] = {"Nom","Race","Sexe","Age","Generation","Type","Reproduction"};
+		JTable tableauPoissons = new JTable(data,title);
+		monAquarium = new Aquarium();
+		this.gestionTableau();
+		fen.getContentPane().add(tableauPoissons, BorderLayout.CENTER);
+	}
+	
+	public static void gestionTableau()
 	{
-		Aquarium monAquarium = new Aquarium();
-		Object[][] data = new Object[30][7];
-		String strAge;
-		String strGeneration;
 		for (int i=0;i<monAquarium.getArrayPoisson().size();i++)
 		{
 				data[i][0]=monAquarium.getArrayPoisson().get(i).getNom();
@@ -66,10 +79,8 @@ public class Interface extends JFrame{
 				{
 					data[i][6] ="Pas reproduit";
 				}
-		}
-		String title[] = {"Nom","Race","Sexe","Age","Generation","Type","Reproduction"};
-		JTable tableauPoissons = new JTable(data,title);
-		
-		getContentPane().add(tableauPoissons);
-	}}
+		}	
+
+	}
+}
 
