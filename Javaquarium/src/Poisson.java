@@ -139,6 +139,7 @@ public class Poisson {
 		this.changerDeSexeAge();
 		this.changerDeSexeOpportunite(_autre);
 		Random rd = new Random();
+		boolean sEstReproduit= false;
 		if(this.sexe !=_autre.sexe && this.getPV()>5 && this.age >3 && _autre.age>3 && _milieu.getPoissons()<=30) 
 		{
 			if(this.race.equals("Mérou")&&_autre.race.equals("Mérou"))

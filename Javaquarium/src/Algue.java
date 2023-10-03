@@ -6,6 +6,7 @@ public class Algue {
 	private boolean estVivant; //booleen pour definir si un algue est vivant ou non
 	private int pv;//nombre de points de vie
 	private int age;//age
+	private boolean sEstReproduit;
 	
 	//Constructeur par défaut
 	public Algue()
@@ -32,6 +33,8 @@ public class Algue {
 	
 	public int getAge(){return this.age;}
 	
+	public boolean getReproduction() {return this.sEstReproduit;}
+	
 	//Setters
 	public void setVie(boolean _estVivant){this.estVivant = _estVivant;}
 	
@@ -42,6 +45,7 @@ public class Algue {
 	}
 	
 	public void setAge(int _age){this.age=_age;}
+	public void setRepdroduction(boolean _reproduit) {this.sEstReproduit=_reproduit;}
 	
 	//L'algue grandit, donc prend 1 point de vie
 	public void grandir(){this.pv = this.pv+1;}
@@ -52,7 +56,8 @@ public class Algue {
 		if(_milieu.getAlgues()<20)//Si le nombre d'algues n'est pas égal à 20
 		{
 			this.pv=this.pv/2;//L'algue qui se reproduit à ses pv divisés par deux
-			Algue newAlgue = new Algue(true,5,0);//On créer un nouvel algue 
+			Algue newAlgue = new Algue(true,5,0);//On créer un nouvel algue
+			this.sEstReproduit =true;
 			return newAlgue;
 		}
 		else{return null;}

@@ -71,7 +71,7 @@ public class Robot {
 	 * @param _angle
 	 * @return
 	 */
-	public boolean marcher(int _sens)
+	public boolean marcher(int _sens,Deplacement _move)
 	{
 		double posX = this.pos.getX();
 		double posY = this.pos.getY();
@@ -81,14 +81,20 @@ public class Robot {
 		{
 			if (_sens>0)
 			{
-				this.pos.setX(Math.round((posX + this.vitesse*moveCos)*100.00)/100.00);
-				this.pos.setY(Math.round((posY + this.vitesse*moveSin)*100.00)/100.00);
+				this.pos.setX((int) (Math.round(posX + this.vitesse*moveCos)));
+				this.pos.setY((int) (Math.round(posY + this.vitesse*moveSin)));
+				_move.robot.x =  this.pos.setX( (int) (Math.round(posX + this.vitesse*moveCos)));
+				_move.robot.y =  this.pos.setY( (int) (Math.round(posX + this.vitesse*moveSin)));
+				_move.repaint();
 				return true;
 			}
 			else if (_sens<0)
 			{
-				this.pos.setX(posX- Math.round(this.vitesse*moveCos*100.00)/100.00);
-				this.pos.setY(posX- Math.round(this.vitesse*moveSin*100.00)/100.00);
+				this.pos.setX((int) (posX- Math.round(this.vitesse*moveCos)));
+				this.pos.setY((int) (posX- Math.round(this.vitesse*moveSin)));
+				_move.robot.x = this.pos.setX((int) (Math.round(posX - this.vitesse*moveCos)));
+				_move.robot.y = this.pos.setX((int) (Math.round(posX - this.vitesse*moveSin)));
+				_move.repaint();
 				return true;
 			}
 		}

@@ -2,9 +2,9 @@ package Robot2;
 
 public class Point {
 
-	private double x,y;
+	private int x,y;
 	
-	public Point(double _x,double _y)
+	public Point(int _x,int _y)
 	{
 		x=_x;
 		y=_y;
@@ -19,12 +19,12 @@ public class Point {
 		return this.y;
 	}
 	
-	public void setX(double _x)
+	public int setX(int _x)
 	{
-		this.x = _x;
+		return this.x = _x;
 	}
-	public void setY(double _y)
+	public int setY(int _y)
 	{
-		this.y = _y;
+		return this.y = _y;
 	}
 }

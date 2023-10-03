@@ -44,6 +44,7 @@ public class Interface extends JFrame {
 	public Interface() {
 		setTitle("Contrôle du robot");
 		Robot robot1 = new Robot(new Point(0,0),0,0,false);
+		Deplacement move = new Deplacement();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -133,7 +134,7 @@ public class Interface extends JFrame {
 		JButton btnNewButton_4 = new JButton("Déplacement en avant");
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				robot1.marcher(1);
+				robot1.marcher(1, move);
 				textField.setText(""+robot1.getPosX());
 				textField_1.setText(""+robot1.getPosY());
 			}
@@ -156,10 +157,10 @@ public class Interface extends JFrame {
 		btnNewButton_5.setBounds(165, 11, 89, 23);
 		contentPane.add(btnNewButton_5);
 		
-		JButton btnNewButton_6 = new JButton("Déplacemen en arrière");
+		JButton btnNewButton_6 = new JButton("Déplacement en arrière");
 		btnNewButton_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				robot1.marcher(-1);
+				robot1.marcher(-1,move);
 				textField.setText(""+robot1.getPosX());
 				textField_1.setText(""+robot1.getPosY());
 			}

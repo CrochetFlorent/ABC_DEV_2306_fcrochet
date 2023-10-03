@@ -1,3 +1,5 @@
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Timer;
@@ -8,7 +10,7 @@ public class Aquarium{
 
 	private ArrayList<Poisson> poissons = new ArrayList<Poisson>();//liste contenant les poissons
 	private ArrayList<Algue> algues = new ArrayList<Algue>();//liste contenant les algues
-	private int tours = 1;//nombre de tours
+	int tours = 1;//nombre de tours
 		
 	//Constructeur par défaut
 	public Aquarium()
@@ -25,6 +27,14 @@ public class Aquarium{
 	}
 	
 	//Getter(servent dans la classe poisson pour definir une taile max avant reproduction)
+	public ArrayList<Poisson> getArrayPoisson()
+	{
+		return poissons;
+	}
+	public ArrayList<Algue> getArrayAlgues()
+	{
+		return algues;
+	}
 	public int getPoissons()
 	{
 		return poissons.size();
@@ -35,19 +45,26 @@ public class Aquarium{
 		return algues.size();
 	}
 	//Faire passer le temps par un timer
-	public void passerLeTemps() throws InterruptedException
+	public void passerLeTemps(Interface _interface) throws InterruptedException, IOException
 	{
+		FileWriter resultats = new FileWriter("C:/Users/fcrochet/Documents/Git/ABCDEV_2306_fcrochet/Javaquarium/aquarium.txt",false);
+		String results;
 		int nbAlguesMorts = 0;
 		int nbPoissonsMorts = 0;
+		int poissonsEnPlus = 0;
+		int alguesEnPlus = 0;
 		System.out.println("Il y a "+poissons.size()+" poissons et "+algues.size()+" algues dans l'aquarium");
 		
 			while(tours<=30 || poissons.size()>0 )//Tant que l'on à pas fait 50 tours ou qu'il y a encore des 
 													//poissons dans l'aquarium
 			{	
 				TimeUnit.SECONDS.sleep(2);
+				_interface.gestionTableau();
 				Random rd = new Random();
 				nbAlguesMorts =0;
 				nbPoissonsMorts =0;
+				alguesEnPlus = 0;
+				poissonsEnPlus = 0;
 				ArrayList<Poisson> remove = new ArrayList<Poisson>();//Liste qui va contenir les poissons à enlever
 																	//chaque tour si morts
 				ArrayList<Algue> remove2 = new ArrayList<Algue>();//Liste qui va contenir les algues à enlever
@@ -66,12 +83,18 @@ public class Aquarium{
 					{
 						Algue newAlgue = algues.get(i).reproduction(this);
 						if(newAlgue!=null) {algues.add(newAlgue);}
+						if(algues.get(i).getReproduction()) {alguesEnPlus +=1;}
 					}
 				}
 				//Remise à false de l'attribut sEstRepdroduit des poissons s'étant reproduits au tour précédent
 				for (int i=0;i<poissons.size();i++)//Pour tous les poissons
 				{
 					poissons.get(i).setReproduction(false);
+				}
+				//Remise à false de l'attribut sEstRepdroduit des algues s'étant reproduits au tour précédent
+				for (int i=0;i<algues.size();i++)//Pour tous les algues
+				{
+					algues.get(i).setRepdroduction(false);
 				}
 				//Reproduction des poissons
 				for(int i=0;i<poissons.size();i++)
@@ -81,11 +104,12 @@ public class Aquarium{
 					//Tant que le poissons choisit est lui même et qu'il y a des poissons dans l'aquarium
 					//on rechoisit un autre poisson
 					while(rdRepro==i && poissons.size()!=0 && poissons.size()!=1) {rdRepro = rd.nextInt(poissons.size());}
-					if(poissons.size()<20 || !poissons.get(i).getReproduction()) //Si on à moin de 20 poissons
+					if(poissons.size()<20 && !poissons.get(i).getReproduction())  //Si on à moin de 20 poissons
 					// et qu'il ne se sont pas encore reproduit ce tour-ci
 					{
 					Poisson newPoisson =poissons.get(i).reproduction(poissons.get(rdRepro),this);
 					if(newPoisson != null) {poissons.add(newPoisson);}
+					if(poissons.get(i).getReproduction()) {poissonsEnPlus +=1;}
 					//Ils se reproduisent
 					}
 				}
@@ -146,7 +170,7 @@ public class Aquarium{
 				
 				
 				//Affichage du récapitulatif d'un tour
-				System.out.println("\nTour: "+tours+",il y a: "+poissons.size()+" poissons en vie et "+nbPoissonsMorts+" poissons morts et "+algues.size()+" algues en vie et "+nbAlguesMorts+" algues morts.");
+				System.out.println("\nTour: "+tours+",il y a: "+poissons.size()+" poissons en vie et "+nbPoissonsMorts+" poissons morts et "+algues.size()+" algues en vie et "+nbAlguesMorts+" algues morts."+alguesEnPlus+" algues en plus, et "+poissonsEnPlus+" poissons en plus.");
 				System.out.println("Le(s) poisson(s) en vie s'apelle(nt): ");
 				for (int i1=0;i1<poissons.size();i1++)
 				{
@@ -160,8 +184,26 @@ public class Aquarium{
 					}
 				}
 				
+				//Ecriture dans un fichier
+				results = "Tour: "+this.tours+"\n";
+				String fishes ="";
+				for (int i1=0;i1<poissons.size();i1++)
+				{
+					if(i1==poissons.size()-1)
+					{
+					fishes = fishes +"Nom: "+poissons.get(i1).getNom()+poissons.get(i1).getGeneration()+"\t\t\t Pv: "+poissons.get(i1).getPV()+"\n\n\n";
+					}
+					else
+					{
+						fishes = fishes +"Nom: "+poissons.get(i1).getNom()+poissons.get(i1).getGeneration()+"\t\t\t Pv: "+poissons.get(i1).getPV()+"\n";
+					}
+				}
+				resultats.write(results+fishes);
+				
 				//Prise d'un tour
 				tours +=1;
+				
+	
 			}
 	}}
 
