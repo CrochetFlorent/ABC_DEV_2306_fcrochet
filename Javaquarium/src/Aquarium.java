@@ -47,7 +47,8 @@ public class Aquarium{
 	//Faire passer le temps par un timer
 	public void passerLeTemps() throws InterruptedException, IOException 
 	{
-		FileWriter resultats = new FileWriter("C:\\Users\\fcrochet\\OneDrive - CENTRE DE READAPTATION\\Documents\\Git\\ABCDEV_2306_fcrochet\\Javaquarium\\Javaquarium.txt",false);
+		@SuppressWarnings("resource")
+		FileWriter resultats = new FileWriter("C:/Users/fcrochet/OneDrive - CENTRE DE READAPTATION/Documents/Git/ABCDEV_2306_fcrochet/Javaquarium/Javaquarium.txt",false);
 		String results;
 		int nbAlguesMorts = 0;
 		int nbPoissonsMorts = 0;

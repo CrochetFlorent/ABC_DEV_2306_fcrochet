@@ -35,8 +35,8 @@ public class Interface extends JFrame{
 					{
 						TimeUnit.SECONDS.sleep(2);
 						monAquarium.passerLeTemps();
+						gestionTableau();
 					}
-					monAquarium.passerLeTemps();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -56,7 +56,6 @@ public class Interface extends JFrame{
 		String title[] = {"Nom","Race","Sexe","Age","Generation","Type","Reproduction"};
 		JTable tableauPoissons = new JTable(data,title);
 		monAquarium = new Aquarium();
-		this.gestionTableau();
 		fen.getContentPane().add(tableauPoissons, BorderLayout.CENTER);
 	}
 	

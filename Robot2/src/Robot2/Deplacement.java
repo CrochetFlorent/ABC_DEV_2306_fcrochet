@@ -1,15 +1,17 @@
 package Robot2;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Image;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.*;
 
 import javax.swing.JFrame;
 
 
-public class Deplacement extends JFrame{
+public class Deplacement extends JFrame implements KeyListener{
 
+
+	private static final long serialVersionUID = 1L;
 	Image image;
 	Graphics graphics;
 	Box robot;
@@ -21,6 +23,7 @@ public class Deplacement extends JFrame{
 		this.setSize(500, 500);
 		this.setVisible(true);
 		this.setBackground(Color.cyan);
+		this.addKeyListener(this);
 	}
 	
 	public void paint(Graphics g)
@@ -32,5 +35,65 @@ public class Deplacement extends JFrame{
 		robot.draw(g);
 		
 		}
-	}	
+	public void KeyPressed(KeyEvent e)
+	{
+		if (e.getKeyCode() == KeyEvent.VK_UP)
+		{
+			if (robot.getY() -10 >= 30)
+			{
+				robot.setY(this.getY()  - 10);
+			}
+		}
+		if (e.getKeyCode() == KeyEvent.VK_DOWN)
+		{
+			if (robot.getY() + 10 <= 460)
+			{
+				robot.setY(this.getY()  + 10);
+			}
+		}
+		if (e.getKeyCode() == KeyEvent.VK_LEFT)
+		{
+			if (robot.getX() -10 >= 0)
+			{
+				robot.setX(this.getX()  - 10);
+			}
+		}
+		if (e.getKeyCode() == KeyEvent.VK_RIGHT)
+		{
+			if (robot.getX() + 10 <= 460)
+			{
+				robot.setX(this.getX()  + 10);
+			}
+		}
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		switch(e.getKeyChar())
+		{
+		case 'z' : robot.setLocation(robot.x, robot.y-5);repaint();
+			break;
+		case 'q' : robot.setLocation(robot.x-5, robot.y);repaint();
+			break;
+		case 'd' : robot.setLocation(robot.x+5, robot.y);repaint();
+			break;
+		case 's' : robot.setLocation(robot.x, robot.y+5);repaint();
+			break;
+		}
+		
+	}
+
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+}
 

@@ -1,6 +1,7 @@
 package Robot2;
 
-import java.awt.EventQueue;
+import java.awt.Graphics;
+import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -9,11 +10,13 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import java.awt.Color;
 
-public class Interface extends JFrame {
+public class Interface extends JFrame implements KeyListener{
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -21,39 +24,45 @@ public class Interface extends JFrame {
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
+	static Robot robot;
+	private Image image;
+	private Graphics graphics;
+	private JFrame frame;
+	private JFrame move;
+	
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
+
 					Interface frame = new Interface();
-					frame.setVisible(true);
-					frame.setResizable (false);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
 	}
 	/**
-	 * Create the frame.
+	 * Create the frames.
 	 */
 	public Interface() {
-		setTitle("Contrôle du robot");
-		Robot robot1 = new Robot(new Point(0,0),0,0,false);
-		Deplacement move = new Deplacement();
+		move = new JFrame();
+		move.setBounds(100,100,450,300);
+		move.setVisible(true);
+		move.setBackground(Color.cyan);
+		move.setTitle("Déplacements du robot");
+		move.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		robot = new Robot(new Point(200,200),50,50,false,new Box(200,200,0,0,Color.green,0));
 		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();
+		frame = new JFrame();
+		frame.setTitle("Contrôle du robot");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setBounds(100, 100, 450, 300);
+		frame.setVisible(true);
+		frame.setResizable (false);
+		
+		JPanel contentPane = new JPanel();
+		frame.setContentPane(contentPane);
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setForeground(Color.BLACK);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
-		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		textField = new JTextField("x");
@@ -88,10 +97,10 @@ public class Interface extends JFrame {
 		JButton btnNewButton = new JButton("+15 Degrés");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-					if(robot1.getAngle()+15 <= 360)
+					if(robot.getAngle()+15 <= 360)
 					{
-						robot1.setAngle(robot1.getAngle() + 15);
-						textField_3.setText(""+robot1.getAngle());
+						robot.setAngle(robot.getAngle() + 15);
+						textField_3.setText(""+robot.getAngle());
 					}
 			}
 		});
@@ -101,10 +110,10 @@ public class Interface extends JFrame {
 		JButton btnNewButton_1 = new JButton("- 15 degrés");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-					if(robot1.getAngle()-15 >= -360)
+					if(robot.getAngle()-15 >= -360)
 					{
-						robot1.setAngle(robot1.getAngle() - 15);
-						textField_3.setText(""+robot1.getAngle());
+						robot.setAngle(robot.getAngle() - 15);
+						textField_3.setText(""+robot.getAngle());
 					}
 			}
 		});
@@ -114,8 +123,8 @@ public class Interface extends JFrame {
 		JButton btnNewButton_2 = new JButton("Vitesse +1");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				robot1.setVitesse(robot1.getVitesse()+1);
-				textField_2.setText(""+robot1.getVitesse());
+				robot.setVitesse(robot.getVitesse()+1);
+				textField_2.setText(""+robot.getVitesse());
 			}
 		});
 		btnNewButton_2.setBounds(62, 170, 104, 23);
@@ -124,8 +133,8 @@ public class Interface extends JFrame {
 		JButton btnNewButton_3 = new JButton("Vitesse -1");
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				robot1.setVitesse(robot1.getVitesse()-1);
-				textField_2.setText(""+robot1.getVitesse());
+				robot.setVitesse(robot.getVitesse()-1);
+				textField_2.setText(""+robot.getVitesse());
 			}
 		});
 		btnNewButton_3.setBounds(255, 170, 104, 23);
@@ -134,39 +143,52 @@ public class Interface extends JFrame {
 		JButton btnNewButton_4 = new JButton("Déplacement en avant");
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				robot1.marcher(1, move);
-				textField.setText(""+robot1.getPosX());
-				textField_1.setText(""+robot1.getPosY());
+				robot.marcher(1);
+//				textField.setText(""+robot1.getPosX());
+//				textField.setText(""+robot1.getPosY());
+				textField.setText(""+robot.getPosX());
+				textField_1.setText(""+robot.getPosY());
 			}
 		});
 		btnNewButton_4.setBounds(23, 208, 176, 42);
 		contentPane.add(btnNewButton_4);
 		
+		JButton btnNewButton_6 = new JButton("Déplacement en arrière");
+		btnNewButton_6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				robot.marcher(-1);
+//				textField.setText(""+robot1.getPosX());
+//				textField_1.setText(""+robot1.getPosY());
+				textField.setText(""+robot.getPosX());
+				textField_1.setText(""+robot.getPosY());
+			}
+		});
+		btnNewButton_6.setBounds(224, 208, 176, 42);
+		contentPane.add(btnNewButton_6);
+		
+		JButton btnNewButton_7 = new JButton("Replacer");
+		btnNewButton_7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				robot.marcher(0);
+			}
+		});
+		btnNewButton_7.setBounds(318, 11, 89, 23);
+		contentPane.add(btnNewButton_7);
+		
 		JButton btnNewButton_5 = new JButton("On / Off");
 		btnNewButton_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(!robot1.getOn()){
-					robot1.setOn();
+				if(!robot.getOn()){
+					robot.setOn();
 					lblNewLabel.setText("On");
 				}else {
-					robot1.setOff();
+					robot.setOff();
 					lblNewLabel.setText("Off");
 				}			
 			}
 		});
 		btnNewButton_5.setBounds(165, 11, 89, 23);
 		contentPane.add(btnNewButton_5);
-		
-		JButton btnNewButton_6 = new JButton("Déplacement en arrière");
-		btnNewButton_6.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				robot1.marcher(-1,move);
-				textField.setText(""+robot1.getPosX());
-				textField_1.setText(""+robot1.getPosY());
-			}
-		});
-		btnNewButton_6.setBounds(224, 208, 176, 42);
-		contentPane.add(btnNewButton_6);
 		
 		JLabel lblNewLabel_1 = new JLabel("Abcisse");
 		lblNewLabel_1.setForeground(Color.BLUE);
@@ -187,5 +209,45 @@ public class Interface extends JFrame {
 		lblNewLabel_4.setForeground(Color.BLUE);
 		lblNewLabel_4.setBounds(262, 79, 39, 14);
 		contentPane.add(lblNewLabel_4);
+		
+
+	}
+
+//	public void paint()
+//	{
+//		Graphics g = move.getGraphics();
+//		image = createImage(this.getWidth(),this.getHeight());
+//		graphics = image.getGraphics();
+//		g.drawImage(image,0,0,this);
+//
+//		robot.draw(g);
+//	}
+//	public void paintComponent(Graphics g) {
+//	    super.paintComponents(g);
+//	    g.drawRect(200, 200, 50, 50);
+//	}
+	@Override
+	public void keyTyped(KeyEvent e) {
+		switch(e.getKeyChar())
+		{
+		case 'z' : robot.setPos(robot.getPosX(),robot.getPosY()-5);repaint();
+			break;
+		case 'q' : robot.setPos(robot.getPosX()-5, robot.getPosY());repaint();
+			break;
+		case 'd' : robot.setPos(robot.getPosX()+5, robot.getPosY());repaint();
+			break;
+		case 's' : robot.setPos(robot.getPosX(), robot.getPosY()+5);repaint();
+			break;
+		}
+	}
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }
