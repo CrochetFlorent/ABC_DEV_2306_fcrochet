@@ -13,9 +13,9 @@ public class Poisson {
 	private String alimentation;
 	private int generation;
 	//deux tableau de nom, qui seront utilisés pour y choisir des noms à la création de nos poissons
-	private String[] nomsMasculins = {"Florent","Anthony","Tristan","Aurélien","Sebastien",
+	private final String[] nomsMasculins = {"Florent","Anthony","Tristan","Aurélien","Sebastien",
 			 "Steve","Habib","Hassan","Maxime","Quentin"};
-	private String[] nomsFeminins ={"Juliette","Caroline","Mauricette","Corinne","Alba","Adeline","Stephanie",
+	private final String[] nomsFeminins ={"Juliette","Caroline","Mauricette","Corinne","Alba","Adeline","Stephanie",
 			 "Florence","Joelle","Marie"};
 	
 	//Constructeur par défaut, création d'un poisson au caractèéristiques aléatoires
@@ -140,50 +140,12 @@ public class Poisson {
 		this.changerDeSexeOpportunite(_autre);
 		Random rd = new Random();
 		boolean sEstReproduit= false;
-		if(this.sexe !=_autre.sexe && this.getPV()>5 && this.age >3 && _autre.age>3 && _milieu.getPoissons()<=30) 
+		if(this.sexe !=_autre.sexe && this.getPV()>5 && this.age >3 && _autre.age>3 && _milieu.getPoissons()<=30&&this.race.equals(_autre.getRace())) 
 		{
-			if(this.race.equals("Mérou")&&_autre.race.equals("Mérou"))
-			{
 				int rdSexe= rd.nextInt(2);
 				int rdNom = rd.nextInt(nomsMasculins.length);
-				if(rdSexe==0) {Poisson newPoisson = new Poisson(nomsMasculins[rdNom],"Male","Mérou",0,"Carnivore",this.generation+1);this.sEstReproduit = true;return newPoisson;}
-				else {Poisson newPoisson = new Poisson(nomsFeminins[rdNom],"Femelle","Mérou",0,"Carnivore",this.generation+1);this.sEstReproduit = true;return newPoisson;}
-			}
-			else if(this.race.equals("Thon")&&_autre.race.equals("Thon"))
-			{
-				int rdSexe= rd.nextInt(2);
-				int rdNom = rd.nextInt(nomsMasculins.length);
-				if(rdSexe==0) {Poisson newPoisson = new Poisson(nomsMasculins[rdNom],"Male","Thon",0,"Carnivore",this.generation+1);this.sEstReproduit = true;return newPoisson;}
-				else {Poisson newPoisson = new Poisson(nomsFeminins[rdNom],"Femelle","Thon",0,"Carnivore",this.generation+1);this.sEstReproduit = true;return newPoisson;}
-			}
-			else if(this.race.equals("PoissonClown")&&_autre.race.equals("PoissonClown"))
-			{
-				int rdSexe= rd.nextInt(2);
-				int rdNom = rd.nextInt(nomsMasculins.length);
-				if(rdSexe==0) {Poisson newPoisson = new Poisson(nomsMasculins[rdNom],"Male","PoissonClown",0,"Carnivore",this.generation+1);this.sEstReproduit = true;return newPoisson;}
-				else {Poisson newPoisson = new Poisson(nomsFeminins[rdNom],"Femelle","PoissonClown",0,"Carnivore",this.generation+1);this.sEstReproduit = true;return newPoisson;}
-			}
-			else if(this.race.equals("Sole")&&_autre.race.equals("Sole"))
-			{
-				int rdSexe= rd.nextInt(2);
-				int rdNom = rd.nextInt(nomsMasculins.length);
-				if(rdSexe==0) {Poisson newPoisson = new Poisson(nomsMasculins[rdNom],"Male","Sole",0,"Herbivore",this.generation+1);this.sEstReproduit = true;return newPoisson;}
-				else {Poisson newPoisson = new Poisson(nomsFeminins[rdNom],"Femelle","Sole",0,"Herbivore",this.generation+1);this.sEstReproduit = true;return newPoisson;}
-			}
-			else if(this.race.equals("Bar")&&_autre.race.equals("Bar"))
-			{
-				int rdSexe= rd.nextInt(2);
-				int rdNom = rd.nextInt(nomsMasculins.length);
-				if(rdSexe==0) {Poisson newPoisson = new Poisson(nomsMasculins[rdNom],"Male","Bar",0,"Herbivore",this.generation+1);this.sEstReproduit = true;return newPoisson;}
-				else {Poisson newPoisson = new Poisson(nomsFeminins[rdNom],"Femelle","Bar",0,"Herbivore",this.generation+1);this.sEstReproduit = true;return newPoisson;}
-			}
-			else if(this.race.equals("Carpe")&&_autre.race.equals("Carpe")) 
-			{
-				int rdSexe= rd.nextInt(2);
-				int rdNom = rd.nextInt(nomsMasculins.length);
-				if(rdSexe==0) {Poisson newPoisson = new Poisson(nomsMasculins[rdNom],"Male","Carpe",0,"Herbivore",this.generation+1);_autre.sEstReproduit = true;return newPoisson;}
-				else {Poisson newPoisson = new Poisson(nomsFeminins[rdNom],"Femelle","Carpe",0,"Herbivore",this.generation+1);_autre.sEstReproduit = true;return newPoisson;}
-			}
+				if(rdSexe==0) {Poisson newPoisson = new Poisson(nomsMasculins[rdNom],"Male",this.race,0,this.getType(),this.generation+1);this.sEstReproduit = true;return newPoisson;}
+				else {Poisson newPoisson = new Poisson(nomsFeminins[rdNom],"Femelle",this.race,0,this.getType(),this.generation+1);this.sEstReproduit = true;return newPoisson;}
 		}
 		return null;
 	}	

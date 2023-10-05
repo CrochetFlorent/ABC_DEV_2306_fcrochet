@@ -2,16 +2,15 @@ package RecetteDeCuisine;
 
 import java.util.ArrayList;
 
-public class Plat {
+public class Plat{
 
 	private String nomPlat;
 	private ArrayList<Ingredient> listeIngredients = new ArrayList<Ingredient>();
 	
-	@SuppressWarnings("unchecked")
-	public Plat(String _nomPlat,ArrayList<Ingredient> _ingredients)
+	public Plat(String _nomPlat)
 	{
 		this.nomPlat = _nomPlat;
-		this.listeIngredients = _ingredients;
+		this.listeIngredients = new ArrayList<Ingredient>();
 	}
 	
 	//Setters
@@ -19,7 +18,6 @@ public class Plat {
 	{
 		return nomPlat;
 	}
-	@SuppressWarnings("rawtypes")
 	public ArrayList getIngredients()
 	{
 		return this.listeIngredients;
@@ -30,8 +28,7 @@ public class Plat {
 	{
 		this.nomPlat = _nomPlat;
 	}
-	@SuppressWarnings("unchecked")
-	public void setIngredients(@SuppressWarnings("rawtypes") ArrayList _ingredients)
+	public void setIngredients(ArrayList _ingredients)
 	{
 		this.listeIngredients =_ingredients;
 	}
@@ -50,9 +47,11 @@ public class Plat {
 		{
 			for (int i=0;i<_plat.getIngredients().size();i++)
 			{
-				for(int j=0;i<_plat.getIngredients().size();j++)
+				for(int j=0;j<_plat.getIngredients().size();j++)
 				{
-					if(this.comparerDeuxPlats(_plat))
+					Ingredient temp1 = (Ingredient) this.getIngredients().get(j);
+					Ingredient temp2 = (Ingredient) _plat.getIngredients().get(j);
+					if(temp1==temp2)
 					{
 						test+=1;
 					}

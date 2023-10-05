@@ -5,8 +5,6 @@ public class Ingredient {
 	private String nomAliment,etat;
 	private int quantite;
 	private String unite;
-	private boolean estCuit;
-	private boolean estDecoupe;
 	private int temperatureDeCuisson;
 	
 	public Ingredient(String _aliment,String _etat,int _quantite,String _unite,int _tempCuisson)
@@ -16,6 +14,7 @@ public class Ingredient {
 		this.quantite = _quantite;
 		this.unite = _unite;
 		this.temperatureDeCuisson =_tempCuisson;
+		
 	}
 	
 	//Getters
@@ -26,6 +25,10 @@ public class Ingredient {
 	public String getEtat()
 	{
 		return this.etat;
+	}
+	public int getTempereatureCuisson()
+	{
+		return this.temperatureDeCuisson;
 	}
 	//Setters
 	public void setEtat(String _etat)
@@ -44,21 +47,5 @@ public class Ingredient {
 			return false;
 		}
 	}
-	//Cuir un aliment
-	public void cuire(Ingredient _ingredient)
-	{
-		if(!_ingredient.estCuit)
-		{
-			_ingredient.setEtat("Cuit"); 
-		}
-	}
 	
-	//Decouper un aliment
-	public void decouper(Ingredient _ingredient)
-	{
-		if(!_ingredient.estDecoupe)
-		{
-			_ingredient.setEtat("Decoupé");
-		}
-	}
 }
