@@ -46,7 +46,7 @@ VALUES
 /* Ajout Clé étrangère entre MGR de emp et EMPNO de emp */
 ALTER TABLE emp ADD CONSTRAINT fk_mgr_empno FOREIGN KEY (MGR) REFERENCES emp (EMPNO);
 
-/* AJout de clé étrangère DEPTNO dans empployes */
+/* AJout de clé étrangère DEPTNO dans emp correspondant au numéro d'employé de la table dept */
 ALTER TABLE emp ADD CONSTRAINT fk_deptno_empno FOREIGN KEY (DEPTNO) REFERENCES dept(DEPTNO);
 
 /* Mise à jour du nom à ALLEN pour son numéro d'employe */
@@ -54,12 +54,12 @@ UPDATE emp SET ENAME='ALLEN' WHERE EMPNO = 7499;
 
 /* Première partie */
 
-/* 1/Donner nom,job,numéro et salaire de tous les emplyes du département 10 */
+/* 1/Donner nom,job,numéro et salaire de tous les employés du département 10 */
 SELECT ENAME,JOB,EMPNO,SAL
 FROM emp
 WHERE DEPTNO =10;
 
-/* 2/Donner nom,job et salaire des employés de TYPE manager dont le salaire est supérieur à 2800 */
+/* 2/Donner nom,job et salaire des employés de type manager dont le salaire est supérieur à 2800 */
 SELECT ENAME,JOB,EMPNO,SAL
 FROM emp
 WHERE JOB='MANAGER' AND SAL>2800;
@@ -74,7 +74,7 @@ SELECT *
 FROM emp
 WHERE SAL BETWEEN 1200 AND 1400;
 
-/* 5/Liste des emplyes des départements 10 et 30 classés dans lordre alphabetique */
+/* 5/Liste des emplyes des départements 10 et 30 classés dans l'ordre alphabetique */
 SELECT *
 FROM emp
 WHERE DEPTNO IN(10,30)
@@ -122,12 +122,12 @@ SELECT DEPTNO, MAX(SAL)
 FROM emp
 GROUP BY DEPTNO;
 
-/* 14/Donner départemebt par département masse salariale, nombre demployés, salaire moyen par 'type' demploi */
+/* 14/Donner départemebt par département masse salariale, nombre demployés, salaire moyen par type d'emploi */
 SELECT DEPTNO, SUM(SAL), COUNT(EMPNO), AVG(SAL)
 FROM emp
 GROUP BY DEPTNO;
 
-/* 15/Même question mais 'on' se limite aux sous-ensembles dau moins 2 employés */
+/* 15/Même question mais 'on' se limite aux sous-ensembles d'au moins 2 employés */
 SELECT DEPTNO, SUM(SAL), COUNT(EMPNO), AVG(SAL)
 FROM emp
 GROUP BY DEPTNO
@@ -156,7 +156,7 @@ FROM emp);
 
 CREATE TABLE projet (
 	PROJNO INT unsigned NOT NULL,
-	PROJNOM VARCHAR(5) NOT employesNULL,
+	PROJNOM VARCHAR(5) NOT NULL,
 	BUDG INT UNSIGNED NOT NULL);
 
 INSERT INTO projet(PROJNO,PROJNOM,BUDG)
@@ -175,24 +175,32 @@ ALTER TABLE projet ADD CONSTRAINT pk_projet PRIMARY KEY CLUSTERED (projno);
 ALTER TABLE emp ADD CONSTRAINT fk_emp_proj FOREIGN KEY (PROJNO) REFERENCES projet(PROJNO);
 
 /* 20/Créer une vue comportant tous les emplyés avec nom,job,nom de département et nom de projet */
-SELECT ENAME,JOB,DNAME,PROJNOM
+CREATE VIEW Vue_Synthèse1(NomSal,Emploi,Service,Proj) AS SELECT ENAME,JOB,DNAME,PROJNOM
 FROM emp
 INNER JOIN dept ON dept.DEPTNO = emp.DEPTNO
 INNER JOIN projet ON emp.PROJNO = projet.PROJNO;
 
 /* 21/A l'aide de la vue créée précédement, lister tous les employés avec nom, job, nom de département et nom de projet */
-SELECT ENAME,JOB,DNAME,PROJNOM
+CREATE VIEW Vue_synthèse2(NomSal,Emploi,Service,Proj) AS SELECT ENAME,JOB,DNAME,PROJNOM
 FROM emp
 INNER JOIN dept ON dept.DEPTNO = emp.DEPTNO
 INNER JOIN projet ON emp.PROJNO = projet.PROJNO
-ORDER BY DNAME, PROJNOM;
 
+SELECT NomSal,Emploi,Service,Proj FROM Vue_Synthèse1
+ORDER BY service,proj;
 /* 22/Donner le nom du projet associé à chaque manager */
-SELECT PROJNOM,JOB
-FROM emp
-INNER JOIN dept ON dept.DEPTNO = emp.DEPTNO
-INNER JOIN projet ON emp.PROJNO =projet.PROJNO
-WHERE job='MANAGER';
+-- SELECT PROJNOM,JOB
+-- FROM emp
+-- INNER JOIN dept ON dept.DEPTNO = emp.DEPTNO
+-- INNER JOIN projet ON emp.PROJNO =projet.PROJNO
+-- WHERE job='MANAGER'
+/* Mauvaise approche de la question */
+
+SELECT ename, projnom FROM emp
+INNER JOIN projet ON emp.projno = projet.projno 
+WHERE empno IN 
+(SELECT DISTINCT mgr FROM emp WHERE mgr IS NOT NULL);
+
 
 /* Deuxième partie */
 
@@ -204,12 +212,12 @@ WHERE deptno IN(20,30) AND job='MANAGER';
 /* 2/Afficher la liste des employés qui ne sont pas manager et quiont été embauchés en 81 */
 SELECT *
 FROM emp
-WHERE job <> 'MANAGER' AND DATE_FORMAT(hiredate,'%y')= 81;
+WHERE job <> 'MANAGER' AND DATE_FORMAT(hiredate,'%Y')= 1981;
 
 /* 3/Afficher la liste des employés ayant une commission */
 SELECT *
 FROM emp
-WHERE comm <> 0;
+WHERE comm <> 0 AND comm IS NOT NULL;
 
 /* 4/Afficher la liste des noms, numéros de département, jobs et date d'embauche triés par Numéro de Département et Job les derniers embauchés d'abord */
 SELECT ENAME,DEPTNO,JOB,HIREDATE
@@ -223,18 +231,17 @@ INNER JOIN dept ON dept.deptno = emp.deptno
 WHERE LOC ='DALLAS';
 
 /* 6/Afficher les noms et dates d'embauche des employés embauchés avant leur manager, avec le nom et date d'embauche du manager */
-SELECT  t1.EName AS 'Nom employés',t1.hiredate, t1.DeptNo,t2.hiredate AS 'Embauche du manager',t2.ENAME AS 'Manager'
+SELECT t1.EName, t1.hiredate AS 'Embauche employés', t1.DeptNo, t2.EName AS Manager, t2.hiredate AS 'Embauche manager'
 FROM emp t1, emp t2
-WHERE t1.hiredate < t2.hiredate AND t2.mgr = t2.EMPNO
-ORDER BY t1.deptno;
+WHERE t1.hiredate < t2.HireDate AND t1.mgr = t2.empno;
 
-/* 7/Lister les numéros des employés n'ayant pas de subordonné par manager */
+/* 7/Lister les numéros des employés n'ayant pas de subordonné triés par manager */
 SELECT ename,mgr
 FROM emp
-WHERE EMPNO != ALL (
-SELECT MGR FROM emp WHERE mgr IS NOT NULL) ORDER BY mgr;
+WHERE EMPNO NOT IN(
+SELECT  distinct MGR FROM emp WHERE mgr IS NOT NULL) ORDER BY mgr;
 
-/* 8/ Afficher les nombs et dates d'embauche des employés embauchés avant BLAKE */
+/* 8/ Afficher les noms et dates d'embauche des employés embauchés avant BLAKE */
 SELECT emp.ENAME,emp.HIREDATE
 FROM emp
 WHERE emp.hiredate <
@@ -247,13 +254,13 @@ WHERE emp.ename != 'FORD' AND emp.hiredate  =
 (SELECT emp.hiredate FROM emp WHERE emp.ename = 'FORD');
 
 /* 10/ Lister les employés ayant le même manager que CLARK */
-SELECT *
+SELECT emp.*,(SELECT ename FROM emp WHERE emp.empno= (SELECT emp.MGR FROM emp WHERE emp.ename ='CLARK') ) AS 'nom du manager'
 FROM emp
 WHERE emp.ename != 'CLARK' AND emp.mgr =
 (SELECT emp.MGR FROM emp WHERE emp.ename ='CLARK');
 
 /* 11/ Lister les employés qyant le même job et même manager que turner */
-SELECT *
+SELECT *,(SELECT ename FROM emp WHErE emp.empno=(SELECT mgr FROM emp WHERE emp.ename ='TURNER')) AS 'NOm du manager'
 FROM emp
 WHERE emp.ENAME != 'TURNER' AND emp.job = 
 (SELECT emp.JOB FROM emp WHERE emp.ename ='TURNER')
@@ -274,18 +281,18 @@ SELECT ENAME, DAY(hiredate)
 FROM emp;
 
 /* 14/Donner, pour chaque emplyé, le nombre de mois qui s'est écoulé entre leur date d'embauche et la date actuelle.*/
-SELECT ENAME AS nom_employe,TIMESTAMPDIFF(MONTH,HIREDATE,NOW()) AS Mois_depuis_embauche
+SELECT ENAME AS nom_employe,TIMESTAMPDIFF(MONTH,HIREDATE,NOW()) AS 'Mois passés depuis embauche'
 FROM emp;
 
 /* 15/Afficher la liste des employés ayant un M et un A dans leur nom */
 SELECT ENAME 
 FROM emp
-WHERE ENAME LIKE '%A%%M%';
+WHERE ENAME LIKE '%A%M%' OR ENAME LIKE '%M%A%';
 
-/* 16/Afficher la liste des emplyés ayant deux 'A' dans leur nom */
+/* 16/Afficher la liste des employés ayant deux 'A' dans leur nom */
 SELECT ENAME 
 FROM emp
-WHERE ENAME LIKE '%A%%A%';
+WHERE ENAME LIKE '%A%A%';
 
 /* 17/Afficher les employés embauchés avant tous les employés du département 10 */
 SELECT ENAME
@@ -299,17 +306,28 @@ WHERE deptno =10);
 SELECT JOB,AVG(SAL) 
 FROM emp
 GROUP BY JOB
-HAVING AVG(sal) <
-(SELECT AVG(SAL)
-FROM emp)
-LIMIT 1;
+HAVING AVG(sal) <= ALL
+(SELECT AVG(SAL) 
+FROM emp
+GROUP BY job );
 
 /* 19/ Sélectionner le département ayant le plus d'employés */
+SELECT COUNT(*),emp.deptno,DNAME
+FROM emp
+INNER JOIN dept ON emp.deptno = dept.deptno
+GROUP BY DEPTNO
+HAVING COUNT(*) >= ALL
+(SELECT COUNT(*) 
+FROM emp
+GROUP BY deptno);
+
+/* Mauvaise approche de la question */
 SELECT DEPTNO
 FROM emp
 GROUP BY DEPTNO
 ORDER BY COUNT(emp.EMPNO) DESC LIMIT 1;
 
+/* Pour sortir le nom de département avec la mauvaise approche de la question*/
 SELECT DNAME
 FROM dept
 INNER JOIN emp ON dept.DEPTNO = emp.DEPTNO
