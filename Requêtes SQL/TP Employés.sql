@@ -175,19 +175,15 @@ ALTER TABLE projet ADD CONSTRAINT pk_projet PRIMARY KEY CLUSTERED (projno);
 ALTER TABLE emp ADD CONSTRAINT fk_emp_proj FOREIGN KEY (PROJNO) REFERENCES projet(PROJNO);
 
 /* 20/Créer une vue comportant tous les emplyés avec nom,job,nom de département et nom de projet */
-CREATE VIEW Vue_Synthèse1(NomSal,Emploi,Service,Proj) AS SELECT ENAME,JOB,DNAME,PROJNOM
+CREATE VIEW Vue_Synthese(NomSal,Emploi,Service,Proj) AS SELECT ENAME,JOB,DNAME,PROJNOM
 FROM emp
 INNER JOIN dept ON dept.DEPTNO = emp.DEPTNO
 INNER JOIN projet ON emp.PROJNO = projet.PROJNO;
 
 /* 21/A l'aide de la vue créée précédement, lister tous les employés avec nom, job, nom de département et nom de projet */
-CREATE VIEW Vue_synthèse2(NomSal,Emploi,Service,Proj) AS SELECT ENAME,JOB,DNAME,PROJNOM
-FROM emp
-INNER JOIN dept ON dept.DEPTNO = emp.DEPTNO
-INNER JOIN projet ON emp.PROJNO = projet.PROJNO
-
-SELECT NomSal,Emploi,Service,Proj FROM Vue_Synthèse1
+SELECT NomSal,Emploi,Service,Proj FROM Vue_Synthese
 ORDER BY service,proj;
+
 /* 22/Donner le nom du projet associé à chaque manager */
 -- SELECT PROJNOM,JOB
 -- FROM emp
@@ -260,7 +256,7 @@ WHERE emp.ename != 'CLARK' AND emp.mgr =
 (SELECT emp.MGR FROM emp WHERE emp.ename ='CLARK');
 
 /* 11/ Lister les employés qyant le même job et même manager que turner */
-SELECT *,(SELECT ename FROM emp WHErE emp.empno=(SELECT mgr FROM emp WHERE emp.ename ='TURNER')) AS 'NOm du manager'
+SELECT *,(SELECT ename FROM emp WHErE emp.empno=(SELECT mgr FROM emp WHERE emp.ename ='TURNER')) AS 'Nom du manager'
 FROM emp
 WHERE emp.ENAME != 'TURNER' AND emp.job = 
 (SELECT emp.JOB FROM emp WHERE emp.ename ='TURNER')
