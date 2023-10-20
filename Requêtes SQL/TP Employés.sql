@@ -328,7 +328,7 @@ SELECT DNAME
 FROM dept
 INNER JOIN emp ON dept.DEPTNO = emp.DEPTNO
 GROUP BY DNAME
-ORDER BY COUNT(emp.EMPNO) DESC LIMIT 1;
+ORDER BY COUNT(emp.EMPNO) DESC LIMIT 1;deptempprojet
 
 /* 20/Donner la répartition en pourcentage du nombre d'employés par département selon le modèle ci-dessous */
 SELECT DEPTNO AS 'Département',ROUND(COUNT(DEPTNO)/(SELECT COUNT(DEPTNO) FROM emp)*100,2) AS 'Répartition en %'

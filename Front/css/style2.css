@@ -1,0 +1,81 @@
+.box{
+    background-color: rgb(43, 43, 129);
+    color: rgb(179, 180, 119);
+    padding: 20px;
+    transition: background-color;
+    transition: color 2s ;
+    border-radius: 10px;
+    
+}
+.box:hover{
+    background-color: #A9F5E1;
+    color: #2E2EFE;
+}
+
+.logo
+{
+    grid-area: logo;
+    transition: width 2s;
+}
+
+.menu
+{
+    grid-area: menu;
+}
+.fil
+{
+    grid-area: fil;
+}
+.main
+{
+    grid-area: main;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-gap: 20px;
+}
+.sidebar
+{
+    grid-area: sidebar;
+}
+.footer
+{
+    grid-area: footer;
+}
+ body
+{
+    display: grid;
+    /*grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(4, auto);*/
+    grid-gap: 20px;
+    grid-template-areas: "logo menu menu menu menu menu"
+    "fil fil fil fil fil fil"
+    "main main main main sidebar sidebar"
+    "footer footer footer footer footer footer";
+}
+@media screen and (max-width: 768px) {
+    body{
+        grid-template-areas: 
+        "logo"
+        "menu "
+        "fil"
+        "main"
+        "sidebar"
+        "footer";
+    }
+}
+@media (orientation: landscape) 
+{
+    body 
+    {
+      background-color: #0080FF;
+    }
+}
+  
+@media (orientation: portrait) 
+{
+    body 
+    {
+        background-color: #2ECCFA;
+    }
+  }

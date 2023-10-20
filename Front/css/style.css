@@ -1,0 +1,53 @@
+
+.box{
+    background-color: rgb(43, 43, 129);
+    color: rgb(179, 180, 119);
+    padding: 020px;
+}
+
+
+.menu{
+    grid-column:2 / span 5 ;
+    grid-row: 1/1 ;
+}
+
+.main{
+    grid-column: 1/5;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: repeat(2,auto);
+}
+.fil{
+    grid-column:1/span 6 ; /* OU grid-column :1/7, span défini le nombre de collones qu'ils passe */
+    grid-row:2/2;
+}
+
+.sidebar{
+    grid-column: 5/ span 2;
+    grid-row: 3 /span 2;
+}
+.footer{
+    grid-column: span 6;
+}
+
+    body
+    {
+        display: grid;
+        grid-template-columns: repeat(6,1fr);
+        grid-template-rows: minmax(100px,auto);
+        gap: 20px ;
+    }
+
+
+
+@media (orientation: landscape) {
+    body {
+      background-color: brown;
+    }
+  }
+  
+  @media (orientation: portrait) {
+    body {
+background-color: aquamarine;    }
+  }
