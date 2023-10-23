@@ -31,13 +31,13 @@
     grid-column: span 6;
 }
 
-    body
-    {
-        display: grid;
-        grid-template-columns: repeat(6,1fr);
-        grid-template-rows: minmax(100px,auto);
-        gap: 20px ;
-    }
+body
+{
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    grid-template-rows: minmax(100px,auto);
+    gap: 20px ;
+}
 
 
 
