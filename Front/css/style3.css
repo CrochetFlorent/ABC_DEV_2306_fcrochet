@@ -1,13 +1,16 @@
+
+/* Sur mon ordinateur portable le footer disparait avec le réctrécissement de la page*/
 *{
     margin: 0;
     padding: 0;
 }
-
-
 body{
     display: grid;
     grid-template-columns: repeat(3,1fr);
-    grid-auto-rows: minmax(auto,auto);
+    /* Avec 6 article composé d'un Lorem chacun*/
+    /*grid-auto-rows: minmax(100px,auto);*/
+    /* Avec 8 articles composés d'un Lorem chacun*/
+    grid-auto-rows: minmax(50px,auto);
     gap: 10px ;
     height: 100%;
     position: fixed;
@@ -46,15 +49,21 @@ header{
     grid-column: 2 /span 2;
     display: flex;  
     flex-flow: row wrap;
+    /*position: absolute;*/
     justify-content: flex-end;
     padding-right: 50px;
     padding-bottom: 50PX;
     padding-top: 20px;
-    height: auto;
+    /*height: auto;*/
+    /* Footer rétréci après l'ajout de deux Lorem dans deux articles. Pour que le footer ne rétrécisse pas
+    ajuster mon principal sur des rows de manière à ce que le principal s'ajuste sur les lignes et pas sur la
+    taille de la page,voir commentaire footer*/
+    /* Apparamant avec deux Lorem de plus, il faudrait ajuster le flex "principal" en fonction du contenu(texte) automatiquement
+    car le texte dépasse, ou alors définir le min de minmax des rows plus petit que 100*/
 }
 
 .article{
-    width: 40%;
+    width: 45%;
     background-color: white;
     margin: 5px;
 }
@@ -63,17 +72,22 @@ h2{
     width: 100%;
 }
 .footer{
-    grid-column:2/4;
+    grid-column:2/span 2;
+    /*grid-row: 3/9;*/
+    /* Avec les row créées ici , et juste ici, des lignes sont créées en parallèle des colonnes du body*/
     height: auto;
 }
 @media screen and (max-width: 768px) {
+    /* Avec les rows 3/9 du footer, le footer se met presque entièrement sur le nav lors du passage en dessous de 768 px
+    car il commence à la ligne 3 comme demandé et la grid row du footer se retrouve en dessus du principal */
     body{
         display: grid;
         grid-template-columns: repeat(3,1fr);
         grid-auto-rows: minmax(auto,auto);
         gap: 5px ;
         height: 100%;
-        /*position: fixed;*/
+        /* Je n'ai pas compris l'utilité de fixed ici */
+        position: fixed;
     }
     header{
         grid-column: 1/4;
