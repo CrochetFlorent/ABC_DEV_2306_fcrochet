@@ -1,0 +1,68 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.principal{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    /*height: 100%;
+    width: 100%;
+    position: fixed;*/
+}
+section{
+    background-color: #CCCC33;
+    color: white;
+    min-height: 100px;
+    font-size: 30px;
+    padding: 5px;
+}
+
+section>*{
+    flex: 1 1 auto;
+}
+/*#s1{
+    width: 100%;
+}
+
+#s2{
+    float: left;
+    width:25% ;
+    height: 80vh;
+    
+}
+
+#s3{
+    width:25%;
+    height: 20vh;
+}
+
+#s4{
+    width: 46%;
+    height: 20vh;
+}
+
+#s5{
+    flex: 2 1 auto;
+}
+
+#s6{
+    
+}
+
+#s7{
+    
+}
+
+#s8{
+    
+}
+
+#s9{
+   
+}
+
+#s10{
+    
+}
