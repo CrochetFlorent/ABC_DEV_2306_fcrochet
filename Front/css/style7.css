@@ -6,14 +6,7 @@
 header{
     height: 200px;
 }
-h1{
-    position: absolute;
-    color:white;
-    left: 35%;
-    right:35%;
-    top:2%;
-    text-align: center;
-}
+
 main{
     display:grid;
     grid-template-columns: 240px 1fr 240px;
