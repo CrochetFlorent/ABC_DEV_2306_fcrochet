@@ -3,27 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark light">
     <title>Document</title>
     <link rel="stylesheet" href="/css/style8.css">
 </head>
-<body>
+<body data-theme="light">
     <header>
-        <img alt="Bannière" src="/images/banTp.jpg"/>
+        <img id="img1" alt="Bannière" src="/images/banTp.jpg"/>
         <h1>Mon Blog Technique</h1>
+        <button id="theme-btn1">Light</button>
+        <button id="theme-btn2">Dark</button>
     </header>
-    <main>
+ 
+    <main>   
         <nav class="nav">
-            <h2 id="menu">Menu</h2>
+            <h2 id="titre-menu">Menu</h2>
             <ul>
-                <li class="box-nav">Accueil</li>
-                <li class="box-nav">Articles</li>
-                <li class="box-nav">Tutoriaux</li>
-                <li class="box-nav">A Propos</li>
-                <li class="box-nav">Contact</li>
+                <a href="#"><li class="box-nav">Accueil</li></a>
+                <a href="#"><li class="box-nav">Articles</li></a>
+                <a href="#"><li class="box-nav">Tutoriaux</li></a>
+                <a href="#"><li class="box-nav">A Propos</li></a>
+                <a href="#"><li class="box-nav">Contact</li></a>
             </ul>
-        </nav>
+    </nav>
         <aside class="article">
-                <h2 id="welcome">Bienvenue sur notre site</h2>
+                <h2 id="titre-bienvenue">Bienvenue sur notre site</h2>
                 <div class="articles">
                     <article class="box">Article #1</article>
                     <article class="box">Article #2</article>
@@ -36,6 +40,11 @@
         <div id="div1">
             <h3>Publicité</h3>
             <img id="img2" alt="Bannière" src="/images/pubTp.jpg"/>
+            <p id="texte1">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime facilis temporibus tenetur, asperiores nulla 
+                provident nisi animi numquam, minus rem delectus cupiditate, suscipit quasi perferendis assumenda sed nemo harum adipisci!
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui incidunt omnis provident asperiores necessitatibus iure veritatis 
+            nemo placeat? Nulla iure eaque ex soluta expedita quaerat perferendis amet beatae excepturi! Saepe.</p>
+            <a href="https://www.amazon.fr/"><h3 id="bouton1">J'achète</h3></a>
         </div>
     </main>
     

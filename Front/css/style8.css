@@ -1,10 +1,16 @@
+
+:root {
+    color-scheme: light dark;
+  }
 *{
     margin: 0;
     padding: 0;
 }
 body{
-    height: 100vh;
+    height:100vh;
 }
+
+/*@media (prefers-color-scheme: light){*/
 h1{
     position: absolute;
     color:white;
@@ -13,49 +19,147 @@ h1{
     top:2%;
     text-align: center;
 }
-
+header{
+    height: 20%;
+    max-height: 200px;
+}
 main{
+    background-color: rgb(204, 204, 204);
     display:flex;
     flex-direction: row;
-    flex-flow: row wrap;
+    align-items: stretch;
     height: 80%;
 }
-
-.nav{
-    width: 15%;
+#titre-menu{
+    background-color:rgb(177, 177, 177) ;
+    margin-bottom:20px;
 }
-.articles{
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-evenly;
-    margin: 20px;
-    height: 100%;
-    gap:10px;
-}
-
-.article{
-    width: 70%;
-}
-
-#div1{
-    width: 15%;
-}
-#img1{
-    height: 200px;
-}
-#img2{
-    width:160px;;
-    height:190px;
-}
-
 .box{
+    min-height: 100px;
+    padding-top: 20px;
     background-color: rgb(190, 190, 190);
     width:40%;
     height:20%;
+    margin: 10px;
+}
+.box-nav{
+    background-color:rgb(177, 177, 177) ;
+    color:#085E8F;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    margin: 10px;
+
+}
+.nav{
+    background-color: rgb(190, 190, 190);
+    width: 20%;
+}
+#titre-bienvenue{
+    width: 100%;
+}
+.articles{
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap:10px;
+
 }
 
-#welcome{
+.article{
+    width: 65%;
+}
+
+#div1{
+    background-color: rgb(177, 177, 177);
+    width: 15%;
+    height:100%;
+}
+#img1{
+    width: 100%;
+    height: 200px;
+}
+#img2{
+    width:100%;
+    height:35%;
+}
+
+
+h2{
     background-color: rgb(190, 190, 190);
     color: black;
     padding: 10px;
+    margin-bottom: 10px;
 }
+
+h3{
+    background-color: rgb(177, 177, 177);
+    text-align: center;
+    padding: 7px;
+    margin-bottom: 10px;
+}
+#texte1{
+    text-align: justify;
+    padding: 5px;
+}
+#bouton1{
+    background-color: #085E8F;
+    color: white;
+}
+
+#theme-btn1{
+    position: absolute;
+    color:black;
+    left: 20%;
+    right:60%;
+    top:12%;
+    text-align: center;
+}
+#theme-btn2{
+    position: absolute;
+    color:black;
+    left:60%;
+    right:20%;
+    top:12%;
+    text-align: center;
+}
+/*{*/
+
+/*@media (prefers-color-scheme: dark){
+h1{
+    color:black;
+}
+main{
+    background-color: black;
+}
+#titre-menu{
+    background-color:rgb(48,48,48);
+}
+.box-nav{
+    background-color:rgb(48, 48, 48) ;
+    color: #09BCE0;
+}
+.nav{
+    background-color: rgb(33, 33, 33);
+}
+#div1{
+    background-color: rgb(33, 33, 33);
+}
+.box{
+    background-color: rgb(33, 33, 33);
+}
+h2{
+    background-color: rgb(33, 33, 33);
+    color: white;
+}
+
+h3{
+    background-color: rgb(33, 33, 33);
+    color:#09BCE0;
+}
+
+#bouton1{
+    background-color: #09BCE0;
+    color: black;
+}
+}*/
