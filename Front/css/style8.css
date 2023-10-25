@@ -106,6 +106,30 @@ h3{
     background-color: #085E8F;
     color: white;
 }
+#light{
+    position: absolute;
+    color:white;
+    left: 30%;
+    top:12%;
+}
+#dark{
+    position: absolute;
+    color:white;
+    right:30%;
+    top:12%;
+}
+#lightTxt{
+    position: absolute;
+    color:white;
+    left: 20%;
+    top:12%;
+}
+#darkTxt{
+    position: absolute;
+    color:Black;
+    right:20%;
+    top:12%;
+}
 
 #theme-btn1{
     position: absolute;
