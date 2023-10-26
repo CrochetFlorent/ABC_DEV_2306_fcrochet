@@ -1,0 +1,92 @@
+h1{
+    color:white;
+}
+
+main{
+    background-color: rgb(204, 204, 204);
+}
+#titre-menu{
+    background-color:rgb(177, 177, 177) ;
+
+}
+.box{
+    background-color: rgb(190, 190, 190);
+}
+
+.box-nav{
+    background-color:rgb(177, 177, 177) ;
+    color:#085E8F;
+}
+.nav{
+    background-color: rgb(190, 190, 190);
+}
+.article{
+    background-color: rgb(204, 204, 204);
+}
+#div1{
+    background-color: rgb(177, 177, 177);
+}
+
+h2{
+    background-color: rgb(190, 190, 190);
+    color: black;
+}
+
+h3{
+    background-color: rgb(177, 177, 177);
+
+}
+#bouton1{
+    background-color: #085E8F;
+    color: white;
+}
+
+#theme-btn1{
+    color:black;
+}
+#theme-btn2{
+    color:black;
+}
+
+.theme2 .article{
+    background-color: black;
+}
+.theme2 #titre-menu{
+    background-color:rgb(48,48,48);
+    color: white;
+}
+.theme2 .box-nav{
+    background-color:rgb(48, 48, 48) ;
+    color: #09BCE0;
+}
+.theme2 .nav{
+    background-color: rgb(33, 33, 33);
+}
+.theme2 #titre-bienvenue{
+    background-color: rgb(33, 33, 33);
+    color: white;
+}
+.theme2 article{
+    background-color: black;
+    color: white;
+}
+.theme2 #div1{
+    background-color: rgb(33, 33, 33);
+}
+.theme2 .box{
+    background-color: rgb(33, 33, 33);
+}
+.theme2 .h2{
+    background-color: rgb(33, 33, 33);
+    color: white;
+}
+
+.theme2 h3{
+    background-color: rgb(33, 33, 33);
+    color:#09BCE0;
+}
+
+.theme2 #bouton1{
+    background-color: #09BCE0;
+    color: black;
+}
