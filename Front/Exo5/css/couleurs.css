@@ -48,40 +48,40 @@ h3{
     color:black;
 }
 
-.theme2 .article{
+.dark .article{
     background-color: black;
 }
-.theme2 #titre-menu{
+.dark #titre-menu{
     background-color:rgb(48,48,48);
     color: white;
 }
-.theme2 .box-nav{
+.dark .box-nav{
     background-color:rgb(48, 48, 48) ;
     color: #09BCE0;
 }
-.theme2 .nav{
+.dark .nav{
     background-color: rgb(33, 33, 33);
 }
-.theme2 #titre-bienvenue{
+.dark #titre-bienvenue{
     background-color: rgb(33, 33, 33);
     color: white;
 }
-.theme2 article{
+.dark article{
     background-color: black;
     color: white;
 }
-.theme2 #div1{
+.dark #div1{
     background-color: rgb(33, 33, 33);
 }
-.theme2 .box{
+.dark .box{
     background-color: rgb(33, 33, 33);
 }
-.theme2 .h2{
+.dark .h2{
     background-color: rgb(33, 33, 33);
     color: white;
 }
 
-.theme2 h3{
+.dark h3{
     background-color: rgb(33, 33, 33);
     color:#09BCE0;
 }
