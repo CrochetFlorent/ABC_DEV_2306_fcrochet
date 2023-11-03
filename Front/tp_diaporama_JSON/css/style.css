@@ -1,0 +1,9 @@
+body{
+    background-color: black;;
+}
+.carousel-item > img{
+    max-width: 1150px;
+    max-height: 1150px;
+    margin: auto;
+    padding-top: 45px;;
+}
