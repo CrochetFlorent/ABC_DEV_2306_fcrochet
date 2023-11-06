@@ -1,5 +1,6 @@
 *{
     font-family: 'Courier New', Courier, monospace;
+    overflow: auto;
 }
 
 body{
@@ -32,7 +33,6 @@ body{
 article{
     display :flex;
     flex-direction: column;
-    padding:2%;
 
 }
 .titre2{
@@ -42,6 +42,8 @@ article{
     font-size: larger;
     padding: 10px;
     border-radius: 10px;
+    height: 40px;
+    line-height: 30px;
 }
 
 .para{
@@ -49,6 +51,8 @@ article{
     text-align: center;
     background-color:rgb(160, 144, 144) ;
     border-radius: 5px;
+    padding: 5px;
+    height: 40px;
 }
 
 .list{
@@ -57,7 +61,6 @@ article{
     margin-top: 5%;
     background-color: rgb(160, 144, 144);
     border-radius: 5px;
-   
 }
 
 @media screen and (max-width: 768px) {
@@ -66,5 +69,4 @@ article{
         display:flex;
         flex-direction: column;
     }
- 
 }

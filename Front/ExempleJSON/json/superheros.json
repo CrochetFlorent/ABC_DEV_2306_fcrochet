@@ -51,6 +51,47 @@
           "Flying",
           "Imagination"
         ]
-      }
+      },
+      {
+        "name":"Batman", 
+        "age":40,
+        "secretIdentity":"Bruce Wayne",
+        "powers":[
+          "Rayons X",
+          "Vol",
+          "Intelligence",
+          "Invisibilité",
+          "Agilité surhumaine"
+        ]
+    },
+    {
+        "name":"Superman", 
+        "age":35,
+        "secretIdentity":"Kal-El ou Clark Kent",
+        "powers":[
+          "Super-Force",
+          "Super-Vitesse",
+          "Super-Endurance",
+          "Super-Vision",
+          "Super-Ouïe",
+          "Super-Odorat",
+          "Super-Guerison",
+          "Etc..."
+        ]
+    },
+      {
+        "name":"Iron Man", 
+        "age":40,
+        "secretIdentity":"Tony Stark",
+        "powers":[
+          "Super Portection",
+          "Super Force et Agilité",
+          "Génie Scientifique",
+          "Vol => Mach 8",
+          "Missiles,Repulseurs énergiques,faisceaux d'énergie",
+          "Etc..."
+        ]
+    }
+
     ]
   }
