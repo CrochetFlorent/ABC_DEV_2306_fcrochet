@@ -11,10 +11,8 @@ async function populate() {
     const response = await fetch(request);
     const superHeroes = await response.json();
 
-    console.log(superHeroes);
     populateHeader(superHeroes);
     populateHeroes(superHeroes);
-
   }
 
 function populateHeader(obj) {
@@ -69,10 +67,8 @@ function populateHeader(obj) {
       myPara1.classList.add('para');
       myPara2.classList.add('para');
       myPara3.classList.add('para');
-      myList.classList.add('list');
-      
-    }
-    
+      myList.classList.add('list');    
+    } 
   }
 
   
