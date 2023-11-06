@@ -1,6 +1,5 @@
 document.head.innerHTML="<title>Mes super héros</title>";
-/*document.querySelector("title").setAttribute('id','titre1');
-document.getElementById("titre1").style.color="blue";*/
+document.head.innerHTML='<link rel="stylesheet" href="./css/style.css"></link>';
 
 populate();
 
@@ -23,16 +22,19 @@ function populateHeader(obj) {
     const myH1 = document.createElement('h1');
     myH1.textContent = obj.squadName;
     header.appendChild(myH1);
+    myH1.setAttribute('id','titre1');
 
     const myPara = document.createElement('p');
     myPara.textContent = `Hometown: ${obj.homeTown} // Formed: ${obj.formed}`;
     header.appendChild(myPara);
+    myPara.setAttribute('id','para1');
   }
 
   function populateHeroes(obj) {
     const section = document.querySelector('section');
     const heroes = obj.members;
-
+    let i=1;
+    
     for (const hero of heroes) {
       const myArticle = document.createElement('article');
       const myH2 = document.createElement('h2');
@@ -40,7 +42,6 @@ function populateHeader(obj) {
       const myPara2 = document.createElement('p');
       const myPara3 = document.createElement('p');
       const myList = document.createElement('ul');
-
       myH2.textContent = hero.name;
       myPara1.textContent = `Secret identity: ${hero.secretIdentity}`;
       myPara2.textContent = `Age: ${hero.age}`;
@@ -60,7 +61,18 @@ function populateHeader(obj) {
       myArticle.appendChild(myList);
 
       section.appendChild(myArticle);
+      section.classList.add('articles');
+
+      myArticle.setAttribute('id','article'+i++);
+
+      myH2.classList.add('titre2');
+      myPara1.classList.add('para');
+      myPara2.classList.add('para');
+      myPara3.classList.add('para');
+      myList.classList.add('list');
+      
     }
+    
   }
 
   

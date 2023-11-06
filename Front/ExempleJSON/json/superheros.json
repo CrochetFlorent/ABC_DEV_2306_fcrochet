@@ -32,6 +32,25 @@
           "Teleportation",
           "Interdimensional travel"
         ]
+      },
+      {
+        "name": "Deadpool",
+        "age" : 35,
+        "secretIdentity": "Already dead",
+        "powers": [
+          "Immortality",
+          "Growing back limbs"
+        ]
+      },
+      {
+        "name": "Green Lantern",
+        "age" : 35,
+        "secretIdentity": "Lambda man",
+        "powers": [
+          "Lantern powers",
+          "Flying",
+          "Imagination"
+        ]
       }
     ]
   }
