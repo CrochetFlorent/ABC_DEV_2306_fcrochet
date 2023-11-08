@@ -9,6 +9,7 @@ header{
 }
 body{
     background-color: rgb(42, 165, 79);
+    margin:0;
 }
 
 #titre1{
@@ -27,16 +28,15 @@ body{
     font-weight: 1000;
 }
 
-.articles{
+section{
     display: flex;
     flex-wrap:wrap;
     justify-content: space-evenly;
-    background-color: rgb(42, 165, 79);
     border-radius: 10px;
+
 }
 article{
     flex-direction: column;
-
 }
 .titre2{
     background-color: rgb(27, 27, 124);
@@ -52,7 +52,7 @@ article{
     text-align: center;
     background-color:white ;
     border-radius: 5px;
-    height: 40px;
+    height: auto;
     padding: 10px;
 }
 
@@ -65,7 +65,7 @@ article{
 }
 
 @media screen and (max-width: 768px) {
-    .articles{
+    section{
         display:flex;
         flex-direction: column;
     }

@@ -1,0 +1,19 @@
+body{
+    display: grid;
+    grid-template-rows: 50% 50%;
+    height: 90vh;
+}
+
+h1{
+    font-size: 100px;
+    text-align: center;
+    margin: auto;
+    line-height: 300px;
+
+}
+
+img{
+    width: 25%;
+    height: 90%;
+    margin: auto;
+}

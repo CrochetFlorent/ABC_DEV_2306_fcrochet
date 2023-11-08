@@ -1,6 +1,4 @@
 
-const change = document.getElementById('theme-change');
-
 change.addEventListener("click", changeTheme);
 
 const element = document.querySelector("body").classList;

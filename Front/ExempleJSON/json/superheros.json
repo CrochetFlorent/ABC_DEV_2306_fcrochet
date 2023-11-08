@@ -84,14 +84,26 @@
         "age":40,
         "secretIdentity":"Tony Stark",
         "powers":[
-          "Super Portection",
+          "Super Protection",
           "Super Force et Agilité",
           "Génie Scientifique",
           "Vol => Mach 8",
           "Missiles,Repulseurs énergiques,faisceaux d'énergie",
           "Etc..."
         ]
+    },
+      {
+        "name":"Captain America", 
+        "age":45,
+        "secretIdentity":"Steven 'Steve' Rogers",
+        "powers":[
+          "Endurance supérieure",
+          "Force supérieure",
+          "Rapidité supérieure",
+          "Récupère plus vite que la normale",
+          "Génie tactique et stratégique",
+          "Etc..."
+        ]
     }
-
     ]
   }

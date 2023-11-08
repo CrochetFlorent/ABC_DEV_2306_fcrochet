@@ -59,7 +59,6 @@ function populateHeader(obj) {
       myArticle.appendChild(myList);
 
       section.appendChild(myArticle);
-      section.classList.add('articles');
 
       myArticle.setAttribute('id','article'+i++);
 

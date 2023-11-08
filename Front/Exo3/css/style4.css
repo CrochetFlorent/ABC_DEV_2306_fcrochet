@@ -18,7 +18,7 @@ header{
 
 main{
    display : flex; 
-   justify-content: center;
+   justify-content: space-evenly;
 }
 div{
     display: flex;
@@ -31,5 +31,3 @@ h2{
     color: #E64B3C;
     padding-left: 10px;
 }
-/* Un possibilité pour que le résultat ressemble encore plus à l'escompté : traiter les h2,img, 
-et p chacun de leur côté de manière à gérer les gap*/
