@@ -1,10 +1,8 @@
- [
+[
       {
         "num":1,
-     
         "titre":"First slide label",
-        "para":"Some representative placeholder legend content for the first slide."
-        
+        "para":"Some representative placeholder legend content for the first slide." 
       },
       {
         "num":2,
@@ -123,3 +121,6 @@
       }
      
     ]
+
+
+  

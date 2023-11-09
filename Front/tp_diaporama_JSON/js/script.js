@@ -27,7 +27,7 @@ function remplissage(_tabObj){
             image.setAttribute('alt',_tabObj[i].titre);
             image.classList.add('d-block');
             image.classList.add('w-100');
-            slide.appendChild(image);
+
             caption = document.createElement("div");
             caption.classList.add('carousel-caption');
             caption.classList.add('d-non');
@@ -38,13 +38,13 @@ function remplissage(_tabObj){
 
             para = document.createElement('p');
             para.textContent= _tabObj[i].para;
+
             caption.appendChild(para);
             caption.appendChild(titre);
+
             slide.appendChild(caption);
-            
-           
-           
-           
+            slide.appendChild(image);
+
             targetDiv.appendChild(slide);
          
            

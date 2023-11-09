@@ -1,9 +1,8 @@
 body{
-    background-color: rgb(190, 62, 62);
+    background-color: rgb(62, 136, 185);
 }
 .carousel-item > img{
-    max-width: 1150px;
-    max-height: 1150px;
+    max-width: 1135px;
+    max-height: 1135px;
     margin: auto;
-    padding-top: 45px;;
 }
