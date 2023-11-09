@@ -16,9 +16,9 @@
   let affichagePhrase ;
 
   function resolveAfter2Seconds() {
-    return new Promise((resolve) => {
+    return new Promise((estOK) => {
       setTimeout(() => {
-        resolve(affichagePhrase);
+        estOK(affichagePhrase);
       }, 2000);
     });
   }
