@@ -75,9 +75,7 @@ function remplissage(_tabObj){
             caption.appendChild(para);
             caption.appendChild(titre);
             slide.appendChild(caption);
-            
-           
-           
+
            
             targetDiv.appendChild(slide);
 

@@ -1,0 +1,78 @@
+body{
+    background-color: black;
+}
+
+.maDiv1{
+    height: 98vh;
+    display: grid;
+    grid-template-rows: 30% 70%;
+}
+
+.maDiv6{
+    grid-row: 1;
+    background-color: blue;
+    border-radius: 100px;
+}
+.maDiv6:hover{
+    background-color: orange;
+}
+.maDiv6:hover > h1{
+    visibility: visible;
+    color: white;
+}
+.maDiv2{
+    display:grid;
+    grid-row: 2;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+#div1{
+    background-color: green;
+    border-radius: 100px;
+}
+#div1:hover{
+    background-color: orange;
+}
+
+#div2{
+    background-color: yellow;
+    border-radius: 100px;
+}
+#div2:hover{
+    background-color: orange;
+}
+
+#div3{
+    background-color: red;
+    border-radius: 100px;
+}
+#div3:hover{
+    background-color: orange;
+}
+
+#div1:hover > p {
+    visibility: visible;
+    color: white;
+}
+#div2:hover > p {
+    visibility: visible;
+    color: white;
+}
+
+#div3:hover > p {
+    visibility: visible;
+    color: white;
+}
+
+h1{
+    text-align: center;
+    visibility: hidden;
+    font-size: 150px;
+    line-height: 30%;
+}
+p{
+    text-align: center;
+    visibility: hidden;
+    font-size: 150px;
+}
+
