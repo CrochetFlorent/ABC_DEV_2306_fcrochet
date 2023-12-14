@@ -29,8 +29,6 @@ texte3.textContent = "Content";
 maDiv1.appendChild(maDiv2);
 maDiv1.appendChild(maDiv6);
 
-
-
 maDiv2.appendChild(maDiv3);
 maDiv2.appendChild(maDiv4);
 maDiv2.appendChild(maDiv5);
