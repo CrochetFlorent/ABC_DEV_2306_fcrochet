@@ -1,10 +1,12 @@
-CREATE TABLE Balise(
+/*CREATE DATABASE HTMLCSS ChARACTER SET utf8mb4 COLLATE UTF8MB4_GENERAL_CI;*/
+
+/*CREATE TABLE Balise(
 	nomBalise VARCHAR(20) NOT NULL,
 	langage VARCHAR(20) NOT NULL,
 	fonction TINYTEXT NOT NULL,
-	descriptionBalise MEDIUMBLOB NOT NULL CHARACTER SET UTF8mb3 COLLATE utf8mb3_general_ci ,
+	descriptionBalise MEDIUMTEXT NOT NULL,
 	CONSTRAINT cle_balise PRIMARY KEY(nomBalise));
-/*
+
 INSERT INTO balise(nomBalise,langage,fonction,descriptionBalise)
 VALUES
 ("HTML","HTML","Métadonnées du document","L'élément <base> définit l'URL de base à utiliser pour recomposer toutes les URL relatives contenues dans un document. Il ne peut y avoir qu'un seul élément <base> au sein d'un document."),
@@ -29,6 +31,17 @@ VALUES
 ("MAIN","HTML","Setcionnement du contenu","Représente le contenu majoritaire du corps du document. Le contenu principal de la zone est constitué de contenu directement en relation, ou qui étend le sujet principal du document ou de la fonctionnalité principale d'une application."),
 ("NAV","HTML","Sectionnement du contenu","Représente une section d'une page ayant des liens vers d'autres pages ou des fragments de cette page. Autrement dit, c'est une section destinée à la navigation dans un document (avec des menus, des tables des matières, des index, etc.)."),
 ("SECTION","HTML","Sectionnement du contenu","Représente une section générique d'un document, par exemple un groupe de contenu thématique. Une section devrait généralement commencer avec un titre.");
+*/
 
- 
- */
+/*CREATE TABLE fonction(
+		fonct MEDIUMTEXT NOT NULL,
+		descriptFonct MEDIUMTEXT NOT NULL);*/
+		
+/*INSERT INTO fonction(fonct,descriptFonct)
+values
+("Racine principale",""),
+("Métadonnées du document","Les métadonnées contiennent des informations à propos de la page. Elles comprennent des informations sur les styles, les scripts et les données qui aident les programmes (moteur de recherche, navigateurs, etc.) à utiliser et à rendre la page. Les métadonnées relatives aux styles et aux scripts peuvent être définies dans la page ou renvoyer à un autre fichier contenant ces informations."),
+("Racine de sectionnement",""),
+("Sectionnement du contenu","Organiser le contenu d'une page en différentes sections permet d'avoir une structure logique au sein d'un document. Grâce à ces éléments, on peut créer un plan pour la page, ajouter des titres pour identifier les sections et également gérer un en-tête et un bas de page.");
+*/
+		
