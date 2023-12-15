@@ -15,8 +15,7 @@
                 else
                 {
                     Console.WriteLine("J'affiche i pour la " +(i + 1)+ "ieme fois.");
-                }
-                
+                }           
             }
         }
     }
