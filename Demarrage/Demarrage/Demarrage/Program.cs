@@ -10,7 +10,9 @@
             {
                 if (i == 0)
                 {
-                    Console.WriteLine("J'affiche i pour la première fois.");
+                    Console.WriteLine("J'affiche i pour la première fois.Entrez quelquechose!");
+                    string str = Console.ReadLine();
+                    Console.WriteLine(str);
                 }
                 else
                 {
