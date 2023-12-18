@@ -2,6 +2,10 @@
 {
     internal class Program
     {
+        public void moyenne(int a,int b)
+        {
+
+        }
         static void Main(string[] args)
         {
             Console.WriteLine("Hello, World!");
