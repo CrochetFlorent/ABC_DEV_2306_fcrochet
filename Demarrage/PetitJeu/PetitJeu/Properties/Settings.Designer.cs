@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NombreAleatoire.Properties
+namespace PetitJeu.Properties
 {
 
 

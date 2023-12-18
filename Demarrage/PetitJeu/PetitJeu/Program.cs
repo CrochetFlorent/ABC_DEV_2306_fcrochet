@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace NombreAleatoire
+namespace PetitJeu
 {
     internal static class Program
     {
@@ -17,8 +17,6 @@ namespace NombreAleatoire
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
-            joueur joueur = new joueur();
-            joueur.partie();
         }
     }
 }

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Les informations générales relatives à un assembly dépendent de
 // l'ensemble d'attributs suivant. Changez les valeurs de ces attributs pour modifier les informations
 // associées à un assembly.
-[assembly: AssemblyTitle("NombreAleatoire")]
+[assembly: AssemblyTitle("PetitJeu")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("CRM")]
-[assembly: AssemblyProduct("NombreAleatoire")]
+[assembly: AssemblyProduct("PetitJeu")]
 [assembly: AssemblyCopyright("Copyright © CRM 2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Le GUID suivant est pour l'ID de la typelib si ce projet est exposé à COM
-[assembly: Guid("23e8203e-7512-4e36-9c8b-9ddcc86b21ee")]
+[assembly: Guid("d1da5f63-1f29-4559-81a0-4bca82ce21cf")]
 
 // Les informations de version pour un assembly se composent des quatre valeurs suivantes :
 //

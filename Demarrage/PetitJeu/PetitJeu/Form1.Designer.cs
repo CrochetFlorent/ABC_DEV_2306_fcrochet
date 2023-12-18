@@ -1,4 +1,4 @@
-﻿namespace NombreAleatoire
+﻿namespace PetitJeu
 {
     partial class Form1
     {
