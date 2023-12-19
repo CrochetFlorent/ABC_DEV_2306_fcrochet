@@ -1,5 +1,0 @@
-C:\Users\fcrochet\Documents\GitHub\ABC_DEV_2306_fcrochet\Demarrage\PetitJeu\PetitJeu\obj\Debug\PetitJeu.csproj.AssemblyReference.cache
-C:\Users\fcrochet\Documents\GitHub\ABC_DEV_2306_fcrochet\Demarrage\PetitJeu\PetitJeu\obj\Debug\PetitJeu.csproj.SuggestedBindingRedirects.cache
-C:\Users\fcrochet\Documents\GitHub\ABC_DEV_2306_fcrochet\Demarrage\PetitJeu\PetitJeu\obj\Debug\PetitJeu.Properties.Resources.resources
-C:\Users\fcrochet\Documents\GitHub\ABC_DEV_2306_fcrochet\Demarrage\PetitJeu\PetitJeu\obj\Debug\PetitJeu.csproj.GenerateResource.cache
-C:\Users\fcrochet\Documents\GitHub\ABC_DEV_2306_fcrochet\Demarrage\PetitJeu\PetitJeu\obj\Debug\PetitJeu.csproj.CoreCompileInputs.cache
