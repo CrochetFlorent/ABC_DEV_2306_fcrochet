@@ -1,0 +1,15 @@
+C:\Users\fcrochet\Documents\GitHub\ABC_DEV_2306_fcrochet\Demarrage\TestMock\TestMock\bin\Debug\net6.0\TestMock.exe
+C:\Users\fcrochet\Documents\GitHub\ABC_DEV_2306_fcrochet\Demarrage\TestMock\TestMock\bin\Debug\net6.0\TestMock.deps.json
+C:\Users\fcrochet\Documents\GitHub\ABC_DEV_2306_fcrochet\Demarrage\TestMock\TestMock\bin\Debug\net6.0\TestMock.runtimeconfig.json
+C:\Users\fcrochet\Documents\GitHub\ABC_DEV_2306_fcrochet\Demarrage\TestMock\TestMock\bin\Debug\net6.0\TestMock.dll
+C:\Users\fcrochet\Documents\GitHub\ABC_DEV_2306_fcrochet\Demarrage\TestMock\TestMock\bin\Debug\net6.0\TestMock.pdb
+C:\Users\fcrochet\Documents\GitHub\ABC_DEV_2306_fcrochet\Demarrage\TestMock\TestMock\obj\Debug\net6.0\TestMock.csproj.AssemblyReference.cache
+C:\Users\fcrochet\Documents\GitHub\ABC_DEV_2306_fcrochet\Demarrage\TestMock\TestMock\obj\Debug\net6.0\TestMock.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\fcrochet\Documents\GitHub\ABC_DEV_2306_fcrochet\Demarrage\TestMock\TestMock\obj\Debug\net6.0\TestMock.AssemblyInfoInputs.cache
+C:\Users\fcrochet\Documents\GitHub\ABC_DEV_2306_fcrochet\Demarrage\TestMock\TestMock\obj\Debug\net6.0\TestMock.AssemblyInfo.cs
+C:\Users\fcrochet\Documents\GitHub\ABC_DEV_2306_fcrochet\Demarrage\TestMock\TestMock\obj\Debug\net6.0\TestMock.csproj.CoreCompileInputs.cache
+C:\Users\fcrochet\Documents\GitHub\ABC_DEV_2306_fcrochet\Demarrage\TestMock\TestMock\obj\Debug\net6.0\TestMock.dll
+C:\Users\fcrochet\Documents\GitHub\ABC_DEV_2306_fcrochet\Demarrage\TestMock\TestMock\obj\Debug\net6.0\refint\TestMock.dll
+C:\Users\fcrochet\Documents\GitHub\ABC_DEV_2306_fcrochet\Demarrage\TestMock\TestMock\obj\Debug\net6.0\TestMock.pdb
+C:\Users\fcrochet\Documents\GitHub\ABC_DEV_2306_fcrochet\Demarrage\TestMock\TestMock\obj\Debug\net6.0\TestMock.genruntimeconfig.cache
+C:\Users\fcrochet\Documents\GitHub\ABC_DEV_2306_fcrochet\Demarrage\TestMock\TestMock\obj\Debug\net6.0\ref\TestMock.dll

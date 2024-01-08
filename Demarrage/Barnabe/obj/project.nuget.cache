@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "h+43XSFvUhJxSPX4eGXmx3X3PBME4HsDgZtEpp0RiQBV5Wpgj+v5XCgf8O3BM7ssXpVuirU1HzQvNB+6dSrsRQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\fcrochet\\Documents\\GitHub\\ABC_DEV_2306_fcrochet\\Demarrage\\Barnabe\\Barnabe.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\fcrochet\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
+    "C:\\Users\\fcrochet\\.nuget\\packages\\moq\\4.20.70\\moq.4.20.70.nupkg.sha512",
+    "C:\\Users\\fcrochet\\.nuget\\packages\\system.diagnostics.eventlog\\6.0.0\\system.diagnostics.eventlog.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
